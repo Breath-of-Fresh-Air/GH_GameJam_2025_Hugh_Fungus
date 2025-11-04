@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlkqli26yx0tq"]
 
-[ext_resource type="PackedScene" uid="uid://cwgigt1y0jsyu" path="res://enemy.tscn" id="1_3miyd"]
+[ext_resource type="PackedScene" uid="uid://cwgigt1y0jsyu" path="res://scenes/enemy.tscn" id="1_3miyd"]
 [ext_resource type="Texture2D" uid="uid://djswxtdralcn3" path="res://Art/Enemies/Snail_sprite.png" id="2_i6obs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s4s51"]

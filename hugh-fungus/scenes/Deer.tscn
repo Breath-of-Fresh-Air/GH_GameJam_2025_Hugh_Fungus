@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cy371jifyb6lr"]
 
-[ext_resource type="PackedScene" uid="uid://cwgigt1y0jsyu" path="res://enemy.tscn" id="1_c3wsx"]
+[ext_resource type="PackedScene" uid="uid://cwgigt1y0jsyu" path="res://scenes/enemy.tscn" id="1_c3wsx"]
 [ext_resource type="Texture2D" uid="uid://dty0jeo0p4v8" path="res://Art/Enemies/Deer_sprite.png" id="2_tijgk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_na80a"]
