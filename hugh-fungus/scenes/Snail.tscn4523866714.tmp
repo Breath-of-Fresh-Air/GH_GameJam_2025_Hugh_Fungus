@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlkqli26yx0tq"]
+[gd_scene load_steps=7 format=3 uid="uid://dlkqli26yx0tq"]
 
 [ext_resource type="PackedScene" uid="uid://cwgigt1y0jsyu" path="res://scenes/enemy.tscn" id="1_3miyd"]
 [ext_resource type="Script" uid="uid://yv51r4xfwu6h" path="res://scripts/snail.gd" id="2_2wu2h"]
@@ -21,9 +21,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kttc3"]
-size = Vector2(63.333336, 23.333332)
-
 [node name="enemy" instance=ExtResource("1_3miyd")]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_2wu2h")
@@ -39,23 +36,9 @@ shape = SubResource("RectangleShape2D_kfcxn")
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_s4s51")
 
-[node name="rand_Move_Timer" parent="." index="3"]
-wait_time = 3.0
-
-[node name="idle_timer" parent="." index="4"]
-wait_time = 1.0
-
 [node name="enemy_hitbox" parent="." index="5"]
 visible = false
 
 [node name="CollisionShape2D" parent="enemy_hitbox" index="0"]
 position = Vector2(8.948698, 33.012856)
 scale = Vector2(5.4584546, 6.104798)
-
-[node name="player_detect_top" type="Area2D" parent="." index="7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect_top" index="0"]
-position = Vector2(6.666666, -23.333334)
-shape = SubResource("RectangleShape2D_kttc3")
-
-[connection signal="body_entered" from="player_detect_top" to="." method="_on_player_detect_top_body_entered"]
