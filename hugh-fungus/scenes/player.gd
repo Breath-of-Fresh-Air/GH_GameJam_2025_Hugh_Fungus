@@ -1,11 +1,19 @@
 extends CharacterBody2D
-
+@onready var anim_sprite = $AnimatedSprite2D
 
 const SPEED = 180.0
 const JUMP_VELOCITY = -360.0
 
 
 func _physics_process(delta: float) -> void:
+	# --- Animation logic ---
+	if velocity.length() > 0:
+		# Player is moving
+		anim_sprite.play("running")
+	else:
+		# Player stopped
+		anim_sprite.play("idle")
+	anim_sprite.flip_h = velocity.x < 0
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
