@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlkqli26yx0tq"]
+[gd_scene load_steps=7 format=3 uid="uid://dlkqli26yx0tq"]
 
 [ext_resource type="PackedScene" uid="uid://cwgigt1y0jsyu" path="res://scenes/enemy.tscn" id="1_3miyd"]
+[ext_resource type="Script" uid="uid://yv51r4xfwu6h" path="res://scripts/snail.gd" id="2_2wu2h"]
 [ext_resource type="Texture2D" uid="uid://djswxtdralcn3" path="res://Art/Enemies/Snail_sprite.png" id="2_i6obs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wu2h"]
+size = Vector2(156.66667, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfcxn"]
+size = Vector2(466.66666, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s4s51"]
 animations = [{
@@ -15,6 +22,16 @@ animations = [{
 }]
 
 [node name="enemy" instance=ExtResource("1_3miyd")]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("2_2wu2h")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-8.333328, 63.333332)
+shape = SubResource("RectangleShape2D_2wu2h")
+
+[node name="CollisionShape2D" parent="player_detection" index="0"]
+position = Vector2(6.3578286e-06, 26.666666)
+shape = SubResource("RectangleShape2D_kfcxn")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_s4s51")
