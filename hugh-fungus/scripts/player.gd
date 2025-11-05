@@ -16,11 +16,4 @@ func _physics_process(_delta):
 	anim_sprite.flip_h = velocity.x < 0
 
 
-	# --- Animation logic ---
-	if velocity.length() > 0:
-		# Player is moving
-		anim_sprite.play("running")
-	else:
-		# Player stopped
-		anim_sprite.play("idle")
-	anim_sprite.flip_h = velocity.x < 0
+	
