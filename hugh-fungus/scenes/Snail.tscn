@@ -7,7 +7,7 @@
 size = Vector2(156.66667, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfcxn"]
-size = Vector2(173.33333, 20)
+size = Vector2(193.33333, 56.666664)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s4s51"]
 animations = [{
@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_2wu2h")
 [node name="player_detection" type="Area2D" parent="." groups=["enemy_hitbox1"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detection"]
-position = Vector2(-6.666663, 26.666666)
+position = Vector2(-3.3333356, 45.000004)
 shape = SubResource("RectangleShape2D_kfcxn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -45,10 +45,11 @@ sprite_frames = SubResource("SpriteFrames_s4s51")
 animation = &"idle"
 
 [node name="rand_Move_Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 6.032
 one_shot = true
 
 [node name="idle_timer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [node name="attack_cooldow_timer" type="Timer" parent="."]

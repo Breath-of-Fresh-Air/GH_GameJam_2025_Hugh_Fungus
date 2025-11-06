@@ -1,9 +1,10 @@
 extends CharacterBody2D
-
+#things work well i might come back to this
+#feel free to mess with speed and whatnot -M
 var player_detected = false
 var direction = 1
 var player
-var SPEED = 60
+var SPEED = 70
 #states
 enum state {
 	IDLE,
@@ -61,15 +62,16 @@ func flipping_direction():
 #attack function
 func handle_attack(delta):
 	#put ATTACK ANIMS
-	velocity = Vector2.ZERO
+	
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	#add cooldown timer for attack 
+	 
 
 #death function
 func handle_death(_delta):
-	#add death anims
+	# add death anims
+
 	# await anim finished then quefree
 	self.queue_free()
 
