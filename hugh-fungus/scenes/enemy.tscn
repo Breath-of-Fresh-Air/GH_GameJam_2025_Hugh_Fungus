@@ -49,7 +49,7 @@ one_shot = true
 wait_time = 1.521
 one_shot = true
 
-[node name="enemy_hitbox" type="Area2D" parent="." groups=["enemy_hitbox"]]
+[node name="enemy_hitbox" type="Area2D" parent="." groups=["enemy_hitbox1"]]
 scale = Vector2(0.74636674, 0.8076988)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]

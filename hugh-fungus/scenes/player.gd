@@ -3,6 +3,7 @@ extends CharacterBody2D
 var player_hurt = false
 var snail 
 var enemy_attacking = true
+#knockback vars
 
 const SPEED = 180.0
 const JUMP_VELOCITY = -360.0
@@ -21,7 +22,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	#handle hurt
 	if player_hurt == true:
-		knockback(20.0,self.global_position.x,1)
+		print("hurt")
+		player_hurt = false
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -51,11 +53,8 @@ func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
 		snail = area
 		player_hurt = true
+		knockback()
 
-func knockback(force: float,x_pos: float, up_force:float):
-	#coming from left bounce to right
 
-	if x_pos < snail.global_position.x:
-		velocity = Vector2(force * 2, -force * up_force)
-	else:
-		velocity = Vector2(-force * 2, -force * up_force)
+func knockback(knockback_dir:float):
+	
