@@ -1,9 +1,10 @@
 extends CharacterBody2D
-
+#things work well i might come back to this
+#feel free to mess with speed and whatnot -M
 var player_detected = false
 var direction = 1
 var player
-var SPEED = 60
+var SPEED = 70
 #states
 enum state {
 	IDLE,
@@ -43,10 +44,6 @@ func handle_idle(delta):
 	
 #wander function 
 func handle_wander(delta):
-	#check for player detection if yes change state
-	if player_detected:
-		current_state = state.ATTACK
-		return
 	#move snail
 	velocity.x = direction * SPEED
 	#check gravity
@@ -64,21 +61,17 @@ func flipping_direction():
 
 #attack function
 func handle_attack(delta):
+	#put ATTACK ANIMS
 	
-	$enemy_hitbox.visible = false
-	#start cooldown timer
-	$attack_cooldow_timer.start()
-	#make the attack hitbox visible
-	$enemy_hitbox.visible = true
-	velocity = Vector2.ZERO
 
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	#add cooldown timer for attack 
+	 
 
 #death function
 func handle_death(_delta):
-	#add death anims
+	# add death anims
+
 	# await anim finished then quefree
 	self.queue_free()
 
@@ -88,6 +81,7 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 		player_detected = true
 		player = body
 		current_state = state.ATTACK 
+		
 
 #declare player is null	
 func _on_player_detection_body_exited(body: Node2D) -> void:
@@ -116,4 +110,5 @@ func _on_attack_cooldow_timer_timeout() -> void:
 func _on_player_detect_top_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player = body
-		current_state = state.DEATH
+		if player.velocity.y > 0:
+			current_state = state.DEATH
