@@ -15,6 +15,15 @@ run/main_scene="uid://8gomhx5y7jgw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://Art/icon.svg"
 
+[autoload]
+
+PlayerHealthGlobal="*res://scripts/player_health_global.gd"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=700
+
 [global_group]
 
 Player=""

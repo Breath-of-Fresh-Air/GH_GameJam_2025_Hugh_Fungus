@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 	if player_hurt and snail:
 		#call knockback w/ enemy pos
 		knockback(snail.global_position)
+		PlayerHealthGlobal.player_health -= 1
 		player_hurt = false
 		# if active time count down
 	if knockback_active:
