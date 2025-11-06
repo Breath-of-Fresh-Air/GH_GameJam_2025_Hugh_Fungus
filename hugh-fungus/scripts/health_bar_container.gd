@@ -12,7 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if PlayerHealthGlobal.player_health ==5:
+	if PlayerHealthGlobal.player_health >=5:
 		health_bar_5.visible = true
 	elif PlayerHealthGlobal.player_health == 4:
 		health_bar_5.visible = false
