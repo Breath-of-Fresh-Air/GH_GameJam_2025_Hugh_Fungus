@@ -70,7 +70,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(69, 20)
+size = Vector2(41, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 33.54102
@@ -87,7 +87,7 @@ sprite_frames = SubResource("SpriteFrames_onrkg")
 animation = &"running"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 52)
+position = Vector2(0.5, 52)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]

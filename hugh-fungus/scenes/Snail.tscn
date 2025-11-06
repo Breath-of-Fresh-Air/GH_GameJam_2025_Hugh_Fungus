@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlkqli26yx0tq"]
+[gd_scene load_steps=7 format=3 uid="uid://dlkqli26yx0tq"]
 
 [ext_resource type="Script" uid="uid://yv51r4xfwu6h" path="res://scripts/snail.gd" id="2_2wu2h"]
 [ext_resource type="Texture2D" uid="uid://djswxtdralcn3" path="res://Art/Enemies/Snail_sprite.png" id="2_i6obs"]
@@ -20,9 +20,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(7.0696917, 36.57635)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kttc3"]
 size = Vector2(63.333336, 23.333332)
 
@@ -34,10 +31,10 @@ script = ExtResource("2_2wu2h")
 position = Vector2(-8.333328, 63.333332)
 shape = SubResource("RectangleShape2D_2wu2h")
 
-[node name="player_detection" type="Area2D" parent="."]
+[node name="player_detection" type="Area2D" parent="." groups=["enemy_hitbox1"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detection"]
-position = Vector2(-3.3333333, 26.666666)
+position = Vector2(-6.666663, 26.666666)
 shape = SubResource("RectangleShape2D_kfcxn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -54,16 +51,6 @@ one_shot = true
 [node name="idle_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="enemy_hitbox" type="Area2D" parent="." groups=["enemy_hitbox1"]]
-visible = false
-scale = Vector2(0.74636674, 0.8076988)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
-position = Vector2(-4.4631066, 52.282913)
-rotation = 1.5701803
-scale = Vector2(5.458456, 6.104798)
-shape = SubResource("RectangleShape2D_4gyqm")
-
 [node name="attack_cooldow_timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
@@ -73,6 +60,7 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect_top"]
 position = Vector2(6.666666, -23.333334)
 shape = SubResource("RectangleShape2D_kttc3")
+one_way_collision = true
 
 [connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="player_detection" to="." method="_on_player_detection_body_exited"]

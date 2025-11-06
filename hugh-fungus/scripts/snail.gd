@@ -43,10 +43,6 @@ func handle_idle(delta):
 	
 #wander function 
 func handle_wander(delta):
-	#check for player detection if yes change state
-	if player_detected:
-		current_state = state.ATTACK
-		return
 	#move snail
 	velocity.x = direction * SPEED
 	#check gravity
@@ -64,12 +60,7 @@ func flipping_direction():
 
 #attack function
 func handle_attack(delta):
-	
-	$enemy_hitbox.visible = false
-	#start cooldown timer
-	$attack_cooldow_timer.start()
-	#make the attack hitbox visible
-	$enemy_hitbox.visible = true
+	#put ATTACK ANIMS
 	velocity = Vector2.ZERO
 
 	if not is_on_floor():
@@ -88,6 +79,7 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 		player_detected = true
 		player = body
 		current_state = state.ATTACK 
+		
 
 #declare player is null	
 func _on_player_detection_body_exited(body: Node2D) -> void:
@@ -116,4 +108,5 @@ func _on_attack_cooldow_timer_timeout() -> void:
 func _on_player_detect_top_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player = body
-		current_state = state.DEATH
+		if player.velocity.y > 0:
+			current_state = state.DEATH
