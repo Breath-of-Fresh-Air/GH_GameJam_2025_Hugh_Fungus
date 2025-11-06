@@ -96,3 +96,11 @@ func knockback(knockback_source: Vector2):
 	knockback_timer = knockback_duration
 	
 
+
+#check for pickups
+func _on_pickup_detector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("health_pack"):
+		if PlayerHealthGlobal.player_health >= 5:
+			PlayerHealthGlobal.player_health = 5
+			return
+		PlayerHealthGlobal.player_health +=1
