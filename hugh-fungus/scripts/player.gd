@@ -11,7 +11,9 @@ var knockback_timer = 0.0
 #normal movement
 const SPEED = 130.0
 const JUMP_VELOCITY = -310.0
-
+# double jump
+var can_djump
+const DJUMP_VELOCITY = -280.0
 #i am gonna make this much cleaner sooner than later -M
 
  
@@ -36,7 +38,13 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+		#handle double jump
+		if can_djump and Input.is_action_just_pressed("jump"):
+			velocity.y = DJUMP_VELOCITY
+			can_djump = false
+	#reset double jump
+	if is_on_floor():
+		can_djump = true
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
