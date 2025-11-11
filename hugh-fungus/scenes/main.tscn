@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=13 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
@@ -6,11 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://dxi4uadqcs5py" path="res://scripts/player_hud.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://bxwhc7s5knaiq" path="res://scripts/health_bar_container.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://bimgsg1i27o0g" path="res://scripts/death_menu.gd" id="6_85g3d"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://c7qdm6pfqlri1" path="res://scenes/under_map_killzone.tscn" id="8_tipki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.4117647, 0.30980393, 0.21176471, 0.6156863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
+bg_color = Color(0.6627451, 0.21568628, 0.09803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya4ey"]
+bg_color = Color(0.6627451, 0.21568628, 0.09803922, 1)
 
 [node name="Main" type="Node2D"]
 
@@ -33,9 +40,9 @@ zoom = Vector2(3.2, 3.2)
 layout_mode = 3
 anchors_preset = 0
 offset_left = -623.3333
-offset_top = -463.33337
+offset_top = -466.66666
 offset_right = -583.3333
-offset_bottom = -423.33337
+offset_bottom = -426.66666
 scale = Vector2(31.206572, 18.324717)
 script = ExtResource("3_tbgi4")
 
@@ -90,6 +97,59 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("3_jyhfs")
 
+[node name="pause_menu" type="Control" parent="player/Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="death_menu" type="Control" parent="player/Camera2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -173.33333
+offset_top = -293.33334
+offset_right = 183.3333
+offset_bottom = 126.66669
+script = ExtResource("6_85g3d")
+
+[node name="PanelContainer" type="PanelContainer" parent="player/Camera2D/death_menu"]
+layout_mode = 0
+offset_right = 353.33325
+offset_bottom = 350.00003
+
+[node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/death_menu/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 21
+
+[node name="reset_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_choun")
+text = "Play Again"
+
+[node name="quit_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ya4ey")
+text = "Quit"
+
 [node name="enemy" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(615.00006, -24)
 
@@ -107,3 +167,6 @@ top_level = true
 z_index = 1
 tile_map_data = PackedByteArray("AAASAP//AAALAAQAAAARAP//AAAJAAQAAAAWAP//AAAAAAEAAAAXAP//AAABAAEAAAAYAP//AAACAAEAAAAAAP//AAABAAEAAAABAP//AAABAAIAAAACAP//AAACAAAAAAD/////AAAAAAIAAAAEAP//AAAOAAYAAAAeAP//AAAMAAUAAAA=")
 tile_set = ExtResource("2_sugp2")
+
+[connection signal="button_up" from="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer/reset_Button" to="player/Camera2D/death_menu" method="_on_reset_button_button_up"]
+[connection signal="button_up" from="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer/quit_Button" to="player/Camera2D/death_menu" method="_on_quit_button_button_up"]
