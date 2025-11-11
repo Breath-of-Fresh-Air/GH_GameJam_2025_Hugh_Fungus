@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var anim_sprite = $AnimatedSprite2D
 var player_hurt = false
-var snail 
+var enemy 
 #feel free to mess with these but i think i have them dialed
 #knockback 
 var knockback_power = 260.0
@@ -14,14 +14,20 @@ const JUMP_VELOCITY = -310.0
 # double jump
 var can_djump
 const DJUMP_VELOCITY = -280.0
-#i am gonna make this much cleaner sooner than later -M
+#respawn stuff
+var respawn_point
 
+#i am gonna make this much cleaner sooner than later -M
+func _ready():
+	respawn_point = self.global_position
+	$spawn_set_timer.start()
  
 func _physics_process(delta: float) -> void:
+	
 	# check for hurt, and snail is not null, call knockback
-	if player_hurt and snail:
+	if player_hurt and enemy:
 		#call knockback w/ enemy pos
-		knockback(snail.global_position)
+		knockback(enemy.global_position)
 		PlayerHealthGlobal.player_health -= 1
 		player_hurt = false
 		# if active time count down
@@ -74,15 +80,15 @@ func _physics_process(delta: float) -> void:
 		anim_sprite.flip_h = false	
 	move_and_slide()
 
-#check for snail 
+#check for enemy 
 func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
-		snail = area
+		enemy = area
 		player_hurt = true
 func _on_damage_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
 		if knockback_active == false:
-			snail = null
+			enemy = null
 
 #KNOCKBACK BABY!!!
 func knockback(knockback_source: Vector2):
@@ -103,7 +109,8 @@ func knockback(knockback_source: Vector2):
 	#reset timer
 	knockback_timer = knockback_duration
 	
-
+func respawn_to_point():
+	self.global_position = respawn_point
 
 #check for pickups
 func _on_pickup_detector_area_entered(area: Area2D) -> void:
@@ -112,3 +119,9 @@ func _on_pickup_detector_area_entered(area: Area2D) -> void:
 			PlayerHealthGlobal.player_health = 5
 			return
 		PlayerHealthGlobal.player_health +=1
+
+#reset spawn point on timer time out 
+func _on_spawn_set_timer_timeout() -> void:
+	if is_on_floor():
+		respawn_point = self.global_position
+	return
