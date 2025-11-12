@@ -23,7 +23,8 @@ func _ready():
 	$spawn_set_timer.start()
  
 func _physics_process(delta: float) -> void:
-	
+	if  PlayerHealthGlobal.player_health <=0:
+		handle_death()
 	# check for hurt, and snail is not null, call knockback
 	if player_hurt and enemy:
 		#call knockback w/ enemy pos
@@ -108,10 +109,13 @@ func knockback(knockback_source: Vector2):
 	velocity = knockback_vector
 	#reset timer
 	knockback_timer = knockback_duration
-	
+#set respawn point
 func respawn_to_point():
 	self.global_position = respawn_point
 
+#handle death
+func handle_death():
+	pass
 #check for pickups
 func _on_pickup_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("health_pack"):
