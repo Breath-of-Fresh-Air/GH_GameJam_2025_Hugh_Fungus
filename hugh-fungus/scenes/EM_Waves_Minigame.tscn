@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1xme55tgxfvv"]
+
+[ext_resource type="Script" uid="uid://cq3y4ugjiyfm0" path="res://scripts/em_waves_minigame.gd" id="1_i6016"]
+[ext_resource type="PackedScene" uid="uid://co2d2dhc3eutp" path="res://scenes/wave_display_player.tscn" id="1_sup1u"]
+[ext_resource type="PackedScene" uid="uid://dp4yumeq211bk" path="res://scenes/wave_display_target.tscn" id="2_i6016"]
+
+[node name="EMWavesMinigame" type="Node2D"]
+script = ExtResource("1_i6016")
+
+[node name="PlayerWaveDisplay" parent="." instance=ExtResource("1_sup1u")]
+
+[node name="TargetWaveDisplay" parent="." instance=ExtResource("2_i6016")]
+target_speed = 2.0
