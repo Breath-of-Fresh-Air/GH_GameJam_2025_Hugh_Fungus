@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp4yumeq211bk"]
-
-[ext_resource type="Script" uid="uid://dygs61vxir4xr" path="res://scripts/wave_display_target.gd" id="1_hru0y"]
-
-[node name="WaveDisplay" type="Node2D"]
-script = ExtResource("1_hru0y")
