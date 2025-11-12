@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=13 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://dp4yumeq211bk" path="res://scenes/wave_display.tscn" id="2_choun"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/HughFungus_sprite.png" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="3_sugp2"]
