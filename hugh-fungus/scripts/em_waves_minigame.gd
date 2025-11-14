@@ -4,22 +4,30 @@ var amp_found = false
 var freq_found = false
 var speed_found = false
 var puzzle_solved = false
-
+var display_count = 0 #used to display text on a particular frame, must be reset @60
 
 
 #call this function in physics process when ready to test mini game
 func check_if_found_target_wave():
+	puzzle_solved = false # reset for the check
 	if !puzzle_solved:
-		if abs($TargetWaveDisplay.target_amplitude - $PlayerWaveDisplay.player_amplitude)<= 5:
+		if abs($TargetWaveDisplay.target_amplitude - $PlayerWaveDisplay.player_amplitude)== 0.0:
 			amp_found = true
-		if abs($TargetWaveDisplay.target_frequency - $PlayerWaveDisplay.player_frequency)<=0.5:
+			print("Amplitudes match!")
+		if abs($TargetWaveDisplay.target_frequency - $PlayerWaveDisplay.player_frequency)==0.0:
 			freq_found = true
-		if abs($TargetWaveDisplay.target_speed - $PlayerWaveDisplay.player_speed)<=0.1:
+			print("frequencies match!")
+		if abs($TargetWaveDisplay.target_speed - $PlayerWaveDisplay.player_speed)==0.0:
 			speed_found = true  
+			print("speed matched!")
 		if amp_found and freq_found and speed_found:
 			puzzle_solved = true
+			print("Puzzle solved!")
+		
+		
 	# basically, check the abs value of the difference is less or equal to some amount to consider
 	# "found"
+
 
 func _ready():
 	#start EM-minigame
@@ -39,13 +47,16 @@ func _ready():
 
 	print("now calling the internal set function from target_display_target.tscn\n\nPress Space bar to set")
 	$TargetWaveDisplay.set_random_target_wave()
-#test differnet targets
+	
+	
 func _physics_process(delta: float) -> void:
+	check_if_found_target_wave()
 	if Input.is_action_just_pressed("ui_accept"):
 		$TargetWaveDisplay.set_random_target_wave()
+	
+		
+		
 #timer functions
-
-
 func timeOut_sinWaveTimer():
 	$hugh.visible = false
 	$PlayerWaveDisplay.visible = true
@@ -58,11 +69,12 @@ func EM_Player_Controls():
 		$speedVSlider.value)
 
 
+#slider controls
 func _on_amplitude_v_slider_value_changed(value: float) -> void:
 	$PlayerWaveDisplay.player_amplitude = value
 
 
-func _on_wavelength_h_slider_value_changed(value: float) -> void:
+func _on_frequency_h_slider_value_changed(value: float) -> void:
 	$PlayerWaveDisplay.player_frequency = value
 
 
