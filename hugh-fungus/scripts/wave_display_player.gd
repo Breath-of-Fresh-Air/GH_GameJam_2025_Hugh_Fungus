@@ -1,24 +1,25 @@
 extends Node2D
 
-#player_amplitude and frequency controls
-@export var player_amplitude: float = 40.0  #height of the wave
-@export var player_frequency: float = 5.0   #number of cycles across screen width
+#target_amplitude and wavelength controls
+@export var target_amplitude: float = 40.0  #height of the wave
+@export var target_frequency: float = 5.0   #number of cycles across screen width
 @export var phase: float = 0.0       #phase shift left/right
-@export var player_speed: float = 3.5 #directly influences phase shift with a relationship to delta (1/60)
+@export var target_speed: float = 3.5 #directly influences phase shift with a relationship to delta (1/60)
 
 func _process(delta):
 #animate the wave by increasing phase
-	phase += player_speed * delta
+	phase += target_speed * delta
 	queue_redraw()  #request to redraw the wave every frame
-#draws the players wave
+
 func _draw():
 	var points_along_sinwave = []
 	var width = get_viewport().get_visible_rect().size.x
+	print("Viewport height: ", get_viewport_rect().size.y)
 
 
 	
 	for x in range(width):
-		var y = player_amplitude * sin((x / width) * player_frequency * TAU + phase)
+		var y = target_amplitude * sin((x / width) * target_frequency * TAU + phase)
 		points_along_sinwave.append(Vector2(x, y))
 	
 	#center the wave vertically
@@ -27,7 +28,8 @@ func _draw():
 				  points_along_sinwave[i + 1] + Vector2(0, get_viewport_rect().size.y / 2),
 				  Color(0.998, 0.696, 0.756, 1.0), 6, true)
 
-func set_player_wave(A:= player_amplitude,F:= player_frequency,S:= player_speed):
-	player_amplitude = A
-	player_frequency = F
-	player_speed = S
+func set_target_wave(A:= target_amplitude,F:= target_frequency,P:= phase,S:= target_speed):
+	target_amplitude = A
+	target_frequency = F
+	phase = P
+	target_speed = S

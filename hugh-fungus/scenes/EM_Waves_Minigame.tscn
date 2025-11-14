@@ -1,72 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1xme55tgxfvv"]
+[gd_scene load_steps=4 format=3 uid="uid://dexcagfwh8rq1"]
 
-[ext_resource type="Script" uid="uid://cq3y4ugjiyfm0" path="res://scripts/em_waves_minigame.gd" id="1_i6016"]
+[ext_resource type="Script" uid="uid://bd8mecj4u7263" path="res://scenes/em_waves_minigame.gd" id="1_i6016"]
 [ext_resource type="PackedScene" uid="uid://co2d2dhc3eutp" path="res://scenes/wave_display_player.tscn" id="1_sup1u"]
-[ext_resource type="Texture2D" uid="uid://w88hv0a3tw1l" path="res://Art/HughFungusSkull_waves_background.png" id="2_ao5np"]
 [ext_resource type="PackedScene" uid="uid://dp4yumeq211bk" path="res://scenes/wave_display_target.tscn" id="2_i6016"]
-[ext_resource type="Texture2D" uid="uid://dpohpvegt0qk" path="res://Art/HughFungusSkull_waves_filledSocket.png" id="4_5djqj"]
-[ext_resource type="Texture2D" uid="uid://xyywsywxnw7h" path="res://Art/HughFungusSkull_waves_emptySocket.png" id="6_mfqoh"]
-[ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/HughFungus_sprite.png" id="7_5djqj"]
 
 [node name="EMWavesMinigame" type="Node2D"]
 script = ExtResource("1_i6016")
 
-[node name="backgroundSkull" type="Sprite2D" parent="."]
-position = Vector2(600, 350)
-texture = ExtResource("2_ao5np")
-
 [node name="PlayerWaveDisplay" parent="." instance=ExtResource("1_sup1u")]
 
-[node name="filledSocketSkull" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.75686276)
-position = Vector2(600, 350)
-texture = ExtResource("4_5djqj")
-
 [node name="TargetWaveDisplay" parent="." instance=ExtResource("2_i6016")]
-
-[node name="emptySocketSkull" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.65882355)
-position = Vector2(600, 350)
-texture = ExtResource("6_mfqoh")
-
-[node name="startMiniTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="amplitudeVSlider" type="VSlider" parent="."]
-offset_left = 37.0
-offset_top = 496.0
-offset_right = 53.0
-offset_bottom = 641.0
-min_value = 40.0
-max_value = 200.0
-value = 40.0
-
-[node name="wavelengthHSlider" type="HSlider" parent="."]
-offset_left = 37.0
-offset_top = 640.0
-offset_right = 159.0
-offset_bottom = 656.0
-min_value = 3.9
-max_value = 9.9
-value = 3.9
-
-[node name="speedVSlider2" type="VSlider" parent="."]
-offset_left = 67.0
-offset_top = 495.0
-offset_right = 83.0
-offset_bottom = 641.0
-min_value = 2.0
-max_value = 9.9
-step = 0.1
-value = 2.0
-
-[node name="hugh" type="Sprite2D" parent="."]
-position = Vector2(616, 496)
-rotation = 0.12217305
-scale = Vector2(2.0641031, 2.0641031)
-texture = ExtResource("7_5djqj")
-
-[connection signal="timeout" from="startMiniTimer" to="." method="timeOut_sinWaveTimer"]
-[connection signal="value_changed" from="amplitudeVSlider" to="." method="_on_amplitude_v_slider_value_changed"]
-[connection signal="value_changed" from="wavelengthHSlider" to="." method="_on_wavelength_h_slider_value_changed"]
-[connection signal="value_changed" from="speedVSlider2" to="." method="_on_speed_v_slider_value_changed"]
+target_speed = 2.0

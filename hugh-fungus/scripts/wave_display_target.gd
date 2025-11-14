@@ -1,6 +1,6 @@
 extends Node2D
 
-#target_amplitude and frequency controls
+#target_amplitude and wavelength controls
 @export var target_amplitude: float = 40.0  #height of the wave
 @export var target_frequency: float = 5.0   #number of cycles across screen width
 @export var phase: float = 0.0       #phase shift left/right
@@ -14,6 +14,7 @@ func _process(delta):
 func _draw():
 	var points_along_sinwave = []
 	var width = get_viewport().get_visible_rect().size.x
+	print("Viewport height: ", get_viewport_rect().size.y)
 
 
 	
@@ -27,10 +28,8 @@ func _draw():
 				  points_along_sinwave[i + 1] + Vector2(0, get_viewport_rect().size.y / 2),
 				  Color(0.967, 0.764, 0.0, 1.0), 6, true)
 
-func set_random_target_wave(A:= target_amplitude,F:= target_frequency,P:= phase,S:= target_speed):
-	target_amplitude = randf_range(40.0, 175.0)
-	target_frequency = randf_range(3.5, 9.5)
-	target_speed = randf_range(1.9,9.9)
-	print("\nATTENTION* This script is called wave_display_target.gd\n\nTarget Wave Attributes After Changes:\nAmplitude:",target_amplitude,"\nFrequency:",
-	target_frequency,"\nSpeed:",target_speed,"\n__________________________________________")
-	
+func set_target_wave(A:= target_amplitude,F:= target_frequency,P:= phase,S:= target_speed):
+	target_amplitude = A
+	target_frequency = F
+	phase = P
+	target_speed = S
