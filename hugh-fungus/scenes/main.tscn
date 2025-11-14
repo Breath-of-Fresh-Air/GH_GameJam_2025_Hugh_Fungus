@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=13 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://dp4yumeq211bk" path="res://scenes/wave_display.tscn" id="2_choun"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
-[ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/HughFungus_sprite.png" id="3_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/Hugh Art/HughFungus_sprite.png" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://dxi4uadqcs5py" path="res://scripts/player_hud.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://bxwhc7s5knaiq" path="res://scripts/health_bar_container.gd" id="4_tefeu"]
@@ -196,12 +195,6 @@ z_index = 1
 tile_map_data = PackedByteArray("AAASAP//AAALAAQAAAARAP//AAAJAAQAAAAWAP//AAAAAAEAAAAXAP//AAABAAEAAAAYAP//AAACAAEAAAAAAP//AAABAAEAAAABAP//AAABAAIAAAACAP//AAACAAAAAAD/////AAAAAAIAAAAEAP//AAAOAAYAAAAeAP//AAAMAAUAAAA=")
 tile_set = ExtResource("2_sugp2")
 metadata/_edit_lock_ = true
-
-[node name="WaveDisplay" parent="." instance=ExtResource("2_choun")]
-visible = false
-top_level = true
-z_index = 10
-position = Vector2(-80, -436)
 
 [connection signal="button_up" from="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer/reset_Button" to="player/Camera2D/death_menu" method="_on_reset_button_button_up"]
 [connection signal="button_up" from="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer/quit_Button" to="player/Camera2D/death_menu" method="_on_quit_button_button_up"]

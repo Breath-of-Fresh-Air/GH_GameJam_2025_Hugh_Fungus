@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhnqjcp0l2pp8"
-path="res://.godot/imported/HughFungus_running_sprite.png-bcec959a6a0d081ba7aea4b2fefa5345.ctex"
+path="res://.godot/imported/HughFungus_running_sprite.png-4ebecdaf8a6dd6e13d141ff6c13748b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/HughFungus_running_sprite.png"
-dest_files=["res://.godot/imported/HughFungus_running_sprite.png-bcec959a6a0d081ba7aea4b2fefa5345.ctex"]
+source_file="res://Art/Hugh Art/HughFungus_running_sprite.png"
+dest_files=["res://.godot/imported/HughFungus_running_sprite.png-4ebecdaf8a6dd6e13d141ff6c13748b9.ctex"]
 
 [params]
 

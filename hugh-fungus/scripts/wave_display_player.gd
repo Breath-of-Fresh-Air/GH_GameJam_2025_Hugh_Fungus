@@ -1,10 +1,10 @@
 extends Node2D
 
 #player_amplitude and frequency controls
-@export var player_amplitude: float = 40.0  #height of the wave
-@export var player_frequency: float = 5.0   #number of cycles across screen width
+@export var player_amplitude: float = 40.0 #height of the wave
+@export var player_frequency: float = 0.5   #number of cycles across screen width
 @export var phase: float = 0.0       #phase shift left/right
-@export var player_speed: float = 3.5 #directly influences phase shift with a relationship to delta (1/60)
+@export var player_speed: float = 2.4 #directly influences phase shift with a relationship to delta (1/60)
 
 func _process(delta):
 #animate the wave by increasing phase
