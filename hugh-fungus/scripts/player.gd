@@ -11,6 +11,8 @@ var knockback_timer = 0.0
 #normal movement
 const SPEED = 130.0
 const JUMP_VELOCITY = -310.0
+#jump check
+var jumping = false
 # double jump
 var can_djump
 const DJUMP_VELOCITY = -280.0
@@ -51,9 +53,11 @@ func _physics_process(delta: float) -> void:
 			can_djump = false
 	#reset double jump
 	if is_on_floor():
+		jumping = false
 		can_djump = true
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		jumping = true
 		velocity.y = JUMP_VELOCITY
 	
 	
@@ -68,12 +72,24 @@ func _physics_process(delta: float) -> void:
 	
 	# --- Animation logic ---
 
-	if velocity.length() > 0:
-		# Player is moving
+# Player moving and not jumping
+	if velocity.length() > 0 and !jumping:
 		anim_sprite.play("running")
-	else:
-		# Player stopped
+		
+# Player moving and jumping
+	elif velocity.length() > 0 and jumping:
+		anim_sprite.play("jump")
+		
+# Player stopped and not jumping 
+	elif velocity.length() == 0 and !jumping:
 		anim_sprite.play("idle")
+		
+# Player stopped and jumping 
+	elif velocity.length() == 0 and jumping:
+			anim_sprite.play("jump")
+# Player double jumping
+	elif !can_djump:
+		anim_sprite.play("jump")
 	#flipping anims based on direction
 	if direction == -1:
 		anim_sprite.flip_h = true
