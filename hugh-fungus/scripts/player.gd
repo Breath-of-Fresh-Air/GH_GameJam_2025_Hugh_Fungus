@@ -129,3 +129,4 @@ func _on_spawn_set_timer_timeout() -> void:
 	if is_on_floor():
 		respawn_point = self.global_position
 	return
+
