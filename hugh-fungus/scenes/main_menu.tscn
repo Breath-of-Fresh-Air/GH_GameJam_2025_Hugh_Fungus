@@ -1,6 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpgm815a1u1ep"]
+[gd_scene load_steps=16 format=3 uid="uid://bpgm815a1u1ep"]
 
 [ext_resource type="Script" uid="uid://blab7yc00brmg" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="3_wu84c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ln24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtw2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa1go"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk1qb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dd4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgwnu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flqon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcqid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
 bg_color = Color(0.6627451, 0.21568628, 0.09803922, 1)
@@ -46,18 +68,46 @@ alignment = 1
 
 [node name="play_Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_hover_color = Color(0.83, 0.56841165, 0.32369998, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ln24")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oa1go")
 text = "Play"
+icon = ExtResource("3_wu84c")
+icon_alignment = 1
 
 [node name="controls_Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 32
+theme_override_icons/icon = ExtResource("3_wu84c")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tbmy8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jk1qb")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5dd4i")
 text = "Controls"
+icon_alignment = 1
 
 [node name="quit_Button" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lgwnu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_flqon")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bqqt6")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rcqid")
 text = "Quit Game"
+icon = ExtResource("3_wu84c")
+icon_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 0

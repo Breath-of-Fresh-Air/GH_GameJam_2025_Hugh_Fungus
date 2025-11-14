@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=19 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
@@ -8,16 +8,24 @@
 [ext_resource type="Script" uid="uid://bxwhc7s5knaiq" path="res://scripts/health_bar_container.gd" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://bimgsg1i27o0g" path="res://scripts/death_menu.gd" id="6_85g3d"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="7_o6xl0"]
+[ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="7_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://c7qdm6pfqlri1" path="res://scenes/under_map_killzone.tscn" id="8_tipki"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.4117647, 0.30980393, 0.21176471, 0.6156863)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_choun"]
-bg_color = Color(0.6627451, 0.21568628, 0.09803922, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya4ey"]
-bg_color = Color(0.6627451, 0.21568628, 0.09803922, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8y0u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkv2x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbj1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_muem4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dp3eg"]
 
 [node name="Main" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -108,7 +116,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="death_menu" type="Control" parent="player/Camera2D"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -173.33333
@@ -143,15 +150,31 @@ theme_override_constants/separation = 21
 
 [node name="reset_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("7_ya4ey")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_choun")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trceg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a8y0u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jkv2x")
 text = "Play Again"
+icon = ExtResource("8_eb6dy")
+icon_alignment = 1
 
 [node name="quit_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("7_ya4ey")
 theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_ya4ey")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jbj1t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_muem4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dp3eg")
 text = "Quit"
+icon = ExtResource("8_eb6dy")
+icon_alignment = 1
 
 [node name="enemy" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(615.00006, -24)
