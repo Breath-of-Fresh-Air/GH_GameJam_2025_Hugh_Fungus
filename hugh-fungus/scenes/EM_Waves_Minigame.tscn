@@ -69,7 +69,20 @@ max_value = 8.4
 step = 0.2
 value = 2.6
 
+[node name="whiteFlashTimer" type="Timer" parent="."]
+wait_time = 0.49
+one_shot = true
+
+[node name="WhiteFlashRect" type="ColorRect" parent="."]
+visible = false
+top_level = true
+offset_left = -171.0
+offset_top = -573.0
+offset_right = 1606.0
+offset_bottom = 1037.0
+
 [connection signal="timeout" from="startMiniTimer" to="." method="timeOut_sinWaveTimer"]
 [connection signal="value_changed" from="amplitudeVSlider" to="." method="_on_amplitude_v_slider_value_changed"]
 [connection signal="value_changed" from="frequencyHSlider" to="." method="_on_frequency_h_slider_value_changed"]
 [connection signal="value_changed" from="speedVSlider" to="." method="_on_speed_v_slider_value_changed"]
+[connection signal="timeout" from="whiteFlashTimer" to="." method="_on_white_flash_timer_timeout"]

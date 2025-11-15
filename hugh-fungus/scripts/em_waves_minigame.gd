@@ -58,8 +58,9 @@ func _physics_process(delta: float) -> void:
 		
 #timer functions
 func timeOut_sinWaveTimer():
-	$hugh.visible = false
-	$PlayerWaveDisplay.visible = true
+	turn_on_flash() #flash on
+	$hugh.visible = false #makes hugh invisible after the timer ends
+	$PlayerWaveDisplay.visible = true#waves come on screen overlayed on the skull backgrounds
 	$TargetWaveDisplay.visible = true
 
 func EM_Player_Controls():
@@ -80,3 +81,16 @@ func _on_frequency_h_slider_value_changed(value: float) -> void:
 
 func _on_speed_v_slider_value_changed(value: float) -> void:
 	$PlayerWaveDisplay.player_speed = value
+
+
+#flash timer
+func _on_white_flash_timer_timeout() -> void:
+	#we want the WhiteFlashRect to disappear, giving the illusion of a flashback or something
+	$WhiteFlashRect.visible = false #turns off rectangle
+
+func turn_on_flash():
+	$WhiteFlashRect.visible = true #turns on rectangle
+	$whiteFlashTimer.start()
+	
+	
+	pass # Replace with function body.
