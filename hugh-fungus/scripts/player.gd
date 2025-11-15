@@ -24,7 +24,7 @@ func _ready():
 	respawn_point = self.global_position
 	$spawn_set_timer.start()
  
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	if  PlayerHealthGlobal.player_health <=0:
 		handle_death()
 	# check for hurt, and snail is not null, call knockback
