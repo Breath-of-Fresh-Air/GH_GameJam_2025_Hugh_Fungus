@@ -1,12 +1,13 @@
-[gd_scene load_steps=23 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=30 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
-[ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/Hugh Art/HughFungus_sprite.png" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://dxi4uadqcs5py" path="res://scripts/player_hud.gd" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://b6m3h7x8mhjws" path="res://Art/UI_Stuff/healthbar/Healthbar_bar.png" id="4_a8y0u"]
 [ext_resource type="Script" uid="uid://bxwhc7s5knaiq" path="res://scripts/health_bar_container.gd" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://bimgsg1i27o0g" path="res://scripts/death_menu.gd" id="6_85g3d"]
+[ext_resource type="Texture2D" uid="uid://2phnakebg2om" path="res://Art/UI_Stuff/healthbar/healthbar_health.png" id="6_jkv2x"]
 [ext_resource type="Script" uid="uid://glv58jah0hhg" path="res://scripts/pause_menu.gd" id="6_trceg"]
 [ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="7_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="7_o6xl0"]
@@ -14,8 +15,19 @@
 [ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="8_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://c7qdm6pfqlri1" path="res://scenes/under_map_killzone.tscn" id="8_tipki"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
-bg_color = Color(0.4117647, 0.30980393, 0.21176471, 0.6156863)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ld40"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gqmmt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yc10j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jscy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pm3ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y6deb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_og1vs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkv2x"]
 bg_color = Color(0.7, 0.23099999, 0.23099999, 1)
@@ -58,6 +70,7 @@ offset = Vector2(0, -30)
 zoom = Vector2(3.2, 3.2)
 
 [node name="player_hud" type="Control" parent="player/Camera2D"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = -623.3333
@@ -67,56 +80,85 @@ offset_bottom = -426.66666
 scale = Vector2(31.206572, 18.324717)
 script = ExtResource("3_tbgi4")
 
-[node name="PanelContainer" type="PanelContainer" parent="player/Camera2D/player_hud"]
-modulate = Color(1, 1, 1, 0.6627451)
-layout_mode = 0
-offset_left = 27.007074
-offset_right = 68.61191
-offset_bottom = 34.35199
-scale = Vector2(0.0044923327, 0.0073879636)
+[node name="Health_bar_log" type="PanelContainer" parent="player/Camera2D/player_hud"]
+modulate = Color(1, 1, 1, 0.91764706)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0026703775
+anchor_top = -0.018190384
+anchor_right = 0.0026703835
+anchor_bottom = -0.018190384
+offset_left = -1.3885968
+offset_top = 34.5617
+offset_right = 104.35832
+offset_bottom = 79.10927
+scale = Vector2(0.15374912, 0.1617786)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0ld40")
 
-[node name="Panel" type="Panel" parent="player/Camera2D/player_hud/PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="player/Camera2D/player_hud/Health_bar_log"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_tbgi4")
+texture = ExtResource("4_a8y0u")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="player/Camera2D/player_hud"]
+modulate = Color(1, 1, 1, 0.8156863)
+layout_mode = 0
+offset_left = 2.136302
+offset_top = 32.378853
+offset_right = 2953.1362
+offset_bottom = 607.37885
+scale = Vector2(0.0038022092, 0.009157397)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gqmmt")
 
 [node name="healthBarContainer" type="HBoxContainer" parent="player/Camera2D/player_hud/PanelContainer"]
 layout_mode = 2
+theme_override_constants/separation = 19
 script = ExtResource("4_tefeu")
 
 [node name="health_bar_1" type="PanelContainer" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yc10j")
 
 [node name="TextureRect" type="TextureRect" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer/health_bar_1"]
 layout_mode = 2
-texture = ExtResource("3_jyhfs")
+texture = ExtResource("6_jkv2x")
+expand_mode = 3
 
 [node name="health_bar_2" type="PanelContainer" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jscy8")
 
 [node name="TextureRect2" type="TextureRect" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer/health_bar_2"]
 layout_mode = 2
-texture = ExtResource("3_jyhfs")
+texture = ExtResource("6_jkv2x")
+expand_mode = 3
 
 [node name="health_bar_3" type="PanelContainer" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pm3ni")
 
 [node name="TextureRect3" type="TextureRect" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer/health_bar_3"]
 layout_mode = 2
-texture = ExtResource("3_jyhfs")
+texture = ExtResource("6_jkv2x")
+expand_mode = 3
 
 [node name="health_bar_4" type="PanelContainer" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y6deb")
 
 [node name="TextureRect4" type="TextureRect" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer/health_bar_4"]
 layout_mode = 2
-texture = ExtResource("3_jyhfs")
+texture = ExtResource("6_jkv2x")
+expand_mode = 3
 
 [node name="health_bar_5" type="PanelContainer" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_og1vs")
 
 [node name="TextureRect5" type="TextureRect" parent="player/Camera2D/player_hud/PanelContainer/healthBarContainer/health_bar_5"]
 layout_mode = 2
-texture = ExtResource("3_jyhfs")
+texture = ExtResource("6_jkv2x")
+expand_mode = 3
 
 [node name="pause_menu" type="Control" parent="player/Camera2D"]
 process_mode = 3
@@ -254,7 +296,7 @@ position = Vector2(703, -126)
 position = Vector2(428, 84)
 
 [node name="under_map_killzone2" parent="." instance=ExtResource("8_tipki")]
-position = Vector2(849, 84)
+position = Vector2(541, 84)
 
 [node name="under_map_killzone3" parent="." instance=ExtResource("8_tipki")]
 position = Vector2(1213, -43)
