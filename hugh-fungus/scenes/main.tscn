@@ -1,10 +1,6 @@
-[gd_scene load_steps=34 format=4 uid="uid://8gomhx5y7jgw"]
 [gd_scene load_steps=39 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
-[ext_resource type="Script" uid="uid://1v2t0jmxplni" path="res://scenes/parallax_2d.gd" id="1_dp3eg"]
-[ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_jbj1t"]
-[ext_resource type="Texture2D" uid="uid://c2fta3n4amyeq" path="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.PNG" id="2_muem4"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://dxi4uadqcs5py" path="res://scripts/player_hud.gd" id="3_tbgi4"]
@@ -73,26 +69,7 @@ texture = ExtResource("8_eb6dy")
 [node name="Main" type="Node2D"]
 metadata/_edit_lock_ = true
 
-[node name="forestBGParallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(1.15, 1.15)
-repeat_size = Vector2(2048, 0)
-repeat_times = 2
-script = ExtResource("1_dp3eg")
-
-[node name="forest_background" type="Sprite2D" parent="forestBGParallax2D"]
-texture_filter = 1
-texture_repeat = 1
-position = Vector2(1024, -1024)
-texture = ExtResource("1_jbj1t")
-
-[node name="forestMidParallax2D" type="Parallax2D" parent="."]
-scroll_scale = Vector2(1.3, 1.3)
-repeat_size = Vector2(2048, 0)
-repeat_times = 2
-
-[node name="forest_mid_dark" type="Sprite2D" parent="forestMidParallax2D"]
-position = Vector2(1067, -919)
-texture = ExtResource("2_muem4")
+[node name="Parallax2D" type="Parallax2D" parent="."]
 
 [node name="background" type="TileMapLayer" parent="."]
 metadata/_edit_lock_ = true
