@@ -129,14 +129,17 @@ func handle_attack(_delta):
 func handle_hurt(_delta):
 	
 	if player:
-		anim_sprite.play("Bee_hurt")
-		knockback(player.global_position)
-	
-	if bee_health <= 0:
 		
-		current_state = state.DEATH
+		knockback(player.global_position)
+		if knockback_dir.x >= 0:
+			anim_sprite.flip_h = true
+		else:
+			anim_sprite.flip_h = false
+		
+		if bee_health <= 0:
+			current_state = state.DEATH
 	#play hurt anim
-	
+	anim_sprite.play("Bee_hurt")
 	 
 	
 		

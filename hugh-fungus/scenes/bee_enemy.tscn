@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0u5vj4dku2kp"]
+[gd_scene load_steps=19 format=3 uid="uid://b0u5vj4dku2kp"]
 
 [ext_resource type="Script" uid="uid://y2a2yqrvpk20" path="res://scripts/bee_enemy.gd" id="1_ifhc6"]
 [ext_resource type="Texture2D" uid="uid://bunbt2u72iil4" path="res://Art/Enemies/bee_enemy/Bee_Sprite_agro.png" id="2_ed42y"]
 [ext_resource type="Texture2D" uid="uid://dmdocucv6s3yh" path="res://Art/Enemies/bee_enemy/Bee_Sprite_base.png" id="3_ln1g7"]
+[ext_resource type="Texture2D" uid="uid://bwnt526l6p4su" path="res://Art/Enemies/bee_enemy/Bee_hurt.png" id="4_ed42y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1gf7"]
 radius = 8.0
@@ -36,20 +37,12 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("3_ln1g7")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifhc6"]
-atlas = ExtResource("3_ln1g7")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ed42y"]
-atlas = ExtResource("3_ln1g7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1gf7"]
+atlas = ExtResource("4_ed42y")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ln1g7"]
-atlas = ExtResource("3_ln1g7")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1gf7"]
-atlas = ExtResource("3_ln1g7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqocf"]
+atlas = ExtResource("4_ed42y")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vf4hk"]
@@ -87,20 +80,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ifhc6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ed42y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ln1g7")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_a1gf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqocf")
 }],
 "loop": true,
 "name": &"Bee_hurt",
-"speed": 10.0
+"speed": 6.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifhc6"]
@@ -124,9 +111,7 @@ shape = SubResource("CapsuleShape2D_a1gf7")
 position = Vector2(-2.3841858e-07, 2.3841858e-07)
 sprite_frames = SubResource("SpriteFrames_vf4hk")
 animation = &"Bee_hurt"
-autoplay = "Bee_base"
-frame = 1
-frame_progress = 0.19502403
+frame_progress = 0.90365833
 flip_h = true
 
 [node name="changeDIR_timer" type="Timer" parent="."]
