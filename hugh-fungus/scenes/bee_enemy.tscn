@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://b0u5vj4dku2kp"]
+[gd_scene load_steps=27 format=3 uid="uid://b0u5vj4dku2kp"]
 
 [ext_resource type="Script" uid="uid://y2a2yqrvpk20" path="res://scripts/bee_enemy.gd" id="1_ifhc6"]
 [ext_resource type="Texture2D" uid="uid://bunbt2u72iil4" path="res://Art/Enemies/bee_enemy/Bee_Sprite_agro.png" id="2_ed42y"]
 [ext_resource type="Texture2D" uid="uid://dmdocucv6s3yh" path="res://Art/Enemies/bee_enemy/Bee_Sprite_base.png" id="3_ln1g7"]
 [ext_resource type="Texture2D" uid="uid://bwnt526l6p4su" path="res://Art/Enemies/bee_enemy/Bee_hurt.png" id="4_ed42y"]
+[ext_resource type="Texture2D" uid="uid://b36wegv8fgf2c" path="res://Art/Enemies/bee_enemy/Bee_death.png" id="4_ln1g7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1gf7"]
 radius = 8.0
@@ -35,6 +36,34 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0djyg"]
 atlas = ExtResource("3_ln1g7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf4hk"]
+atlas = ExtResource("4_ln1g7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsqc1"]
+atlas = ExtResource("4_ln1g7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4pyd"]
+atlas = ExtResource("4_ln1g7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7lpi"]
+atlas = ExtResource("4_ln1g7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jqeu"]
+atlas = ExtResource("4_ln1g7")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57wcf"]
+atlas = ExtResource("4_ln1g7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmimx"]
+atlas = ExtResource("4_ln1g7")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a1gf7"]
@@ -80,12 +109,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vf4hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsqc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4pyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7lpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jqeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57wcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmimx")
+}],
+"loop": false,
+"name": &"Bee_death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_a1gf7")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sqocf")
 }],
-"loop": true,
+"loop": false,
 "name": &"Bee_hurt",
 "speed": 6.0
 }]
@@ -110,8 +165,7 @@ shape = SubResource("CapsuleShape2D_a1gf7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.3841858e-07, 2.3841858e-07)
 sprite_frames = SubResource("SpriteFrames_vf4hk")
-animation = &"Bee_hurt"
-frame_progress = 0.90365833
+animation = &"Bee_death"
 flip_h = true
 
 [node name="changeDIR_timer" type="Timer" parent="."]

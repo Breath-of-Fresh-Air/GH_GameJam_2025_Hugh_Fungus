@@ -43,7 +43,8 @@ func _ready():
 	randomize_direction()
 
 func _physics_process(delta: float) -> void:
-	
+	if bee_health <= 0:
+			current_state = state.DEATH
 	if is_idle:
 		idle_timer -= delta
 		if idle_timer <= 0:
@@ -128,24 +129,24 @@ func handle_attack(_delta):
 
 func handle_hurt(_delta):
 	
-	if player:
-		
-		knockback(player.global_position)
-		if knockback_dir.x >= 0:
-			anim_sprite.flip_h = true
-		else:
-			anim_sprite.flip_h = false
-		
-		if bee_health <= 0:
-			current_state = state.DEATH
-	#play hurt anim
-	anim_sprite.play("Bee_hurt")
+		if player:
+			#play hurt anim
+			anim_sprite.play("Bee_hurt")
+			if knockback_dir.x >= 0:
+				anim_sprite.flip_h = true
+			else:
+				anim_sprite.flip_h = false
+	
+	
 	 
 	
 		
 
 func handle_death(_delta):
-	self.queue_free()
+	$AnimatedSprite2D.play("Bee_death")
+	await $AnimatedSprite2D.animation_finished
+	if $AnimatedSprite2D.animation_finished:
+		self.queue_free()
 
 func randomize_direction():
 	var x = randf_range(-1.0,1.0)
@@ -197,7 +198,9 @@ func _on_hurt_detect_body_entered(body: Node2D) -> void:
 		$player_detector.visible = false
 		$attack_zone.visible = false
 		player = body
+		knockback(player.global_position)
 		bee_health -=1
+		
 		current_state = state.HURT
 
 
