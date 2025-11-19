@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0u5vj4dku2kp"]
+[gd_scene load_steps=20 format=3 uid="uid://b0u5vj4dku2kp"]
 
 [ext_resource type="Script" uid="uid://y2a2yqrvpk20" path="res://scripts/bee_enemy.gd" id="1_ifhc6"]
 [ext_resource type="Texture2D" uid="uid://bunbt2u72iil4" path="res://Art/Enemies/bee_enemy/Bee_Sprite_agro.png" id="2_ed42y"]
 [ext_resource type="Texture2D" uid="uid://dmdocucv6s3yh" path="res://Art/Enemies/bee_enemy/Bee_Sprite_base.png" id="3_ln1g7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1gf7"]
-radius = 0.0
+radius = 8.0
 height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mr518"]
@@ -35,6 +35,22 @@ region = Rect2(96, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0djyg"]
 atlas = ExtResource("3_ln1g7")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifhc6"]
+atlas = ExtResource("3_ln1g7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed42y"]
+atlas = ExtResource("3_ln1g7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln1g7"]
+atlas = ExtResource("3_ln1g7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1gf7"]
+atlas = ExtResource("3_ln1g7")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vf4hk"]
 animations = [{
@@ -68,16 +84,34 @@ animations = [{
 "loop": true,
 "name": &"Bee_base",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifhc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed42y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln1g7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1gf7")
+}],
+"loop": true,
+"name": &"Bee_hurt",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ifhc6"]
-radius = 128.0
+radius = 136.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ed42y"]
-radius = 16.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ifhc6"]
+radius = 8.0
+height = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ln1g7"]
-radius = 48.0
+radius = 56.0
 
 [node name="Bee_enemy" type="CharacterBody2D"]
 script = ExtResource("1_ifhc6")
@@ -87,9 +121,13 @@ rotation = -1.5706991
 shape = SubResource("CapsuleShape2D_a1gf7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.3841858e-07, 2.3841858e-07)
 sprite_frames = SubResource("SpriteFrames_vf4hk")
-animation = &"Bee_base"
-frame_progress = 0.61284405
+animation = &"Bee_hurt"
+autoplay = "Bee_base"
+frame = 1
+frame_progress = 0.19502403
+flip_h = true
 
 [node name="changeDIR_timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -103,16 +141,19 @@ shape = SubResource("CircleShape2D_ifhc6")
 [node name="hurt_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_detect"]
-shape = SubResource("CircleShape2D_ed42y")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_ifhc6")
 
 [node name="attack_zone" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_zone"]
+rotation = 0.00062959595
 shape = SubResource("CircleShape2D_ln1g7")
 
 [connection signal="timeout" from="changeDIR_timer" to="." method="_on_change_dir_timer_timeout"]
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
 [connection signal="body_entered" from="hurt_detect" to="." method="_on_hurt_detect_body_entered"]
+[connection signal="body_exited" from="hurt_detect" to="." method="_on_hurt_detect_body_exited"]
 [connection signal="body_entered" from="attack_zone" to="." method="_on_attack_zone_body_entered"]
 [connection signal="body_exited" from="attack_zone" to="." method="_on_attack_zone_body_exited"]
