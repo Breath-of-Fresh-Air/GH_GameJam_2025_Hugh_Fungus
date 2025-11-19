@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=39 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
@@ -9,10 +9,10 @@
 [ext_resource type="Script" uid="uid://bimgsg1i27o0g" path="res://scripts/death_menu.gd" id="6_85g3d"]
 [ext_resource type="Texture2D" uid="uid://2phnakebg2om" path="res://Art/UI_Stuff/healthbar/healthbar_health.png" id="6_jkv2x"]
 [ext_resource type="Script" uid="uid://glv58jah0hhg" path="res://scripts/pause_menu.gd" id="6_trceg"]
-[ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="7_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="7_o6xl0"]
 [ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="7_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="8_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://cp8alevycaiha" path="res://Art/UI_Stuff/containers/menu_container.png" id="8_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://c7qdm6pfqlri1" path="res://scenes/under_map_killzone.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="15_jkv2x"]
 
@@ -30,13 +30,29 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_og1vs"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkv2x"]
-bg_color = Color(0.7, 0.23099999, 0.23099999, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jbj1t"]
+texture = ExtResource("8_jkv2x")
 
-[sub_resource type="LabelSettings" id="LabelSettings_jbj1t"]
-font_size = 40
-outline_size = 4
-outline_color = Color(0, 0, 0, 0)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_muem4"]
+texture = ExtResource("8_eb6dy")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wyq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxglm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f3dj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yq6so"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv21b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tel4y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qkpxi"]
+texture = ExtResource("8_jkv2x")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5q0nq"]
+texture = ExtResource("8_eb6dy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
 
@@ -179,47 +195,65 @@ offset_left = -173.33331
 offset_top = -293.33334
 offset_right = 179.99994
 offset_bottom = 53.333313
+theme_override_styles/panel = SubResource("StyleBoxTexture_jbj1t")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/pause_menu/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
-alignment = 1
+theme_override_constants/separation = 45
+alignment = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jkv2x")
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_muem4")
 
 [node name="Label" type="Label" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_a8y0u")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8156863)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 18
+theme_override_fonts/font = ExtResource("7_ya4ey")
 theme_override_font_sizes/font_size = 40
 text = "Paused"
-label_settings = SubResource("LabelSettings_jbj1t")
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+alignment = 2
 
 [node name="resume_button" type="Button" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2wyq8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxglm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2f3dj")
 text = "Resume"
 icon = ExtResource("8_eb6dy")
 icon_alignment = 1
 
 [node name="quit_button" type="Button" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
 theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq6so")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fv21b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tel4y")
 text = "Quit"
 icon = ExtResource("8_eb6dy")
 icon_alignment = 1
 
+[node name="PanelContainer2" type="PanelContainer" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="death_menu" type="Control" parent="player/Camera2D"]
 visible = false
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_left = -173.33333
@@ -230,31 +264,38 @@ script = ExtResource("6_85g3d")
 
 [node name="PanelContainer" type="PanelContainer" parent="player/Camera2D/death_menu"]
 layout_mode = 0
-offset_right = 353.33325
-offset_bottom = 350.00003
+offset_right = 353.333
+offset_bottom = 346.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qkpxi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/death_menu/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 45
 alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5q0nq")
 
 [node name="Label" type="Label" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "YOU DIED"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 18
+theme_override_fonts/font = ExtResource("7_ya4ey")
+theme_override_font_sizes/font_size = 43
+text = "You DIED"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 21
+theme_override_constants/separation = 11
 
 [node name="reset_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
 theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
@@ -268,7 +309,6 @@ icon_alignment = 1
 
 [node name="quit_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
 theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
@@ -279,6 +319,9 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_dp3eg")
 text = "Quit"
 icon = ExtResource("8_eb6dy")
 icon_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer"]
+layout_mode = 2
 
 [node name="enemy" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(615.00006, -24)
