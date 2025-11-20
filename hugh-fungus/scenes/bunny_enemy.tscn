@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://jrtgpqctgmg"]
+
+[ext_resource type="Script" uid="uid://bucits1lukofk" path="res://scripts/bunny_enemy.gd" id="1_r4f8r"]
+[ext_resource type="Texture2D" uid="uid://c4wlgmpkase75" path="res://Art/Enemies/Bunny_sprite.png" id="2_mmoe2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl61h"]
+radius = 16.0
+height = 96.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ljeky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mmoe2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4f8r"]
+radius = 112.28535
+
+[node name="bunny_enemy" type="CharacterBody2D"]
+script = ExtResource("1_r4f8r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_pl61h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_ljeky")
+
+[node name="player_detetcor" type="Area2D" parent="."]
+position = Vector2(0, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detetcor"]
+shape = SubResource("CircleShape2D_r4f8r")
+
+[node name="change_dir_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="body_entered" from="player_detetcor" to="." method="_on_player_detetcor_body_entered"]
+[connection signal="body_exited" from="player_detetcor" to="." method="_on_player_detetcor_body_exited"]
+[connection signal="timeout" from="change_dir_timer" to="." method="_on_change_dir_timer_timeout"]
