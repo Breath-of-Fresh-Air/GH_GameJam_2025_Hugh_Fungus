@@ -155,7 +155,7 @@ height = 32.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ln1g7"]
 radius = 56.0
 
-[node name="Bee_enemy" type="CharacterBody2D"]
+[node name="Bee_enemy" type="CharacterBody2D" groups=["Bee_enemy"]]
 script = ExtResource("1_ifhc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
