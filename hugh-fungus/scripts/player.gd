@@ -102,6 +102,7 @@ func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
 		enemy = area
 		player_hurt = true
+	
 func _on_damage_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
 		if knockback_active == false:
@@ -145,3 +146,16 @@ func _on_spawn_set_timer_timeout() -> void:
 	if is_on_floor():
 		respawn_point = self.global_position
 	return
+
+
+func _on_damage_area_body_entered(body: Node2D) -> void:
+	if  body.is_in_group("Bee_enemy"):
+		enemy = body
+		player_hurt = true
+
+
+
+func _on_damage_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Bee_enemy"):
+		if knockback_active == false:
+			enemy = null
