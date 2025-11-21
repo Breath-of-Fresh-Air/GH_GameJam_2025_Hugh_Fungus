@@ -9,20 +9,25 @@ var display_count = 0 #used to display text on a particular frame, must be reset
 
 #call this function in physics process when ready to test mini game
 func check_if_found_target_wave():
-	puzzle_solved = false # reset for the check
 	if !puzzle_solved:
 		if abs($TargetWaveDisplay.target_amplitude - $PlayerWaveDisplay.player_amplitude)== 0.0:
 			amp_found = true
-			print("Amplitudes match!")
-		if abs($TargetWaveDisplay.target_frequency - $PlayerWaveDisplay.player_frequency)==0.0:
+			print("AMPLITUDE MATCHED")
+		if abs($TargetWaveDisplay.target_amplitude - $PlayerWaveDisplay.player_amplitude)!= 0.0:
+			amp_found = false
+		if abs($TargetWaveDisplay.target_frequency - $PlayerWaveDisplay.player_frequency)== 0.0:
 			freq_found = true
-			print("frequencies match!")
-		if abs($TargetWaveDisplay.target_speed - $PlayerWaveDisplay.player_speed)==0.0:
+			print("FREQ")
+		if abs($TargetWaveDisplay.target_frequency - $PlayerWaveDisplay.player_frequency)!= 0.0:
+			freq_found = false
+		if abs($TargetWaveDisplay.target_speed - $PlayerWaveDisplay.player_speed)== 0.0:
 			speed_found = true  
-			print("speed matched!")
+			print("speed")
+		if abs($TargetWaveDisplay.target_speed - $PlayerWaveDisplay.player_speed)!= 0.0:
+			speed_found = false
 		if amp_found and freq_found and speed_found:
 			puzzle_solved = true
-			print("Puzzle solved!")
+		
 		
 		
 	# basically, check the abs value of the difference is less or equal to some amount to consider
@@ -50,7 +55,16 @@ func _ready():
 	
 	
 func _physics_process(delta: float) -> void:
+	if display_count<=60:
+		display_count += 1
+	else:
+		display_count = 0
+		print("Amp\tPlayer:", $PlayerWaveDisplay.player_amplitude,"\tFrequency:",$PlayerWaveDisplay.player_frequency,"\tSpeed:", $PlayerWaveDisplay.player_speed)
+		print("Amp\tTarget:", $TargetWaveDisplay.target_amplitude,"\tFrequency:",$TargetWaveDisplay.target_frequency,"\tSpeed:", $TargetWaveDisplay.target_speed)
 	check_if_found_target_wave()
+	if puzzle_solved:
+		print("you win!")
+		$TargetWaveDisplay.set_random_target_wave()
 	if Input.is_action_just_pressed("ui_accept"):
 		$TargetWaveDisplay.set_random_target_wave()
 	

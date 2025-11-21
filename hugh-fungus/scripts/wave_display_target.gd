@@ -4,7 +4,7 @@ extends Node2D
 @export var target_amplitude: float = 40.0  #height of the wave
 @export var target_frequency: float = 0.5  #number of cycles across screen width
 @export var phase: float = 0.0       #phase shift left/right
-@export var target_speed: float = 2.0 #directly influences phase shift with a relationship to delta (1/60)
+@export var target_speed: float = 2.6 #directly influences phase shift with a relationship to delta (1/60)
 
 func _process(delta):
 #animate the wave by increasing phase
@@ -25,7 +25,7 @@ func _draw():
 	for i in range(points_along_sinwave.size() - 1):
 		draw_line(points_along_sinwave[i] + Vector2(0, get_viewport_rect().size.y / 2),
 				  points_along_sinwave[i + 1] + Vector2(0, get_viewport_rect().size.y / 2),
-				  Color(0.967, 0.764, 0.0, 1.0), 6, true)
+				  Color(0.967, 0.764, 0.0, 0.33), 3, true)
 
 func set_random_target_wave(A:= target_amplitude,F:= target_frequency,P:= phase,S:= target_speed):
 	target_amplitude = snapped(randf_range(40.0, 175.0),5)
