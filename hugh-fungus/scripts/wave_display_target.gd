@@ -31,8 +31,6 @@ func set_random_target_wave(A:= target_amplitude,F:= target_frequency,P:= phase,
 	target_amplitude = snapped(randf_range(40.0, 175.0),5)
 	target_frequency = snapped(randf_range(0.5, 2.5),0.1)
 	target_speed = snapped(randf_range(2.6,8.4),0.2)
-	print("\nATTENTION* This script is called wave_display_target.gd\n\nTarget Wave Attributes After Changes:\nAmplitude:",target_amplitude,"\nFrequency:",
-	target_frequency,"\nSpeed:",target_speed,"\n__________________________________________")
 	
 	
 	
