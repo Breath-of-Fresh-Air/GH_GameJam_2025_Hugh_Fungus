@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 			knockback_active = false
 			current_state = state.WANDER
 
-	print("state =",current_state," health =",bunny_health )
+	
 	match current_state:
 		state.IDLE:
 			handle_idle(delta)

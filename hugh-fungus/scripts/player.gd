@@ -25,13 +25,18 @@ func _ready():
 	$spawn_set_timer.start()
  
 func _physics_process(delta: float) -> void:	
+	print(" health =",PlayerHealthGlobal.player_health )
 	if  PlayerHealthGlobal.player_health <=0:
 		handle_death()
 	# check for hurt, and snail is not null, call knockback
 	if player_hurt and enemy:
 		#call knockback w/ enemy pos
 		knockback(enemy.global_position)
-		PlayerHealthGlobal.player_health -= 1
+		if enemy.is_in_group("Bee_enemy"):
+			PlayerHealthGlobal.player_health -= 1
+		elif enemy.is_in_group("bunny_enemy"):
+			PlayerHealthGlobal.player_health -= 3
+			
 		player_hurt = false
 		# if active time count down
 	if knockback_active:
@@ -50,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		#handle double jump
 		if can_djump and Input.is_action_just_pressed("jump"):
 			velocity.y = DJUMP_VELOCITY
+			
 			can_djump = false
 	#reset double jump
 	if is_on_floor():
@@ -90,6 +96,7 @@ func _physics_process(delta: float) -> void:
 # Player double jumping
 	elif !can_djump:
 		anim_sprite.play("jump")
+		
 	#flipping anims based on direction
 	if direction == -1:
 		anim_sprite.flip_h = true
@@ -152,10 +159,16 @@ func _on_damage_area_body_entered(body: Node2D) -> void:
 	if  body.is_in_group("Bee_enemy"):
 		enemy = body
 		player_hurt = true
-
+		
+	elif body.is_in_group("bunny_enemy"):
+		enemy = body
+		player_hurt = true
 
 
 func _on_damage_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Bee_enemy"):
+		if knockback_active == false:
+			enemy = null
+	elif body.is_in_group("Bunny_enemy"):
 		if knockback_active == false:
 			enemy = null
