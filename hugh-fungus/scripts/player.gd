@@ -31,8 +31,9 @@ func _physics_process(delta: float) -> void:
 	# check for hurt, and snail is not null, call knockback
 	if player_hurt and enemy:
 		#call knockback w/ enemy pos
-		knockback(enemy.global_position)
 		PlayerHealthGlobal.player_health -= 1
+		knockback(enemy.global_position)
+		
 		
 			
 		player_hurt = false

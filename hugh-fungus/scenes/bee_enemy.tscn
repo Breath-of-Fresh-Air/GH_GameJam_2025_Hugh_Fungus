@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1gf7"]
 radius = 8.0
-height = 16.0
+height = 25.75
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mr518"]
 atlas = ExtResource("2_ed42y")
@@ -145,12 +145,12 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ifhc6"]
-radius = 136.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_a1gf7"]
+radius = 121.061966
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ifhc6"]
-radius = 8.0
-height = 32.0
+radius = 10.05
+height = 29.45
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ln1g7"]
 radius = 56.0
@@ -175,7 +175,8 @@ autostart = true
 [node name="player_detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector"]
-shape = SubResource("CircleShape2D_ifhc6")
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_a1gf7")
 
 [node name="hurt_detect" type="Area2D" parent="."]
 

@@ -130,6 +130,7 @@ func handle_attack(_delta):
 func handle_hurt(_delta):
 	
 		if player:
+			knockback(player.global_position)
 			#play hurt anim
 			anim_sprite.play("Bee_hurt")
 			if knockback_dir.x >= 0:
@@ -198,7 +199,7 @@ func _on_hurt_detect_body_entered(body: Node2D) -> void:
 		$player_detector.visible = false
 		$attack_zone.visible = false
 		player = body
-		knockback(player.global_position)
+		
 		bee_health -=1
 		
 		current_state = state.HURT
