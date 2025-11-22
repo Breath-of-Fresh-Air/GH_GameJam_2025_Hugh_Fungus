@@ -29,6 +29,8 @@ window/size/viewport_height=700
 Player=""
 enemy_hitbox1=""
 health_pack=""
+bunny_enemy=""
+Bee_enemy=""
 
 [input]
 
