@@ -32,10 +32,8 @@ func _physics_process(delta: float) -> void:
 	if player_hurt and enemy:
 		#call knockback w/ enemy pos
 		knockback(enemy.global_position)
-		if enemy.is_in_group("Bee_enemy"):
-			PlayerHealthGlobal.player_health -= 1
-		elif enemy.is_in_group("bunny_enemy"):
-			PlayerHealthGlobal.player_health -= 3
+		PlayerHealthGlobal.player_health -= 1
+		
 			
 		player_hurt = false
 		# if active time count down
