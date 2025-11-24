@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://c4wlgmpkase75" path="res://Art/Enemies/Bunny_sprite.png" id="2_mmoe2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl61h"]
-radius = 16.0
-height = 96.0
+radius = 13.865
+height = 76.49
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ljeky"]
 animations = [{
@@ -21,10 +21,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4f8r"]
 radius = 112.28535
 
-[node name="bunny_enemy" type="CharacterBody2D"]
+[node name="bunny_enemy" type="CharacterBody2D" groups=["bunny_enemy"]]
 script = ExtResource("1_r4f8r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_pl61h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
