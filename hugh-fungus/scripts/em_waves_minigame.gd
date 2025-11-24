@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 		print("Amp\tPlayer:", $PlayerWaveDisplay.player_amplitude,"\tFrequency:",$PlayerWaveDisplay.player_frequency,"\tSpeed:", $PlayerWaveDisplay.player_speed)
 		print("Amp\tTarget:", $TargetWaveDisplay.target_amplitude,"\tFrequency:",$TargetWaveDisplay.target_frequency,"\tSpeed:", $TargetWaveDisplay.target_speed)
 
-#check if the waves match!
+#check if the waves match!d d 
 	check_if_found_target_wave() #controls the state of puzzle_solved, and individual attributes (T/F)
 	
 #if its solved...
