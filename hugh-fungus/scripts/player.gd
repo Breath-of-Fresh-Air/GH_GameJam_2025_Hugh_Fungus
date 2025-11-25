@@ -25,7 +25,7 @@ func _ready():
 	$spawn_set_timer.start()
  
 func _physics_process(delta: float) -> void:	
-	print(" health =",PlayerHealthGlobal.player_health )
+	print(velocity.y)
 	if  PlayerHealthGlobal.player_health <=0:
 		handle_death()
 	# check for hurt, and snail is not null, call knockback
@@ -84,19 +84,27 @@ func _physics_process(delta: float) -> void:
 # Player stopped and not jumping 
 	elif velocity.length() == 0 and !jumping:
 		anim_sprite.play("idle")
-		
+
+#to fix i used a print statement to figure out the range of velocity.y
+# over time so i hard coded the parameters based on velocity.y
+# so when jumping the velocity of jump  velocity is -310
+#and djump velocity is -280 
+
+#also key to remember cause i finally got it burned in my brain the Y axis in godot is flipped so -1 is up and 1 is down 
+
 # Player moving and jumping
-	elif velocity.length() > 0 and jumping and can_djump:
+	elif velocity.y <= -300 and jumping and can_djump:
 		anim_sprite.play("jump")
 		
 # Player stopped and jumping 
-	elif velocity.length() == 0 and jumping:
+	elif velocity.y <= -300 and jumping:
 			anim_sprite.play("jump")
 # Player double jumping
-	elif jumping and  !can_djump:
+	elif velocity.y <= 200 and  !can_djump:
 		anim_sprite.play("double_jump")
-#player is falling|||Help! Help me!!!!! i cant figure this out rn, i need a break -Nov24 @ 8:20pm
-	elif velocity.y < 0 and !is_on_floor():
+#player is falling
+	elif velocity.y >= 230 and not is_on_floor():
+		
 		anim_sprite.play("falling")
 
 	#flipping anims based on direction
