@@ -81,21 +81,24 @@ func _physics_process(delta: float) -> void:
 	if velocity.length() > 0 and !jumping:
 		anim_sprite.play("running")
 		
-# Player moving and jumping
-	elif velocity.length() > 0 and jumping:
-		anim_sprite.play("jump")
-		
 # Player stopped and not jumping 
 	elif velocity.length() == 0 and !jumping:
 		anim_sprite.play("idle")
+		
+# Player moving and jumping
+	elif velocity.length() > 0 and jumping and can_djump:
+		anim_sprite.play("jump")
 		
 # Player stopped and jumping 
 	elif velocity.length() == 0 and jumping:
 			anim_sprite.play("jump")
 # Player double jumping
-	elif !can_djump:
-		anim_sprite.play("jump")
-		
+	elif jumping and  !can_djump:
+		anim_sprite.play("double_jump")
+#player is falling|||Help! Help me!!!!! i cant figure this out rn, i need a break -Nov24 @ 8:20pm
+	elif velocity.y < 0 and !is_on_floor():
+		anim_sprite.play("falling")
+
 	#flipping anims based on direction
 	if direction == -1:
 		anim_sprite.flip_h = true
