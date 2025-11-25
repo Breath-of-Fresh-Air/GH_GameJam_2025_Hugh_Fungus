@@ -25,7 +25,7 @@ func _draw():
 	for i in range(points_along_sinwave.size() - 1):
 		draw_line(points_along_sinwave[i] + Vector2(0, get_viewport_rect().size.y / 2),
 				  points_along_sinwave[i + 1] + Vector2(0, get_viewport_rect().size.y / 2),
-				  Color(0.998, 0.696, 0.756, 1.0), 6, true)
+				  Color(0.998, 0.696, 0.756, 0.50), 7, true)
 
 func set_player_wave(A:= player_amplitude,F:= player_frequency,S:= player_speed):
 	player_amplitude = A
