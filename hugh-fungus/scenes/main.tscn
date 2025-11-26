@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=48 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_muem4"]
@@ -48,11 +48,15 @@ texture = ExtResource("8_eb6dy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f3dj"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qkpxi"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yq6so"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv21b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tel4y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5q0nq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
 bg_color = Color(0, 0, 0, 0.9098039)
@@ -69,11 +73,15 @@ texture = ExtResource("8_eb6dy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkv2x"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgi5k"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbj1t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_muem4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dp3eg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8jky"]
 
 [node name="Main" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -262,24 +270,32 @@ alignment = 2
 
 [node name="resume_button" type="Button" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2wyq8")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxglm")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_2f3dj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qkpxi")
 text = "Resume"
 icon = ExtResource("8_eb6dy")
 icon_alignment = 1
 
 [node name="quit_button" type="Button" parent="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
 theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yq6so")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_fv21b")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_tel4y")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5q0nq")
 text = "Quit"
 icon = ExtResource("8_eb6dy")
 icon_alignment = 1
@@ -343,6 +359,8 @@ theme_override_constants/separation = 11
 
 [node name="reset_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
@@ -350,12 +368,15 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_trceg")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a8y0u")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_jkv2x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dgi5k")
 text = "Play Again"
 icon = ExtResource("8_eb6dy")
 icon_alignment = 1
 
 [node name="quit_Button" type="Button" parent="player/Camera2D/death_menu/PanelContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("7_ya4ey")
@@ -363,6 +384,7 @@ theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jbj1t")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_muem4")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_dp3eg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j8jky")
 text = "Quit"
 icon = ExtResource("8_eb6dy")
 icon_alignment = 1

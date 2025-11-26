@@ -16,8 +16,16 @@ func _on_play_button_button_up() -> void:
 
 
 func _on_controls_button_button_up() -> void:
-	pass # Replace with function body.
-	#change to  a scene that shows controls
+	get_tree().change_scene_to_file("res://scenes/controls_scene.tscn")
 
 func _on_quit_button_button_up() -> void:
 	get_tree().quit()
+
+
+
+func _on_settings_button_up() -> void:
+	get_tree().change_scene_to_file("res://scenes/settings_menu.tscn")
+
+
+func _on_credits_button_up() -> void:
+	get_tree().change_scene_to_file("res://scenes/credits_scene.tscn")
