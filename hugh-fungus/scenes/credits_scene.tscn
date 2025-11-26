@@ -1,0 +1,117 @@
+[gd_scene load_steps=16 format=3 uid="uid://reb5m0p8us56"]
+
+[ext_resource type="Script" uid="uid://d33bjkmmcs5j4" path="res://scripts/credits_scene.gd" id="1_utjet"]
+[ext_resource type="Texture2D" uid="uid://br44g8m131msm" path="res://Art/UI_Stuff/Hugh Fungus (2).png" id="2_s6411"]
+[ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="3_iboe8"]
+[ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="4_lykr5"]
+[ext_resource type="Texture2D" uid="uid://cp8alevycaiha" path="res://Art/UI_Stuff/containers/menu_container.png" id="5_x2256"]
+[ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="6_s6411"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s1ufa"]
+texture = ExtResource("2_s6411")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s6411"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iboe8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lykr5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x2256"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50oxa"]
+content_margin_left = 100.0
+content_margin_top = 50.0
+content_margin_right = 100.0
+content_margin_bottom = 50.0
+texture = ExtResource("4_lykr5")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7lo4j"]
+font = ExtResource("3_iboe8")
+font_size = 51
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7g3qi"]
+texture = ExtResource("5_x2256")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_utjet"]
+
+[node name="credits_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_utjet")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 704.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_s1ufa")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 560.0
+offset_right = 256.0
+offset_bottom = 640.0
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_iboe8")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s6411")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iboe8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lykr5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x2256")
+action_mode = 0
+text = "Back"
+icon = ExtResource("4_lykr5")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 787.0
+offset_bottom = 236.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_50oxa")
+text = "Credits"
+label_settings = SubResource("LabelSettings_7lo4j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 256.0
+offset_right = 848.0
+offset_bottom = 628.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7g3qi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_constants/paragraph_separation = -8
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("6_s6411")
+theme_override_font_sizes/normal_font_size = 29
+theme_override_styles/normal = SubResource("StyleBoxEmpty_utjet")
+text = "Created by:
+MoeOverload
+ & 
+Breath-of-Fresh-Air (BOFA)
+
+Everything in this game
+— art, code, sound, story—
+ was made by the two of us.
+Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

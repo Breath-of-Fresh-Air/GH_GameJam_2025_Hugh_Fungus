@@ -1,0 +1,205 @@
+[gd_scene load_steps=23 format=3 uid="uid://c4ekvjk6uc85a"]
+
+[ext_resource type="Script" uid="uid://dn1kplpiuyylk" path="res://scripts/settings_menu.gd" id="1_bgjg7"]
+[ext_resource type="Texture2D" uid="uid://br44g8m131msm" path="res://Art/UI_Stuff/Hugh Fungus (2).png" id="1_lwwgp"]
+[ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="2_bgjg7"]
+[ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="3_48ojb"]
+[ext_resource type="Texture2D" uid="uid://cp8alevycaiha" path="res://Art/UI_Stuff/containers/menu_container.png" id="4_n35ux"]
+[ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="5_fb6cq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ctot"]
+texture = ExtResource("1_lwwgp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wambi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgjg7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48ojb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n35ux"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jrqig"]
+texture = ExtResource("2_bgjg7")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0fy7"]
+font = ExtResource("3_48ojb")
+font_size = 37
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.80784315)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jpbdv"]
+content_margin_left = 50.0
+content_margin_top = 25.0
+content_margin_right = 50.0
+content_margin_bottom = 25.0
+texture = ExtResource("4_n35ux")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_puhno"]
+texture = ExtResource("2_bgjg7")
+expand_margin_left = 25.0
+expand_margin_right = 25.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_75x6d"]
+font = ExtResource("5_fb6cq")
+font_size = 26
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0dr5"]
+font = ExtResource("5_fb6cq")
+font_size = 26
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb6cq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdgfw"]
+texture = ExtResource("2_bgjg7")
+expand_margin_left = 25.0
+expand_margin_right = 25.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vymnv"]
+font = ExtResource("5_fb6cq")
+font_size = 26
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2tyyr"]
+font = ExtResource("5_fb6cq")
+font_size = 26
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ctot"]
+
+[node name="settings_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bgjg7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 704.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2ctot")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 576.0
+offset_right = 320.0
+offset_bottom = 656.0
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 9
+theme_override_fonts/font = ExtResource("3_48ojb")
+theme_override_font_sizes/font_size = 29
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wambi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bgjg7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_48ojb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n35ux")
+action_mode = 0
+text = "Back"
+icon = ExtResource("2_bgjg7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 80.0
+offset_right = 832.0
+offset_bottom = 216.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_jrqig")
+text = "Settings And Sounds"
+label_settings = SubResource("LabelSettings_n0fy7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 312.0
+offset_right = 848.0
+offset_bottom = 656.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jpbdv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_puhno")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "fx 
+volume"
+label_settings = SubResource("LabelSettings_75x6d")
+
+[node name="HScrollBar" type="HSlider" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "mute"
+label_settings = SubResource("LabelSettings_x0dr5")
+
+[node name="CheckButton" type="CheckButton" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fb6cq")
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_gdgfw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+text = "music 
+volume"
+label_settings = SubResource("LabelSettings_vymnv")
+
+[node name="HSlider" type="HSlider" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+text = "mute"
+label_settings = SubResource("LabelSettings_2tyyr")
+
+[node name="CheckButton" type="CheckButton" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ctot")
+
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
