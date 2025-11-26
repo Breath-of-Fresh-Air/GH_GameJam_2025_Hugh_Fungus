@@ -263,7 +263,7 @@ height = 100.0
 radius = 45.748104
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
-radius = 53.333332
+radius = 63.333332
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2

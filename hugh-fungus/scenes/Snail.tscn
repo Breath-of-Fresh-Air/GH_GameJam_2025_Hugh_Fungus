@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlkqli26yx0tq"]
+[gd_scene load_steps=8 format=3 uid="uid://dlkqli26yx0tq"]
 
 [ext_resource type="Script" uid="uid://yv51r4xfwu6h" path="res://scripts/snail.gd" id="2_2wu2h"]
 [ext_resource type="Texture2D" uid="uid://djswxtdralcn3" path="res://Art/Enemies/Snail_sprite.png" id="2_i6obs"]
+[ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="2_kfcxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wu2h"]
 size = Vector2(156.66667, 20)
@@ -26,6 +27,7 @@ size = Vector2(63.333336, 23.333332)
 [node name="enemy" type="CharacterBody2D"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("2_2wu2h")
+health_drop = ExtResource("2_kfcxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-8.333328, 63.333332)
@@ -61,7 +63,8 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect_top"]
 position = Vector2(6.666666, -23.333334)
 shape = SubResource("RectangleShape2D_kttc3")
-one_way_collision = true
+
+[node name="health_spawn_point" type="Marker2D" parent="."]
 
 [connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="player_detection" to="." method="_on_player_detection_body_exited"]

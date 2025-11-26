@@ -26,7 +26,9 @@ var idle_duration = 2.0
 var idle_timer = 0.0
 #hurt check
 var is_hurt = false
-
+#health drop
+@onready var spawn_point = $health_spawn_point
+@export var health_drop: PackedScene
 
 @onready var current_state = state.WANDER
 @onready var anim_sprite = $AnimatedSprite2D
@@ -144,9 +146,11 @@ func handle_hurt(_delta):
 		
 
 func handle_death(_delta):
+	
 	$AnimatedSprite2D.play("Bee_death")
 	await $AnimatedSprite2D.animation_finished
 	if $AnimatedSprite2D.animation_finished:
+		spawn_health()
 		self.queue_free()
 
 func randomize_direction():
@@ -230,3 +234,11 @@ func _on_hurt_detect_body_exited(body: Node2D) -> void:
 			$player_detector.visible = true
 			current_state = state.IDLE
 			
+func spawn_health():
+	if health_drop == null:
+		print("error")
+		return
+	
+	var new_drop = health_drop.instantiate()
+	new_drop.global_position = spawn_point.global_position
+	get_tree().current_scene.add_child(new_drop)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://jrtgpqctgmg"]
+[gd_scene load_steps=7 format=3 uid="uid://jrtgpqctgmg"]
 
 [ext_resource type="Script" uid="uid://bucits1lukofk" path="res://scripts/bunny_enemy.gd" id="1_r4f8r"]
 [ext_resource type="Texture2D" uid="uid://c4wlgmpkase75" path="res://Art/Enemies/Bunny_sprite.png" id="2_mmoe2"]
+[ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="2_pl61h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl61h"]
 radius = 13.865
@@ -23,6 +24,7 @@ radius = 112.28535
 
 [node name="bunny_enemy" type="CharacterBody2D" groups=["bunny_enemy"]]
 script = ExtResource("1_r4f8r")
+health_drop = ExtResource("2_pl61h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
@@ -41,6 +43,8 @@ shape = SubResource("CircleShape2D_r4f8r")
 [node name="change_dir_timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="health_spawn_point" type="Marker2D" parent="."]
 
 [connection signal="body_entered" from="player_detetcor" to="." method="_on_player_detetcor_body_entered"]
 [connection signal="body_exited" from="player_detetcor" to="." method="_on_player_detetcor_body_exited"]

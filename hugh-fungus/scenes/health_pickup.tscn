@@ -1,34 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://cto0pfv44ygox"]
+[gd_scene load_steps=4 format=3 uid="uid://cto0pfv44ygox"]
 
 [ext_resource type="Script" uid="uid://chei2cgcy1r8p" path="res://scripts/health_pickup.gd" id="1_3p6mu"]
-[ext_resource type="Texture2D" uid="uid://c8athvu031028" path="res://Art/icon.svg" id="1_ciapp"]
+[ext_resource type="Texture2D" uid="uid://cn33uvgbvnpuo" path="res://Art/health_pickup/health_pickup.png" id="2_3p6mu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciapp"]
-size = Vector2(17.349812, 22.641743)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i662h"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_ciapp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="CircleShape2D" id="CircleShape2D_i662h"]
+radius = 14.48146
 
 [node name="health_pickup" type="Area2D" groups=["health_pack"]]
+gravity_point = true
 script = ExtResource("1_3p6mu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.47325137)
 scale = Vector2(0.69165015, 0.57652354)
-shape = SubResource("RectangleShape2D_ciapp")
+shape = SubResource("CircleShape2D_i662h")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 0, 0.99215686)
-position = Vector2(0, 0.5)
-scale = Vector2(0.099, 0.1)
-sprite_frames = SubResource("SpriteFrames_i662h")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.6875, 0.625)
+texture = ExtResource("2_3p6mu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
