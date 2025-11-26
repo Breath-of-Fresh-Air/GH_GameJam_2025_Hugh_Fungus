@@ -151,12 +151,13 @@ func respawn_to_point():
 func handle_death():
 	pass
 #check for pickups
-func _on_pickup_detector_area_entered(area: Area2D) -> void:
+func _on_pickup_detector_area_entered(area: Node2D) -> void:
 	if area.is_in_group("health_pack"):
 		if PlayerHealthGlobal.player_health >= 5:
 			PlayerHealthGlobal.player_health = 5
 			return
 		PlayerHealthGlobal.player_health +=1
+
 
 #reset spawn point on timer time out 
 func _on_spawn_set_timer_timeout() -> void:
@@ -182,3 +183,6 @@ func _on_damage_area_body_exited(body: Node2D) -> void:
 	elif body.is_in_group("Bunny_enemy"):
 		if knockback_active == false:
 			enemy = null
+
+
+

@@ -5,6 +5,10 @@ var player_detected = false
 var direction = 1
 var player
 var SPEED = 70
+@onready var spawn_point = $health_spawn_point
+@export var health_drop: PackedScene
+var spawned
+
 #states
 enum state {
 	IDLE,
@@ -71,7 +75,8 @@ func handle_attack(delta):
 #death function
 func handle_death(_delta):
 	# add death anims
-
+	#spawn health_pickup
+	spawn_health()
 	# await anim finished then quefree
 	self.queue_free()
 
@@ -112,3 +117,13 @@ func _on_player_detect_top_body_entered(body: Node2D) -> void:
 		player = body
 		if player.velocity.y > 0:
 			current_state = state.DEATH
+
+func spawn_health():
+	if health_drop == null:
+		print("error")
+		return
+	
+	var new_drop = health_drop.instantiate()
+	new_drop.global_position = spawn_point.global_position
+	get_tree().current_scene.add_child(new_drop)
+	

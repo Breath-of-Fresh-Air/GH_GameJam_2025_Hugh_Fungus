@@ -32,8 +32,8 @@ var attack_gravity = 400
 var attack_jpower = -200
 @onready var current_state = state.IDLE
 @onready var anim_sprite = $AnimatedSprite2D
-
-
+@onready var spawn_point = $health_spawn_point
+@export var health_drop: PackedScene
 
 enum state {
 	IDLE,
@@ -203,3 +203,12 @@ func _on_player_detetcor_body_exited(body: Node2D) -> void:
 		player = null
 		current_state = state.WANDER
 		
+func spawn_health():
+	if health_drop == null:
+		print("error")
+		return
+	#this might not work
+	for i in 2:
+		var new_drop = health_drop.instantiate()
+		new_drop.global_position = spawn_point.global_position
+		get_tree().current_scene.add_child(new_drop)
