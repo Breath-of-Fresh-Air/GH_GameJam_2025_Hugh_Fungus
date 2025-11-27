@@ -45,7 +45,7 @@ func _ready():
 	$spawn_set_timer.start()
 	
 func _physics_process(delta: float) -> void:
-	print(MyceliumTracker.items_collected)
+	print(PlayerHealthGlobal.player_health)
 	if not is_on_floor():
 		velocity += get_gravity() * delta	
 		# if active time count down
