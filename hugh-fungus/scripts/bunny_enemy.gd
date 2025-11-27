@@ -7,6 +7,7 @@ var knockback_timer = 0.0
 var knockback_dir
 # bee health
 var bunny_health = 5
+var amount_dropped = 0
 # directions / speeds
 const SPEED = 60
 var chase_speed = 80
@@ -61,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		if knockback_timer <= 0:
 
 			knockback_active = false
-			current_state = state.WANDER
+			current_state = state.IDLE
 
 	
 	match current_state:
@@ -139,9 +140,11 @@ func handle_chase(delta):
 
 func handle_hurt(_delta):
 
-		if player:
+		if is_hurt:
+			knockback(player.global_position)
 			#play hurt anim
-			#anim_sprite.play("Bee_hurt")
+			bunny_health -=1
+			is_hurt = false
 			if knockback_dir.x >= 0:
 				anim_sprite.flip_h = true
 			else:
@@ -156,6 +159,7 @@ func handle_death(_delta):
 	#$AnimatedSprite2D.play("Bee_death")
 	#await $AnimatedSprite2D.animation_finished
 	#if $AnimatedSprite2D.animation_finished:
+	spawn_health()
 	self.queue_free()
 
 
@@ -204,11 +208,28 @@ func _on_player_detetcor_body_exited(body: Node2D) -> void:
 		current_state = state.WANDER
 		
 func spawn_health():
+	
 	if health_drop == null:
 		print("error")
 		return
 	#this might not work
-	for i in 2:
+	for i in randi_range(2,3):
+		if amount_dropped > 2:
+			return
 		var new_drop = health_drop.instantiate()
 		new_drop.global_position = spawn_point.global_position
 		get_tree().current_scene.add_child(new_drop)
+		amount_dropped += 1
+		
+
+func _on_hurt_detect_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player_attack_area"):
+		player = area
+		is_hurt = true
+		current_state = state.HURT
+
+
+func _on_hurt_detect_area_exited(area: Area2D) -> void:
+	if area.is_in_group("player_attack_area"):
+		player = null
+

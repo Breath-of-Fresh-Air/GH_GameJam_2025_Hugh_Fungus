@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jrtgpqctgmg"]
+[gd_scene load_steps=8 format=3 uid="uid://jrtgpqctgmg"]
 
 [ext_resource type="Script" uid="uid://bucits1lukofk" path="res://scripts/bunny_enemy.gd" id="1_r4f8r"]
 [ext_resource type="Texture2D" uid="uid://c4wlgmpkase75" path="res://Art/Enemies/Bunny_sprite.png" id="2_mmoe2"]
@@ -21,6 +21,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4f8r"]
 radius = 112.28535
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mmoe2"]
+radius = 16.0
+height = 96.0
 
 [node name="bunny_enemy" type="CharacterBody2D" groups=["bunny_enemy"]]
 script = ExtResource("1_r4f8r")
@@ -46,6 +50,14 @@ one_shot = true
 
 [node name="health_spawn_point" type="Marker2D" parent="."]
 
+[node name="hurt_detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_detect"]
+position = Vector2(0, 16)
+shape = SubResource("CapsuleShape2D_mmoe2")
+
 [connection signal="body_entered" from="player_detetcor" to="." method="_on_player_detetcor_body_entered"]
 [connection signal="body_exited" from="player_detetcor" to="." method="_on_player_detetcor_body_exited"]
 [connection signal="timeout" from="change_dir_timer" to="." method="_on_change_dir_timer_timeout"]
+[connection signal="area_entered" from="hurt_detect" to="." method="_on_hurt_detect_area_entered"]
+[connection signal="area_exited" from="hurt_detect" to="." method="_on_hurt_detect_area_exited"]
