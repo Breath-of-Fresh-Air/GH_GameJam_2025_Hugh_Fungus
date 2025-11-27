@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://btp43o06ynld3"]
+[gd_scene load_steps=19 format=3 uid="uid://btp43o06ynld3"]
 
 [ext_resource type="Script" uid="uid://wmvqy7w5loyl" path="res://scripts/bee_spawner.gd" id="1_v17ra"]
 [ext_resource type="Texture2D" uid="uid://cxh34arlpueis" path="res://Art/Enemies/bee_spawner/bee_spawner_normal.png" id="1_wyr62"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="2_oud2i"]
 [ext_resource type="Texture2D" uid="uid://d15fi2gfxcei3" path="res://Art/Enemies/bee_spawner/bee-spawner_spawning_anim.png" id="2_v17ra"]
+[ext_resource type="PackedScene" uid="uid://cmqbingcu3t60" path="res://scenes/honey_comb.tscn" id="3_fvh33"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oud2i"]
 atlas = ExtResource("1_wyr62")
@@ -97,20 +98,21 @@ radius = 224.5707
 [node name="Bee_spawner" type="Node2D"]
 script = ExtResource("1_v17ra")
 bee_enemy = ExtResource("2_oud2i")
+honey_comb = ExtResource("3_fvh33")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4r51p")
 animation = &"beehive_spawning"
 autoplay = "beehive_normal"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="attack_detect" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_detect"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_8kdqt")
 
 [node name="spawn_timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 8.0
 autostart = true
 
 [node name="spawn_point" type="Marker2D" parent="."]
@@ -121,6 +123,8 @@ position = Vector2(0, -16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
 shape = SubResource("CircleShape2D_oud2i")
 
+[connection signal="area_entered" from="attack_detect" to="." method="_on_attack_detect_area_entered"]
+[connection signal="area_exited" from="attack_detect" to="." method="_on_attack_detect_area_exited"]
 [connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="player_detect" to="." method="_on_player_detect_body_exited"]
