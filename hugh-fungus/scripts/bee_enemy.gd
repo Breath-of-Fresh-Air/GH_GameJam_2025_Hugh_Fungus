@@ -29,6 +29,7 @@ var is_hurt = false
 #health drop
 @onready var spawn_point = $health_spawn_point
 @export var health_drop: PackedScene
+var amount_dropped = 0
 
 @onready var current_state = state.WANDER
 @onready var anim_sprite = $AnimatedSprite2D
@@ -236,13 +237,14 @@ func _on_hurt_detect_body_exited(body: Node2D) -> void:
 			
 func spawn_health():
 	if health_drop == null:
-		print("error")
 		return
-	
-	var new_drop = health_drop.instantiate()
-	new_drop.global_position = spawn_point.global_position
-	get_tree().current_scene.add_child(new_drop)
 
+	for i in range(1):
+		if amount_dropped <= 0:
+			var new_drop = health_drop.instantiate()
+			new_drop.global_position = spawn_point.global_position
+			get_tree().current_scene.add_child(new_drop)
+			amount_dropped += 1
 
 
 

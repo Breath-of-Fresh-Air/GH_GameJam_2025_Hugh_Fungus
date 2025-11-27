@@ -14,15 +14,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if PlayerHealthGlobal.player_health >=5:
 		health_bar_5.visible = true
+		health_bar_4.visible = true
+		health_bar_3.visible = true
+		health_bar_2.visible = true
+		health_bar_1.visible = true
 	elif PlayerHealthGlobal.player_health == 4:
 		health_bar_5.visible = false
 		health_bar_4.visible = true
+		health_bar_3.visible = true
+		health_bar_2.visible = true
+		health_bar_1.visible = true
 	elif PlayerHealthGlobal.player_health == 3:
 		health_bar_4.visible =false
 		health_bar_3.visible = true
+		health_bar_2.visible = true
+		
 	elif PlayerHealthGlobal.player_health == 2:
 		health_bar_3.visible = false
 		health_bar_2.visible = true
+		health_bar_1.visible = true
 	elif PlayerHealthGlobal.player_health == 1:
 		health_bar_2.visible = false
 		health_bar_1.visible = true
