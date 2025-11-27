@@ -342,7 +342,7 @@ position = Vector2(408, -112)
 position = Vector2(-784, 32)
 
 [node name="Bee_spawner" parent="." instance=ExtResource("19_0ld40")]
-position = Vector2(935, -384)
+position = Vector2(533, -356)
 
 [node name="mycelium_pickup" parent="." instance=ExtResource("21_yc10j")]
 position = Vector2(1980, -188)
