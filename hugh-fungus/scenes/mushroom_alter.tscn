@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://48hmmdx5ulc1"]
+
+[ext_resource type="Script" uid="uid://c73p37bmnq620" path="res://scripts/mushroom_alter.gd" id="1_wq571"]
+[ext_resource type="Texture2D" uid="uid://bwhl12jsmxlve" path="res://Art/mushroom_alter/alter_sprite.png" id="2_xy2r1"]
+[ext_resource type="Texture2D" uid="uid://7ujtodwoy236" path="res://Art/mushroom_alter/mycelium_sprite.png" id="3_sswur"]
+[ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="4_d1475"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b88uo"]
+size = Vector2(161.5, 78)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wq571"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xy2r1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_onwye"]
+font = ExtResource("4_d1475")
+font_size = 25
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wq571"]
+font = ExtResource("4_d1475")
+font_size = 26
+outline_size = 11
+outline_color = Color(0, 0, 0, 1)
+
+[node name="mushroom_alter" type="Node2D"]
+script = ExtResource("1_wq571")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xy2r1")
+
+[node name="player_detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_b88uo")
+
+[node name="mycelium1" type="Sprite2D" parent="."]
+position = Vector2(-29, 13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_sswur")
+
+[node name="mycelium2" type="Sprite2D" parent="."]
+position = Vector2(1, 13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_sswur")
+
+[node name="mycelium3" type="Sprite2D" parent="."]
+position = Vector2(30, 14)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_sswur")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 90.0
+offset_top = -10.0
+offset_right = 131.0
+offset_bottom = 13.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wq571")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xy2r1")
+text = "Place \"E\""
+label_settings = SubResource("LabelSettings_onwye")
+
+[node name="enter_label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = -11.0
+offset_right = 170.0
+offset_bottom = 28.0
+text = "ENTER"
+label_settings = SubResource("LabelSettings_wq571")
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]

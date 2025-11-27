@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6ak71l0qd10l"]
+
+[ext_resource type="Script" uid="uid://hm8ey4ajrfy7" path="res://scripts/mycelium_pickup.gd" id="1_5cosh"]
+[ext_resource type="Texture2D" uid="uid://7ujtodwoy236" path="res://Art/mushroom_alter/mycelium_sprite.png" id="1_jbmm7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cosh"]
+radius = 7.0
+
+[node name="mycelium_pickup" type="Node2D" groups=["mycelium"]]
+script = ExtResource("1_5cosh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_jbmm7")
+
+[node name="Area2D" type="Area2D" parent="." groups=["mycelium"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5cosh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
