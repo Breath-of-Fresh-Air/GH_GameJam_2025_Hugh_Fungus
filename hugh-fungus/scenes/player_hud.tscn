@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://takb3uah3mu5"]
+
+[ext_resource type="Script" uid="uid://dxi4uadqcs5py" path="res://scripts/player_hud.gd" id="1_or0tx"]
+[ext_resource type="Texture2D" uid="uid://b6m3h7x8mhjws" path="res://Art/UI_Stuff/healthbar/Healthbar_bar.png" id="2_qcjqi"]
+[ext_resource type="Script" uid="uid://bxwhc7s5knaiq" path="res://scripts/health_bar_container.gd" id="3_s25gh"]
+[ext_resource type="Texture2D" uid="uid://2phnakebg2om" path="res://Art/UI_Stuff/healthbar/healthbar_health.png" id="4_ujnyd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ld40"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gqmmt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yc10j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jscy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pm3ni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y6deb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_og1vs"]
+
+[node name="player_hud" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = -623.3333
+offset_top = -466.66666
+offset_right = -583.3333
+offset_bottom = -426.66666
+scale = Vector2(31.206572, 18.324717)
+script = ExtResource("1_or0tx")
+
+[node name="Health_bar_log" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0.91764706)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0026703775
+anchor_top = -0.018190384
+anchor_right = 0.0026703835
+anchor_bottom = -0.018190384
+offset_left = -1.3885968
+offset_top = 34.5617
+offset_right = 104.35832
+offset_bottom = 79.10927
+scale = Vector2(0.15374912, 0.1617786)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0ld40")
+
+[node name="TextureRect" type="TextureRect" parent="Health_bar_log"]
+layout_mode = 2
+texture = ExtResource("2_qcjqi")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0.8156863)
+layout_mode = 0
+offset_left = 2.136302
+offset_top = 32.378853
+offset_right = 2953.1362
+offset_bottom = 607.37885
+scale = Vector2(0.0038022092, 0.009157397)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gqmmt")
+
+[node name="healthBarContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 19
+script = ExtResource("3_s25gh")
+
+[node name="health_bar_1" type="PanelContainer" parent="PanelContainer/healthBarContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yc10j")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/healthBarContainer/health_bar_1"]
+layout_mode = 2
+texture = ExtResource("4_ujnyd")
+expand_mode = 3
+
+[node name="health_bar_2" type="PanelContainer" parent="PanelContainer/healthBarContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jscy8")
+
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/healthBarContainer/health_bar_2"]
+layout_mode = 2
+texture = ExtResource("4_ujnyd")
+expand_mode = 3
+
+[node name="health_bar_3" type="PanelContainer" parent="PanelContainer/healthBarContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pm3ni")
+
+[node name="TextureRect3" type="TextureRect" parent="PanelContainer/healthBarContainer/health_bar_3"]
+layout_mode = 2
+texture = ExtResource("4_ujnyd")
+expand_mode = 3
+
+[node name="health_bar_4" type="PanelContainer" parent="PanelContainer/healthBarContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_y6deb")
+
+[node name="TextureRect4" type="TextureRect" parent="PanelContainer/healthBarContainer/health_bar_4"]
+layout_mode = 2
+texture = ExtResource("4_ujnyd")
+expand_mode = 3
+
+[node name="health_bar_5" type="PanelContainer" parent="PanelContainer/healthBarContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_og1vs")
+
+[node name="TextureRect5" type="TextureRect" parent="PanelContainer/healthBarContainer/health_bar_5"]
+layout_mode = 2
+texture = ExtResource("4_ujnyd")
+expand_mode = 3

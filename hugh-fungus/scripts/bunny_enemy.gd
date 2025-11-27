@@ -210,9 +210,9 @@ func _on_player_detetcor_body_exited(body: Node2D) -> void:
 func spawn_health():
 	
 	if health_drop == null:
-		print("error")
+		
 		return
-	#this might not work
+	
 	for i in randi_range(2,3):
 		if amount_dropped > 2:
 			return

@@ -2,7 +2,8 @@ extends CharacterBody2D
 #state machine logic rewrite
 var player_hurt_processed = false
 var enemy 
- 
+var health_pickup
+var mycelium
 #normal movement
 const SPEED = 130.0
 const JUMP_VELOCITY = -310.0
@@ -257,20 +258,32 @@ func _on_spawn_set_timer_timeout() -> void:
 	return
 
 
-
 #check for pickups
-func _on_pickup_detector_area_entered(area: Node2D) -> void:
-	if area.is_in_group("health_pack"):
+func handle_pickup():
+	if health_pickup:
 		if PlayerHealthGlobal.player_health >= 5:
 			PlayerHealthGlobal.player_health = 5
 			return
-		PlayerHealthGlobal.player_health +=1
-	if area.is_in_group("mycelium"):
+		else:
+			PlayerHealthGlobal.player_health += 1
+	if mycelium:
 		if MyceliumTracker.items_collected >= 3:
 			MyceliumTracker.items_collected =3
 			return
 		MyceliumTracker.items_collected += 1
 
+func _on_pickup_detector_area_entered(area: Node2D) -> void:
+	if area.is_in_group("health_pack"):
+		health_pickup = area
+		handle_pickup()	
+	if area.is_in_group("mycelium"):
+		mycelium = area
+		handle_pickup()
+func _on_pickup_detector_area_exited(area: Area2D) -> void:
+	if area.is_in_group("health_pack"):
+		health_pickup = null
+	if area.is_in_group("mycelium"):
+		mycelium = null
 #check for enemy 
 func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
@@ -314,3 +327,6 @@ func _on_attack_time_timer_timeout() -> void:
 		current_state = state.IDLE
 	else:
 		current_state = state.FALL
+
+
+
