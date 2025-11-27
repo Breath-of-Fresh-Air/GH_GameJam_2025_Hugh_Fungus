@@ -45,7 +45,7 @@ func _ready():
 	$spawn_set_timer.start()
 	
 func _physics_process(delta: float) -> void:
-	print(current_state)
+	print(MyceliumTracker.items_collected)
 	if not is_on_floor():
 		velocity += get_gravity() * delta	
 		# if active time count down
@@ -265,8 +265,11 @@ func _on_pickup_detector_area_entered(area: Node2D) -> void:
 			PlayerHealthGlobal.player_health = 5
 			return
 		PlayerHealthGlobal.player_health +=1
-
-
+	if area.is_in_group("mycelium"):
+		if MyceliumTracker.items_collected >= 3:
+			MyceliumTracker.items_collected =3
+			return
+		MyceliumTracker.items_collected += 1
 
 #check for enemy 
 func _on_damage_area_area_entered(area: Area2D) -> void:
