@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dp660ag48wxkg"]
+[gd_scene load_steps=43 format=3 uid="uid://dp660ag48wxkg"]
 
 [ext_resource type="Script" uid="uid://dguhl1dglqedq" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/Hugh Art/HughFungus_sprite.png" id="2_onrkg"]
@@ -260,10 +260,14 @@ radius = 37.01
 height = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 45.748104
+radius = 53.37082
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 63.333332
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
+radius = 70.0
+height = 200.0
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
@@ -296,9 +300,27 @@ shape = SubResource("CircleShape2D_qhqgy")
 wait_time = 3.0
 autostart = true
 
+[node name="attack_area" type="Area2D" parent="." groups=["player_attack_area"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+position = Vector2(26.666666, -1.4901163e-08)
+rotation = -1.5630678
+shape = SubResource("CapsuleShape2D_tuyoq")
+debug_color = Color(0.802588, 0.3925511, 0.35094526, 0.5686275)
+
+[node name="attack_cooldown_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="attack_time_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="area_entered" from="damage_area" to="." method="_on_damage_area_area_entered"]
 [connection signal="area_exited" from="damage_area" to="." method="_on_damage_area_area_exited"]
 [connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]
 [connection signal="body_exited" from="damage_area" to="." method="_on_damage_area_body_exited"]
 [connection signal="area_entered" from="pickup_detector" to="." method="_on_pickup_detector_area_entered"]
 [connection signal="timeout" from="spawn_set_timer" to="." method="_on_spawn_set_timer_timeout"]
+[connection signal="timeout" from="attack_cooldown_timer" to="." method="_on_attack_cooldown_timer_timeout"]
+[connection signal="timeout" from="attack_time_timer" to="." method="_on_attack_time_timer_timeout"]
