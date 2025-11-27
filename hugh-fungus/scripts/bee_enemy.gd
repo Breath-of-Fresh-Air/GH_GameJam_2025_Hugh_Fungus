@@ -242,3 +242,25 @@ func spawn_health():
 	var new_drop = health_drop.instantiate()
 	new_drop.global_position = spawn_point.global_position
 	get_tree().current_scene.add_child(new_drop)
+
+
+
+
+
+func _on_hurt_detect_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player_attack_area"):
+		$player_detector.visible = false
+		$attack_zone.visible = false
+		player = area
+		
+		bee_health -=1
+		
+		current_state = state.HURT
+
+
+func _on_hurt_detect_area_exited(area: Area2D) -> void:
+	if area.is_in_group("player_attack_area"):
+		if knockback_active == false:
+			$attack_zone.visible = true
+			$player_detector.visible = true
+			current_state = state.IDLE
