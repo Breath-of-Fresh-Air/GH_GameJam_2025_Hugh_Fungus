@@ -5,6 +5,7 @@ var enemy
 var health_pickup
 var mycelium
 var honey_comb
+var empty_jar
 #normal movement
 const SPEED = 130.0
 const JUMP_VELOCITY = -310.0
@@ -275,7 +276,13 @@ func handle_pickup():
 	if honey_comb:
 		if MyceliumTracker.honey_comb >= 1:
 			MyceliumTracker.honey_comb = 1
+			return
 		MyceliumTracker.honey_comb += 1
+	if empty_jar:
+		if MyceliumTracker.empty_jar >= 1:
+			MyceliumTracker.empty_jar = 1
+			return
+		MyceliumTracker.empty_jar +=1
 func _on_pickup_detector_area_entered(area: Node2D) -> void:
 	if area.is_in_group("health_pack"):
 		health_pickup = area
@@ -286,6 +293,9 @@ func _on_pickup_detector_area_entered(area: Node2D) -> void:
 	if area.is_in_group("honey_comb"):
 		honey_comb = area
 		handle_pickup()
+	if area.is_in_group("empty_jar"):
+		empty_jar = area
+		handle_pickup()
 func _on_pickup_detector_area_exited(area: Area2D) -> void:
 	if area.is_in_group("health_pack"):
 		health_pickup = null
@@ -293,6 +303,8 @@ func _on_pickup_detector_area_exited(area: Area2D) -> void:
 		mycelium = null
 	if area.is_in_group("honey_comb"):
 		honey_comb = null
+	if area.is_in_group("empty_jar"):
+		empty_jar = null
 #check for enemy 
 func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):

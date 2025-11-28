@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://takb3uah3mu5"]
+[gd_scene load_steps=17 format=3 uid="uid://takb3uah3mu5"]
 
 [ext_resource type="Script" uid="uid://dxi4uadqcs5py" path="res://scripts/player_hud.gd" id="1_or0tx"]
 [ext_resource type="Texture2D" uid="uid://b6m3h7x8mhjws" path="res://Art/UI_Stuff/healthbar/Healthbar_bar.png" id="2_qcjqi"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="5_ujnyd"]
 [ext_resource type="Texture2D" uid="uid://daix8r4l5g0ev" path="res://Art/Enemies/bee_spawner/honey_comb.png" id="6_lqhkl"]
 [ext_resource type="Texture2D" uid="uid://7ujtodwoy236" path="res://Art/mushroom_alter/mycelium_sprite.png" id="7_8y7rk"]
+[ext_resource type="Texture2D" uid="uid://b275lekqe0k5l" path="res://Art/empty_jar/jar_sprite.png" id="7_lqhkl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ld40"]
 
@@ -151,7 +152,10 @@ offset_right = 25.133595
 offset_bottom = 39.818714
 
 [node name="TextureRect" type="TextureRect" parent="jar"]
+visible = false
 layout_mode = 2
+texture = ExtResource("7_lqhkl")
+expand_mode = 5
 
 [node name="mycelium" type="PanelContainer" parent="."]
 layout_mode = 0
