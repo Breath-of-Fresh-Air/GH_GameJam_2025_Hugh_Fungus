@@ -7,7 +7,7 @@ func _ready() -> void:
 	$mycelium/TextureRect.visible = false
 	$mycelium2/TextureRect.visible = false
 	$mycelium3/TextureRect.visible = false
-
+	$jar/TextureRect.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,7 +25,9 @@ func _process(delta: float) -> void:
 		$mycelium3/TextureRect.visible = false
 	if MyceliumTracker.items_collected <= 0  :
 		$mycelium/TextureRect.visible = false
-		$mycelium2/TextureRect.visible = true
+		$mycelium2/TextureRect.visible = false
 		$mycelium3/TextureRect.visible = false
 	if MyceliumTracker.honey_comb >= 1:
 		$honeycomb/TextureRect.visible = true
+	if MyceliumTracker.empty_jar >= 1:
+		$jar/TextureRect.visible = true

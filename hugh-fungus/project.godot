@@ -35,6 +35,7 @@ Bee_enemy=""
 player_attack_area=""
 mycelium=""
 honey_comb=""
+empty_jar=""
 
 [input]
 

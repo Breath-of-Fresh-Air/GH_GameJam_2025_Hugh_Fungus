@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=42 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_muem4"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://jrtgpqctgmg" path="res://scenes/bunny_enemy.tscn" id="18_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://btp43o06ynld3" path="res://scenes/bee_spawner.tscn" id="19_0ld40"]
+[ext_resource type="PackedScene" uid="uid://w3shyvk7g7qf" path="res://scenes/empty_jar.tscn" id="19_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="21_yc10j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
@@ -352,6 +353,9 @@ position = Vector2(2635, -189)
 
 [node name="mycelium_pickup3" parent="." instance=ExtResource("21_yc10j")]
 position = Vector2(4048, -309)
+
+[node name="empty_jar" parent="." instance=ExtResource("19_gqmmt")]
+position = Vector2(-1090, 44)
 
 [connection signal="button_up" from="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer/resume_button" to="player/Camera2D/pause_menu" method="_on_resume_button_button_up"]
 [connection signal="button_up" from="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer/quit_button" to="player/Camera2D/pause_menu" method="_on_quit_button_button_up"]
