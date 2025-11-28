@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyl8au43jfl5s"
-path="res://.godot/imported/forest_dark_parallax.png-d81a1497e6d93fd80efa9baa65003e03.ctex"
+uid="uid://c2fta3n4amyeq"
+path="res://.godot/imported/forest_dark_parallax.PNG-2d52e361d80120dc05ad4ac17cd146be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.png"
-dest_files=["res://.godot/imported/forest_dark_parallax.png-d81a1497e6d93fd80efa9baa65003e03.ctex"]
+source_file="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.PNG"
+dest_files=["res://.godot/imported/forest_dark_parallax.PNG-2d52e361d80120dc05ad4ac17cd146be.ctex"]
 
 [params]
 
