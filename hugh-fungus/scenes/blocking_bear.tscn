@@ -1,0 +1,124 @@
+[gd_scene load_steps=16 format=3 uid="uid://bv3g6jpliq756"]
+
+[ext_resource type="Script" uid="uid://bn3nycnqk5jk2" path="res://scripts/blocking_bear.gd" id="1_nw4dt"]
+[ext_resource type="Texture2D" uid="uid://cqjimjv6a65qs" path="res://Art/bear_sprites/bear_with_jar.png" id="2_6aqsi"]
+[ext_resource type="Texture2D" uid="uid://b73ypuv8hkot1" path="res://Art/bear_sprites/bear_sprite_base.png" id="2_acdlu"]
+[ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="3_acdlu"]
+[ext_resource type="Texture2D" uid="uid://lo5ecnumrr5h" path="res://Art/bear_sprites/bear_walk_base.png" id="4_scwbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nw4dt"]
+size = Vector2(81, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daix3"]
+atlas = ExtResource("2_6aqsi")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aqsi"]
+atlas = ExtResource("2_acdlu")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsaf6"]
+atlas = ExtResource("4_scwbs")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scwbs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daix3")
+}],
+"loop": true,
+"name": &"end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aqsi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsaf6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acdlu"]
+size = Vector2(180, 115)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyqs6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kyqs6"]
+font = ExtResource("3_acdlu")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_acdlu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6aqsi"]
+font = ExtResource("3_acdlu")
+font_size = 24
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="blocking_bear" type="CharacterBody2D" groups=["sleeping_bear"]]
+script = ExtResource("1_nw4dt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -1.5)
+shape = SubResource("RectangleShape2D_nw4dt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_scwbs")
+animation = &"walk"
+
+[node name="player_detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
+position = Vector2(-68, -12.5)
+shape = SubResource("RectangleShape2D_acdlu")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="sleep_label" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = -124.0
+offset_top = -89.0
+offset_right = -16.0
+offset_bottom = -49.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kyqs6")
+
+[node name="Label" type="Label" parent="Control/sleep_label"]
+visible = false
+layout_mode = 2
+text = "ZZZzzz...."
+label_settings = SubResource("LabelSettings_kyqs6")
+horizontal_alignment = 1
+
+[node name="hungry_label" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = -139.0
+offset_top = -90.0
+offset_right = -13.0
+offset_bottom = -50.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_acdlu")
+
+[node name="Label" type="Label" parent="Control/hungry_label"]
+visible = false
+layout_mode = 2
+text = "i smell honey"
+label_settings = SubResource("LabelSettings_6aqsi")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="player_detect" to="." method="_on_player_detect_body_exited"]

@@ -16,7 +16,10 @@ func _process(delta: float) -> void:
 		
 
 func _on_reset_button_button_up() -> void:
-	
+	MyceliumTracker.items_collected = 0
+	MyceliumTracker.honey_comb = 0
+	MyceliumTracker.empty_jar = 0
+	MyceliumTracker.honey_jar_collected = false 
 	PlayerHealthGlobal.player_health = 5
 	get_tree().reload_current_scene()
 	
