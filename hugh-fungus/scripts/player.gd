@@ -348,6 +348,3 @@ func _on_attack_time_timer_timeout() -> void:
 		current_state = state.IDLE
 	else:
 		current_state = state.FALL
-
-
-

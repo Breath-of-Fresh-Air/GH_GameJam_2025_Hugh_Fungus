@@ -4,7 +4,7 @@ extends Node2D
 @export var target_amplitude: float = 40.0  #height of the wave
 @export var target_frequency: float = 0.5  #number of cycles across screen width
 @export var phase: float = 0.0       #phase shift left/right
-@export var target_speed: float = 2.6 #directly influences phase shift with a relationship to delta (1/60)
+@export var target_speed: float = 2.4 #directly influences phase shift with a relationship to delta (1/60)
 
 func _process(delta):
 #animate the wave by increasing phase

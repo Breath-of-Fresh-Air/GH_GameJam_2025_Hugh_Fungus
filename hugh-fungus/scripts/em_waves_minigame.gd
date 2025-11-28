@@ -37,6 +37,11 @@ func same_speed():
 	
 #do the waves attributes closely match?
 func check_if_found_target_wave():
+	#always set same speed (makes it easier) we can add it back later if we want!
+	#i even left the speed slider, its just invisible right now. we can make a copy
+	#of this scene if we want a 2 and 3 attribute version of the minigame later. 
+	
+	$PlayerWaveDisplay.player_speed = $TargetWaveDisplay.target_speed
 	if !puzzle_solved:
 		same_amp()
 		same_freq()

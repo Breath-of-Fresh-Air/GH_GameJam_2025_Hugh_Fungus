@@ -60,6 +60,7 @@ step = 0.1
 value = 1.0
 
 [node name="speedVSlider" type="VSlider" parent="."]
+visible = false
 offset_left = 153.0
 offset_top = 466.0
 offset_right = 169.0
