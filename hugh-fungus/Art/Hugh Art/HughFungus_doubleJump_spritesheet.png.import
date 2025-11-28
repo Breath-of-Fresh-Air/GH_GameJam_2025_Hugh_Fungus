@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fsdvnbao0bkx"
-path="res://.godot/imported/HughFungus_spinAttack_spritesheet.png-360bcc073e8ba0e7ddeafc907bb2c95c.ctex"
+path="res://.godot/imported/HughFungus_doubleJump_spritesheet.png-af0308db964bd21a49984994d8ece924.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Hugh Art/HughFungus_spinAttack_spritesheet.png"
-dest_files=["res://.godot/imported/HughFungus_spinAttack_spritesheet.png-360bcc073e8ba0e7ddeafc907bb2c95c.ctex"]
+source_file="res://Art/Hugh Art/HughFungus_doubleJump_spritesheet.png"
+dest_files=["res://.godot/imported/HughFungus_doubleJump_spritesheet.png-af0308db964bd21a49984994d8ece924.ctex"]
 
 [params]
 

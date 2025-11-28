@@ -156,7 +156,7 @@ func handle_attack(delta):
 	
 	handle_left_right_input()
 	handle_jump_input()	
-	anim_sprite.play("double_jump")	
+	anim_sprite.play("attack")	
 
 
 
@@ -170,7 +170,7 @@ func handle_hurt(delta):
 	player_hurt_processed = true
 	if  PlayerHealthGlobal.player_health <=0:
 		current_state = state.DEATH
-	#anim_sprite.play("hurt")
+	anim_sprite.play("hurt")
 		
 	
 

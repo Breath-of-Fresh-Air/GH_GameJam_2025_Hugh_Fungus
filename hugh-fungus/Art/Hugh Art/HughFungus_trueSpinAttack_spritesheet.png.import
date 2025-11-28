@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2fta3n4amyeq"
-path="res://.godot/imported/forest_dark_parallax.PNG-2d52e361d80120dc05ad4ac17cd146be.ctex"
+uid="uid://bo44e3bih11rj"
+path="res://.godot/imported/HughFungus_trueSpinAttack_spritesheet.png-6a7d0bf4849ac79b8c74d6772de71d98.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.PNG"
-dest_files=["res://.godot/imported/forest_dark_parallax.PNG-2d52e361d80120dc05ad4ac17cd146be.ctex"]
+source_file="res://Art/Hugh Art/HughFungus_trueSpinAttack_spritesheet.png"
+dest_files=["res://.godot/imported/HughFungus_trueSpinAttack_spritesheet.png-6a7d0bf4849ac79b8c74d6772de71d98.ctex"]
 
 [params]
 
