@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1loiermu34po"]
+
+[ext_resource type="Script" uid="uid://ddrk6ruxbcxar" path="res://scripts/honey_jar_alter.gd" id="1_36tyv"]
+[ext_resource type="Texture2D" uid="uid://c4dc3xtj2tiv0" path="res://Art/empty_jar/honey_filled jar.png" id="1_dqp2p"]
+[ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="2_36tyv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gb21v"]
+size = Vector2(143, 98)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36tyv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1k686"]
+font = ExtResource("2_36tyv")
+font_size = 26
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="honey_jar_alter" type="Node2D"]
+script = ExtResource("1_36tyv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dqp2p")
+
+[node name="player_detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
+position = Vector2(-0.5, -35)
+shape = SubResource("RectangleShape2D_gb21v")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="place_label" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = -72.0
+offset_top = -84.0
+offset_right = 71.0
+offset_bottom = -44.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_36tyv")
+
+[node name="Label" type="Label" parent="Control/place_label"]
+layout_mode = 2
+text = "Place"
+label_settings = SubResource("LabelSettings_1k686")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="player_detect" to="." method="_on_player_detect_body_exited"]
