@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://8gomhx5y7jgw"]
+[gd_scene load_steps=44 format=4 uid="uid://8gomhx5y7jgw"]
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_muem4"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://48hmmdx5ulc1" path="res://scenes/mushroom_alter.tscn" id="4_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://bv3g6jpliq756" path="res://scenes/blocking_bear.tscn" id="5_gqmmt"]
 [ext_resource type="Script" uid="uid://bimgsg1i27o0g" path="res://scripts/death_menu.gd" id="6_85g3d"]
 [ext_resource type="PackedScene" uid="uid://takb3uah3mu5" path="res://scenes/player_hud.tscn" id="6_dp3eg"]
 [ext_resource type="Script" uid="uid://glv58jah0hhg" path="res://scripts/pause_menu.gd" id="6_trceg"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://jrtgpqctgmg" path="res://scenes/bunny_enemy.tscn" id="18_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://btp43o06ynld3" path="res://scenes/bee_spawner.tscn" id="19_0ld40"]
 [ext_resource type="PackedScene" uid="uid://w3shyvk7g7qf" path="res://scenes/empty_jar.tscn" id="19_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://c1loiermu34po" path="res://scenes/honey_jar_alter.tscn" id="21_jscy8"]
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="21_yc10j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
@@ -103,6 +105,9 @@ metadata/_edit_lock_ = true
 
 [node name="mushroom_alter" parent="." instance=ExtResource("4_gqmmt")]
 position = Vector2(3688, -176)
+
+[node name="blocking_bear" parent="." instance=ExtResource("5_gqmmt")]
+position = Vector2(3440, -172)
 
 [node name="player" parent="." instance=ExtResource("1_0wfyh")]
 z_index = 1
@@ -356,6 +361,9 @@ position = Vector2(4048, -309)
 
 [node name="empty_jar" parent="." instance=ExtResource("19_gqmmt")]
 position = Vector2(-1090, 44)
+
+[node name="honey_jar_alter" parent="." instance=ExtResource("21_jscy8")]
+position = Vector2(3030, -109)
 
 [connection signal="button_up" from="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer/resume_button" to="player/Camera2D/pause_menu" method="_on_resume_button_button_up"]
 [connection signal="button_up" from="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer/quit_button" to="player/Camera2D/pause_menu" method="_on_quit_button_button_up"]
