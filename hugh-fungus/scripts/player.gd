@@ -348,3 +348,7 @@ func _on_attack_time_timer_timeout() -> void:
 		current_state = state.IDLE
 	else:
 		current_state = state.FALL
+
+
+func _on_bunny_bush_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2cc2dndifqb2"]
+
+[ext_resource type="Texture2D" uid="uid://bu165gt3qff70" path="res://Art/tilemaps_and_Tilesets/bunnyBush.png" id="1_fudga"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fudga"]
+radius = 84.0
+height = 204.0
+
+[node name="bunnyBush" type="StaticBody2D"]
+
+[node name="Bush" type="Sprite2D" parent="."]
+texture = ExtResource("1_fudga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 18)
+shape = SubResource("CapsuleShape2D_fudga")
