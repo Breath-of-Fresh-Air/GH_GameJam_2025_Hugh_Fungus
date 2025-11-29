@@ -1,0 +1,123 @@
+[gd_scene load_steps=16 format=3 uid="uid://s33axebclpf"]
+
+[ext_resource type="Script" uid="uid://glv58jah0hhg" path="res://scripts/pause_menu.gd" id="1_5d2l8"]
+[ext_resource type="Texture2D" uid="uid://cp8alevycaiha" path="res://Art/UI_Stuff/containers/menu_container.png" id="2_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="3_v4r4p"]
+[ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="4_1s2dm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp3eg"]
+bg_color = Color(0, 0, 0, 0.8901961)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jbj1t"]
+texture = ExtResource("2_7l7mv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_muem4"]
+texture = ExtResource("3_v4r4p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wyq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxglm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2f3dj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qkpxi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yq6so"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv21b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tel4y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5q0nq"]
+
+[node name="pause_menu" type="Control"]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5d2l8")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -623.3333
+offset_top = -463.33334
+offset_right = 626.6667
+offset_bottom = 266.66666
+theme_override_styles/panel = SubResource("StyleBoxFlat_dp3eg")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = -173.33331
+offset_top = -293.33334
+offset_right = 179.99994
+offset_bottom = 53.333313
+theme_override_styles/panel = SubResource("StyleBoxTexture_jbj1t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_muem4")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8156863)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 18
+theme_override_fonts/font = ExtResource("4_1s2dm")
+theme_override_font_sizes/font_size = 40
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="resume_button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_1s2dm")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2wyq8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vxglm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2f3dj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qkpxi")
+text = "Resume"
+icon = ExtResource("3_v4r4p")
+icon_alignment = 1
+
+[node name="quit_button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_1s2dm")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yq6so")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fv21b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tel4y")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5q0nq")
+text = "Quit"
+icon = ExtResource("3_v4r4p")
+icon_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="button_up" from="PanelContainer/VBoxContainer/VBoxContainer/resume_button" to="." method="_on_resume_button_button_up"]
+[connection signal="button_up" from="PanelContainer/VBoxContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_button_up"]

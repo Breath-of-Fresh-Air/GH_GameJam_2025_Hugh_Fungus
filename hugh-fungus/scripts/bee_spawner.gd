@@ -15,8 +15,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	print(spawn_timer)
-	print()
 	if not spawning:
 		anim_sprite.play("beehive_normal")
 	if not player == null:

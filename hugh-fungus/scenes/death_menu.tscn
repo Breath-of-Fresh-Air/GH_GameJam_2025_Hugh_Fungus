@@ -1,0 +1,123 @@
+[gd_scene load_steps=16 format=3 uid="uid://ne1dqv412g73"]
+
+[ext_resource type="Script" uid="uid://bimgsg1i27o0g" path="res://scripts/death_menu.gd" id="1_vqs20"]
+[ext_resource type="Texture2D" uid="uid://cp8alevycaiha" path="res://Art/UI_Stuff/containers/menu_container.png" id="2_20fbl"]
+[ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="3_uldby"]
+[ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="4_tie44"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ld40"]
+bg_color = Color(0, 0, 0, 0.9098039)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qkpxi"]
+texture = ExtResource("2_20fbl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5q0nq"]
+texture = ExtResource("3_uldby")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8y0u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkv2x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgi5k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbj1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_muem4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dp3eg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8jky"]
+
+[node name="death_menu" type="Control"]
+process_mode = 3
+visible = false
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_left = -626.6667
+offset_top = -463.3333
+offset_right = 626.6667
+offset_bottom = 263.3333
+script = ExtResource("1_vqs20")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 5.086263e-05
+offset_top = -1.1444092e-05
+offset_right = 1250.0
+offset_bottom = 729.9999
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ld40")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 453.33337
+offset_top = 173.33333
+offset_right = 806.6664
+offset_bottom = 519.3333
+theme_override_styles/panel = SubResource("StyleBoxTexture_qkpxi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 45
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5q0nq")
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7411765)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 18
+theme_override_fonts/font = ExtResource("4_tie44")
+theme_override_font_sizes/font_size = 43
+text = "You DIED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 11
+
+[node name="reset_Button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_tie44")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_trceg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a8y0u")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jkv2x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dgi5k")
+text = "Play Again"
+icon = ExtResource("3_uldby")
+icon_alignment = 1
+
+[node name="quit_Button" type="Button" parent="PanelContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.83137256, 0.5686275, 0.3254902, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_tie44")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jbj1t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_muem4")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dp3eg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j8jky")
+text = "Quit"
+icon = ExtResource("3_uldby")
+icon_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="button_up" from="PanelContainer/VBoxContainer/VBoxContainer/reset_Button" to="." method="_on_reset_button_button_up"]
+[connection signal="button_up" from="PanelContainer/VBoxContainer/VBoxContainer/quit_Button" to="." method="_on_quit_button_button_up"]
