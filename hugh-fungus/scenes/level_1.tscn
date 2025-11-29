@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://bxtqqpdybadib" path="res://scenes/forest_balcground.gdshader" id="1_4nkto"]
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_bswci"]
-[ext_resource type="Texture2D" uid="uid://cyl8au43jfl5s" path="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.png" id="2_5xbjy"]
+[ext_resource type="Texture2D" uid="uid://80dj83lgprt5" path="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.png" id="2_5xbjy"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="3_rus8k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcfvj"]
