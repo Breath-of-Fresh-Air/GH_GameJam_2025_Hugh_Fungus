@@ -1,0 +1,130 @@
+[gd_scene load_steps=19 format=3 uid="uid://btp43o06ynld3"]
+
+[ext_resource type="Script" uid="uid://wmvqy7w5loyl" path="res://scripts/honey_spawner.gd" id="1_v17ra"]
+[ext_resource type="Texture2D" uid="uid://cxh34arlpueis" path="res://Art/Enemies/bee_spawner/bee_spawner_normal.png" id="1_wyr62"]
+[ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="2_oud2i"]
+[ext_resource type="Texture2D" uid="uid://d15fi2gfxcei3" path="res://Art/Enemies/bee_spawner/bee-spawner_spawning_anim.png" id="2_v17ra"]
+[ext_resource type="PackedScene" uid="uid://cmqbingcu3t60" path="res://scenes/honey_comb.tscn" id="3_fvh33"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oud2i"]
+atlas = ExtResource("1_wyr62")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvh33"]
+atlas = ExtResource("1_wyr62")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpqu7"]
+atlas = ExtResource("1_wyr62")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgadu"]
+atlas = ExtResource("1_wyr62")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gewef"]
+atlas = ExtResource("2_v17ra")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oynxc"]
+atlas = ExtResource("2_v17ra")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b0lk"]
+atlas = ExtResource("2_v17ra")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le0qk"]
+atlas = ExtResource("2_v17ra")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rdga"]
+atlas = ExtResource("2_v17ra")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnllq"]
+atlas = ExtResource("2_v17ra")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4r51p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oud2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvh33")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpqu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgadu")
+}],
+"loop": true,
+"name": &"beehive_normal",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gewef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oynxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b0lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le0qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rdga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnllq")
+}],
+"loop": false,
+"name": &"beehive_spawning",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kdqt"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oud2i"]
+radius = 224.5707
+
+[node name="honey_spawner" type="Node2D"]
+script = ExtResource("1_v17ra")
+bee_enemy = ExtResource("2_oud2i")
+honey_comb = ExtResource("3_fvh33")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4r51p")
+animation = &"beehive_spawning"
+autoplay = "beehive_normal"
+
+[node name="attack_detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_detect"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_8kdqt")
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[node name="spawn_point" type="Marker2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="player_detect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
+shape = SubResource("CircleShape2D_oud2i")
+
+[connection signal="area_entered" from="attack_detect" to="." method="_on_attack_detect_area_entered"]
+[connection signal="area_exited" from="attack_detect" to="." method="_on_attack_detect_area_exited"]
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="player_detect" to="." method="_on_player_detect_body_exited"]
