@@ -1,7 +1,7 @@
 extends Node2D
 @onready var anim_sprite = $AnimatedSprite2D
 @export var bee_enemy: PackedScene
-@onready var spawn_timer = $spawn_timer
+@export var honey_comb: PackedScene
 @onready var spawn_point = $spawn_point
 var player
 var atk_player
@@ -15,8 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	print(spawn_timer)
-	print()
+	
 	if not spawning:
 		anim_sprite.play("beehive_normal")
 	if not player == null:
@@ -24,11 +23,19 @@ func _process(_delta: float) -> void:
 	if atk_player:
 		handle_break()
 
-
+func spawn_honey():
+	#var spawn_key = 5
+	#if random_hNumber == spawn_key:
+		if honey_comb == null:
+			return
+		var new_honey = honey_comb.instantiate()
+		new_honey.global_position = spawn_point.global_position
+		get_tree().current_scene.add_child(new_honey)
 
 func handle_break():
 	#playe anim 
 	#spawn a honeycomb maybe make it a 1 in 10 chance?
+	spawn_honey()
 	self.queue_free()
 
 func _on_spawn_timer_timeout() -> void:
@@ -44,6 +51,7 @@ func spawn_enemy():
 	var new_bee = bee_enemy.instantiate()
 	new_bee.global_position = spawn_point.global_position
 	get_tree().current_scene.add_child(new_bee)
+	await anim_sprite.animation_finished
 	spawning = false
 
 func _on_player_detect_body_entered(body: Node2D) -> void:

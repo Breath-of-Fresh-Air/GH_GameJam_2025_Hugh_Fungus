@@ -1,77 +1,70 @@
-[gd_scene load_steps=19 format=3 uid="uid://btp43o06ynld3"]
+[gd_scene load_steps=18 format=3 uid="uid://t5oaxffkix5y"]
 
-[ext_resource type="Script" uid="uid://wmvqy7w5loyl" path="res://scripts/bee_spawner.gd" id="1_v17ra"]
-[ext_resource type="Texture2D" uid="uid://cxh34arlpueis" path="res://Art/Enemies/bee_spawner/bee_spawner_normal.png" id="1_wyr62"]
+[ext_resource type="Script" uid="uid://dqa76fbo7adh0" path="res://scripts/bee_spawner.gd" id="1_v17ra"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="2_oud2i"]
-[ext_resource type="Texture2D" uid="uid://d15fi2gfxcei3" path="res://Art/Enemies/bee_spawner/bee-spawner_spawning_anim.png" id="2_v17ra"]
-[ext_resource type="PackedScene" uid="uid://cmqbingcu3t60" path="res://scenes/honey_comb.tscn" id="3_fvh33"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oud2i"]
-atlas = ExtResource("1_wyr62")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvh33"]
-atlas = ExtResource("1_wyr62")
-region = Rect2(64, 0, 64, 64)
+[ext_resource type="Texture2D" uid="uid://cw4f34iny63t4" path="res://Art/honey_spawner/behive_nohoney_spawning.png" id="3_fvh33"]
+[ext_resource type="Texture2D" uid="uid://c5s2w7brrt5bs" path="res://Art/honey_spawner/behive_no_honey.png" id="3_oud2i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpqu7"]
-atlas = ExtResource("1_wyr62")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mgadu"]
-atlas = ExtResource("1_wyr62")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gewef"]
-atlas = ExtResource("2_v17ra")
+atlas = ExtResource("3_oud2i")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oynxc"]
-atlas = ExtResource("2_v17ra")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgadu"]
+atlas = ExtResource("3_oud2i")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5b0lk"]
-atlas = ExtResource("2_v17ra")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gewef"]
+atlas = ExtResource("3_oud2i")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_le0qk"]
-atlas = ExtResource("2_v17ra")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oynxc"]
+atlas = ExtResource("3_oud2i")
 region = Rect2(192, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b0lk"]
+atlas = ExtResource("3_fvh33")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le0qk"]
+atlas = ExtResource("3_fvh33")
+region = Rect2(64, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rdga"]
-atlas = ExtResource("2_v17ra")
-region = Rect2(256, 0, 64, 64)
+atlas = ExtResource("3_fvh33")
+region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnllq"]
-atlas = ExtResource("2_v17ra")
+atlas = ExtResource("3_fvh33")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r51p"]
+atlas = ExtResource("3_fvh33")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kdqt"]
+atlas = ExtResource("3_fvh33")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4r51p"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7als"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oud2i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fvh33")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mpqu7")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mgadu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gewef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oynxc")
 }],
 "loop": true,
 "name": &"beehive_normal",
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gewef")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oynxc")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5b0lk")
 }, {
@@ -83,45 +76,48 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mnllq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r51p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kdqt")
 }],
 "loop": false,
 "name": &"beehive_spawning",
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8kdqt"]
-radius = 24.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_slupu"]
+radius = 15.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oud2i"]
-radius = 224.5707
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5i5k"]
+radius = 224.0
 
-[node name="Bee_spawner" type="Node2D"]
+[node name="bee_spawner" type="Node2D"]
 script = ExtResource("1_v17ra")
 bee_enemy = ExtResource("2_oud2i")
-honey_comb = ExtResource("3_fvh33")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4r51p")
+sprite_frames = SubResource("SpriteFrames_f7als")
 animation = &"beehive_spawning"
-autoplay = "beehive_normal"
 
 [node name="attack_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_detect"]
-position = Vector2(0, -8)
-shape = SubResource("CircleShape2D_8kdqt")
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_slupu")
 
 [node name="spawn_timer" type="Timer" parent="."]
 wait_time = 8.0
 autostart = true
 
 [node name="spawn_point" type="Marker2D" parent="."]
-position = Vector2(0, -16)
 
 [node name="player_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
-shape = SubResource("CircleShape2D_oud2i")
+shape = SubResource("CircleShape2D_x5i5k")
 
 [connection signal="area_entered" from="attack_detect" to="." method="_on_attack_detect_area_entered"]
 [connection signal="area_exited" from="attack_detect" to="." method="_on_attack_detect_area_exited"]

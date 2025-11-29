@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_muem4"]
-[ext_resource type="Texture2D" uid="uid://cyl8au43jfl5s" path="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.png" id="2_0ld40"]
+[ext_resource type="Texture2D" uid="uid://80dj83lgprt5" path="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.png" id="2_0ld40"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://48hmmdx5ulc1" path="res://scenes/mushroom_alter.tscn" id="4_gqmmt"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c7qdm6pfqlri1" path="res://scenes/under_map_killzone.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://jrtgpqctgmg" path="res://scenes/bunny_enemy.tscn" id="18_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://btp43o06ynld3" path="res://scenes/bee_spawner.tscn" id="19_0ld40"]
+[ext_resource type="PackedScene" uid="uid://t5oaxffkix5y" path="res://scenes/bee_spawner.tscn" id="19_0ld40"]
 [ext_resource type="PackedScene" uid="uid://w3shyvk7g7qf" path="res://scenes/empty_jar.tscn" id="19_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://c1loiermu34po" path="res://scenes/honey_jar_alter.tscn" id="21_jscy8"]
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="21_yc10j"]
@@ -347,9 +347,6 @@ position = Vector2(408, -112)
 [node name="bunny_enemy" parent="." instance=ExtResource("18_dp3eg")]
 position = Vector2(-784, 32)
 
-[node name="Bee_spawner" parent="." instance=ExtResource("19_0ld40")]
-position = Vector2(533, -356)
-
 [node name="mycelium_pickup" parent="." instance=ExtResource("21_yc10j")]
 position = Vector2(1980, -188)
 
@@ -364,6 +361,9 @@ position = Vector2(-1090, 44)
 
 [node name="honey_jar_alter" parent="." instance=ExtResource("21_jscy8")]
 position = Vector2(3030, -109)
+
+[node name="bee_spawner" parent="." instance=ExtResource("19_0ld40")]
+position = Vector2(749, -377)
 
 [connection signal="button_up" from="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer/resume_button" to="player/Camera2D/pause_menu" method="_on_resume_button_button_up"]
 [connection signal="button_up" from="player/Camera2D/pause_menu/PanelContainer/VBoxContainer/VBoxContainer/quit_button" to="player/Camera2D/pause_menu" method="_on_quit_button_button_up"]
