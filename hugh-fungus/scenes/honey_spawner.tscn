@@ -124,9 +124,10 @@ position = Vector2(0, -16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
 shape = SubResource("CircleShape2D_oud2i")
 
-[node name="spawning_sound" type="AudioStreamPlayer" parent="."]
+[node name="spawning_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_102v1")
 volume_db = -10.0
+max_distance = 300.0
 bus = &"sfx"
 
 [connection signal="area_entered" from="attack_detect" to="." method="_on_attack_detect_area_entered"]
