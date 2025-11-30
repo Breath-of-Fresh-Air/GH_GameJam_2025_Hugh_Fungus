@@ -6,7 +6,7 @@ var knockback_active = false
 var knockback_timer = 0.0
 var knockback_dir
 # bee health
-var bee_health = 5 
+var bee_health = 2 
 # directions / speeds
 const SPEED = 40
 var chase_speed = 60
