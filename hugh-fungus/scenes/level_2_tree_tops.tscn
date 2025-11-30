@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ca7vqwvaix2is"]
+[gd_scene load_steps=17 format=4 uid="uid://ca7vqwvaix2is"]
 
 [ext_resource type="Shader" uid="uid://bxtqqpdybadib" path="res://scenes/forest_balcground.gdshader" id="1_xio8v"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="2_s1dge"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://btp43o06ynld3" path="res://scenes/honey_spawner.tscn" id="11_5j2rn"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="12_hk2bg"]
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="13_hk2bg"]
+[ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="14_upqan"]
+[ext_resource type="PackedScene" uid="uid://48hmmdx5ulc1" path="res://scenes/mushroom_alter.tscn" id="15_xl0y8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6rv0p"]
 shader = ExtResource("1_xio8v")
@@ -208,3 +210,37 @@ position = Vector2(-1859, -576)
 
 [node name="mycelium_pickup3" parent="mycelium_pickups" instance=ExtResource("13_hk2bg")]
 position = Vector2(4058, -723)
+
+[node name="hearts" type="Node" parent="."]
+
+[node name="health_pickup" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(835, -463)
+
+[node name="health_pickup2" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(621, -297)
+
+[node name="health_pickup3" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(-1655, -194)
+
+[node name="health_pickup4" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(-1628, -618)
+
+[node name="health_pickup5" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(-95, -922)
+
+[node name="health_pickup6" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(1324, -748)
+
+[node name="health_pickup7" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(1782, -444)
+
+[node name="health_pickup8" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(2417, -384)
+
+[node name="health_pickup9" parent="hearts" instance=ExtResource("14_upqan")]
+position = Vector2(3651, -475)
+
+[node name="mushroom_alter" type="Node" parent="."]
+
+[node name="mushroom_alter" parent="mushroom_alter" instance=ExtResource("15_xl0y8")]
+position = Vector2(734, -176)
