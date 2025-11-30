@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://48hmmdx5ulc1"]
+[gd_scene load_steps=11 format=3 uid="uid://48hmmdx5ulc1"]
 
 [ext_resource type="Script" uid="uid://c73p37bmnq620" path="res://scripts/mushroom_alter.gd" id="1_wq571"]
 [ext_resource type="Texture2D" uid="uid://bwhl12jsmxlve" path="res://Art/mushroom_alter/alter_sprite.png" id="2_xy2r1"]
 [ext_resource type="Texture2D" uid="uid://7ujtodwoy236" path="res://Art/mushroom_alter/mycelium_sprite.png" id="3_sswur"]
 [ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="4_d1475"]
+[ext_resource type="AudioStream" uid="uid://bsol1wu16res4" path="res://audio/SFX/Achievment_sounds/Retro Event UI StereoUP 01.wav" id="5_xy2r1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b88uo"]
 size = Vector2(161.5, 78)
@@ -79,6 +80,9 @@ text = "ENTER"
 label_settings = SubResource("LabelSettings_wq571")
 
 [node name="placing_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xy2r1")
+volume_db = -15.266
+bus = &"sfx"
 
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]

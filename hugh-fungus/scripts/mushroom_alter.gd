@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 		else:
 			label1.visible = true
 		if Input.is_action_just_pressed("interact") :
+			$placing_sound.play()
 			if MyceliumTracker.items_collected == 1:
 				item_1.visible = true
 			elif MyceliumTracker.items_collected == 2:

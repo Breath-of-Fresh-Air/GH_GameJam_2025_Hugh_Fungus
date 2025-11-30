@@ -173,9 +173,11 @@ func flipping_direction():
 	
 
 func wander_hop():
+	$hopping_sound.play()
 	velocity.y = wander_jpower
 
 func attack_hop():
+	$attack_sound.play()
 	velocity.y = attack_jpower
 
 #KNOCKBACK BABY!!!
@@ -205,6 +207,7 @@ func _on_player_detetcor_body_entered(body: Node2D) -> void:
 func _on_player_detetcor_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player = null
+
 		current_state = state.WANDER
 		
 func spawn_health():
@@ -226,6 +229,7 @@ func _on_hurt_detect_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player_attack_area"):
 		player = area
 		is_hurt = true
+		$hurt_sound.play()
 		current_state = state.HURT
 
 
