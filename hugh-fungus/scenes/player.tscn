@@ -448,6 +448,18 @@ one_shot = true
 wait_time = 0.5
 one_shot = true
 
+[node name="pickup_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="hurt_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="jump_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="attack_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
 [connection signal="area_entered" from="damage_area" to="." method="_on_damage_area_area_entered"]
 [connection signal="area_exited" from="damage_area" to="." method="_on_damage_area_area_exited"]
 [connection signal="body_entered" from="damage_area" to="." method="_on_damage_area_body_entered"]

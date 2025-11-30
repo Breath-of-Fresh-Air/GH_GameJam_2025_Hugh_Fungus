@@ -78,5 +78,7 @@ offset_bottom = 28.0
 text = "ENTER"
 label_settings = SubResource("LabelSettings_wq571")
 
+[node name="placing_sound" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]

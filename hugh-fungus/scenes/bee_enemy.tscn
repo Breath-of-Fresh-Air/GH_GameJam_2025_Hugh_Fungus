@@ -194,6 +194,11 @@ shape = SubResource("CircleShape2D_ln1g7")
 
 [node name="health_spawn_point" type="Marker2D" parent="."]
 
+[node name="buzzing_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="hurt_sound" type="AudioStreamPlayer" parent="."]
+
 [connection signal="timeout" from="changeDIR_timer" to="." method="_on_change_dir_timer_timeout"]
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
