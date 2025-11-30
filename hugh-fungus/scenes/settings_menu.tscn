@@ -38,33 +38,13 @@ content_margin_right = 50.0
 content_margin_bottom = 25.0
 texture = ExtResource("4_n35ux")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_puhno"]
-texture = ExtResource("2_bgjg7")
-expand_margin_left = 25.0
-expand_margin_right = 25.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_75x6d"]
-font = ExtResource("5_fb6cq")
-font_size = 26
-font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_x0dr5"]
-font = ExtResource("5_fb6cq")
-font_size = 26
-font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb6cq"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdgfw"]
 texture = ExtResource("2_bgjg7")
 expand_margin_left = 25.0
 expand_margin_right = 25.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_vymnv"]
+line_spacing = 0.0
 font = ExtResource("5_fb6cq")
 font_size = 26
 font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
@@ -79,6 +59,28 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ctot"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_puhno"]
+texture = ExtResource("2_bgjg7")
+expand_margin_left = 25.0
+expand_margin_right = 25.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_75x6d"]
+line_spacing = 0.0
+font = ExtResource("5_fb6cq")
+font_size = 26
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0dr5"]
+font = ExtResource("5_fb6cq")
+font_size = 26
+font_color = Color(0.83137256, 0.41960785, 0.02745098, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb6cq"]
 
 [node name="settings_menu" type="Control"]
 layout_mode = 3
@@ -142,6 +144,41 @@ layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_gdgfw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+text = "master
+volume"
+label_settings = SubResource("LabelSettings_vymnv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mastervol" type="HSlider" parent="PanelContainer2/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
+
+[node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+text = "mute"
+label_settings = SubResource("LabelSettings_2tyyr")
+
+[node name="masterButton" type="CheckButton" parent="PanelContainer2/VBoxContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ctot")
+action_mode = 0
+
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -157,18 +194,22 @@ layout_mode = 2
 text = "fx 
 volume"
 label_settings = SubResource("LabelSettings_75x6d")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HScrollBar" type="HSlider" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
 
 [node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 text = "mute"
 label_settings = SubResource("LabelSettings_x0dr5")
 
-[node name="CheckButton" type="CheckButton" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="SFXButton" type="CheckButton" parent="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fb6cq")
 
@@ -187,19 +228,30 @@ layout_mode = 2
 text = "music 
 volume"
 label_settings = SubResource("LabelSettings_vymnv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+min_value = -80.0
+max_value = 0.0
 
 [node name="Label2" type="Label" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
 layout_mode = 2
 text = "mute"
 label_settings = SubResource("LabelSettings_2tyyr")
 
-[node name="CheckButton" type="CheckButton" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
+[node name="musicButton" type="CheckButton" parent="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2ctot")
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="value_changed" from="PanelContainer2/VBoxContainer/PanelContainer3/HBoxContainer/mastervol" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="PanelContainer2/VBoxContainer/PanelContainer3/HBoxContainer/mastervol" to="." method="_on_mastervol_value_changed"]
+[connection signal="toggled" from="PanelContainer2/VBoxContainer/PanelContainer3/HBoxContainer/masterButton" to="." method="_on_master_button_toggled"]
+[connection signal="value_changed" from="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer/HScrollBar" to="." method="_on_h_scroll_bar_value_changed"]
+[connection signal="toggled" from="PanelContainer2/VBoxContainer/PanelContainer/HBoxContainer/SFXButton" to="." method="_on_sfx_button_toggled"]
+[connection signal="value_changed" from="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="PanelContainer2/VBoxContainer/PanelContainer2/HBoxContainer/musicButton" to="." method="_on_music_button_toggled"]

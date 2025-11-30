@@ -227,7 +227,7 @@ func handle_attack_input():
 #KNOCKBACK BABY!!!
 func knockback(knockback_source: Vector2):
 	knockback_active = true
-
+	
 	var knockback_dir = (self.global_position - knockback_source).normalized()
 	
 	# Fallback if the player is exactly on top of the enemy

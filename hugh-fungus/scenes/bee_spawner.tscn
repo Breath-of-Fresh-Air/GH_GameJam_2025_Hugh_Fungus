@@ -120,9 +120,10 @@ autostart = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
 shape = SubResource("CircleShape2D_x5i5k")
 
-[node name="spawning_sound" type="AudioStreamPlayer" parent="."]
+[node name="spawning_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_fvh33")
 volume_db = -10.0
+max_distance = 300.0
 bus = &"sfx"
 
 [connection signal="area_entered" from="attack_detect" to="." method="_on_attack_detect_area_entered"]

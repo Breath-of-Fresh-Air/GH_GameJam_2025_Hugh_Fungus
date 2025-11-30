@@ -79,9 +79,10 @@ offset_bottom = 28.0
 text = "ENTER"
 label_settings = SubResource("LabelSettings_wq571")
 
-[node name="placing_sound" type="AudioStreamPlayer" parent="."]
+[node name="placing_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xy2r1")
 volume_db = -15.266
+max_distance = 967.0
 bus = &"sfx"
 
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
