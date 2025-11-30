@@ -118,10 +118,11 @@ func handle_jump(delta):
 	handle_left_right_input()
 	handle_attack_input()
 	handle_jump_input()
-
+	
 	if velocity.y > 0:
 		current_state = state.FALL
 	anim_sprite.play("jump")
+	
 
 
 
@@ -130,10 +131,11 @@ func handle_djump(delta):
 	handle_left_right_input()
 	handle_attack_input()
 	handle_jump_input()
+	
 	if velocity.y > 0:
 		current_state = state.FALL
 	anim_sprite.play("double_jump")
-
+	
 
 
 
@@ -157,7 +159,7 @@ func handle_attack(delta):
 	handle_left_right_input()
 	handle_jump_input()	
 	anim_sprite.play("attack")	
-
+	
 
 
 
@@ -171,7 +173,7 @@ func handle_hurt(delta):
 	if  PlayerHealthGlobal.player_health <=0:
 		current_state = state.DEATH
 	anim_sprite.play("hurt")
-		
+	$hurt_sound.play()
 	
 
 func handle_death(delta):
@@ -200,9 +202,11 @@ func handle_left_right_input():
 func handle_jump_input():
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or can_djump):
 		if is_on_floor():
+			$jump_sound.play()
 			velocity.y = JUMP_VELOCITY
 			current_state = state.JUMP
 		elif can_djump:
+			$jump_sound.play()
 			velocity.y = DJUMP_VELOCITY
 			current_state = state.DJUMP
 			can_djump = false
@@ -214,6 +218,7 @@ func handle_jump_input():
 
 func handle_attack_input():
 	if Input.is_action_just_pressed("attack") and can_attack:
+		$attack_sound.play()
 		current_state = state.ATTACK
 		can_attack = false
 		$attack_time_timer.start()
@@ -262,6 +267,7 @@ func _on_spawn_set_timer_timeout() -> void:
 
 #check for pickups
 func handle_pickup():
+	$pickup_sound.play()
 	if health_pickup:
 		if PlayerHealthGlobal.player_health >= 5:
 			PlayerHealthGlobal.player_health = 5
