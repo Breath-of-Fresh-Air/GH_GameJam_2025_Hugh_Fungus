@@ -56,6 +56,10 @@ one_shot = true
 position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_mmoe2")
 
+[node name="hopping_sound" type="AudioStreamPlayer" parent="."]
+
+[node name="hurt_sound" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="player_detetcor" to="." method="_on_player_detetcor_body_entered"]
 [connection signal="body_exited" from="player_detetcor" to="." method="_on_player_detetcor_body_exited"]
 [connection signal="timeout" from="change_dir_timer" to="." method="_on_change_dir_timer_timeout"]
