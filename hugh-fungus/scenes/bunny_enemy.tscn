@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://jrtgpqctgmg"]
+[gd_scene load_steps=11 format=3 uid="uid://jrtgpqctgmg"]
 
 [ext_resource type="Script" uid="uid://bucits1lukofk" path="res://scripts/bunny_enemy.gd" id="1_r4f8r"]
 [ext_resource type="Texture2D" uid="uid://c4wlgmpkase75" path="res://Art/Enemies/Bunny_sprite.png" id="2_mmoe2"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="2_pl61h"]
+[ext_resource type="AudioStream" uid="uid://bvqs31jg3ufge" path="res://audio/SFX/bunny_sounds/Retro FootStep Grass 01.wav" id="4_s2akj"]
+[ext_resource type="AudioStream" uid="uid://bomwyml3yqgfq" path="res://audio/SFX/hurt_sounds/Slap.wav" id="5_lb6cg"]
+[ext_resource type="AudioStream" uid="uid://cbjmr3k6ak6qi" path="res://audio/SFX/bunny_sounds/Retro Jump Simple C2 02.wav" id="6_6wumb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl61h"]
 radius = 13.865
@@ -57,8 +60,19 @@ position = Vector2(0, 16)
 shape = SubResource("CapsuleShape2D_mmoe2")
 
 [node name="hopping_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s2akj")
+volume_db = -14.312
+bus = &"sfx"
 
 [node name="hurt_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lb6cg")
+volume_db = -10.0
+bus = &"sfx"
+
+[node name="attack_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6wumb")
+volume_db = -10.0
+bus = &"sfx"
 
 [connection signal="body_entered" from="player_detetcor" to="." method="_on_player_detetcor_body_entered"]
 [connection signal="body_exited" from="player_detetcor" to="." method="_on_player_detetcor_body_exited"]
