@@ -38,6 +38,7 @@ func spawn_enemy():
 	if bee_enemy == null:
 		print("error")
 		return
+	$spawning_sound.play()
 	anim_sprite.play("beehive_spawning")
 	var new_bee = bee_enemy.instantiate()
 	new_bee.global_position = spawn_point.global_position
