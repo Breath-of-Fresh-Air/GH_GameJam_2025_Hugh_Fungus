@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://t5oaxffkix5y"]
+[gd_scene load_steps=19 format=3 uid="uid://t5oaxffkix5y"]
 
 [ext_resource type="Script" uid="uid://dqa76fbo7adh0" path="res://scripts/bee_spawner.gd" id="1_v17ra"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="2_oud2i"]
 [ext_resource type="Texture2D" uid="uid://cw4f34iny63t4" path="res://Art/honey_spawner/behive_nohoney_spawning.png" id="3_fvh33"]
 [ext_resource type="Texture2D" uid="uid://c5s2w7brrt5bs" path="res://Art/honey_spawner/behive_no_honey.png" id="3_oud2i"]
+[ext_resource type="AudioStream" uid="uid://gi5trl8yilt3" path="res://audio/SFX/Spawn_sounds/Npccry.wav" id="5_fvh33"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpqu7"]
 atlas = ExtResource("3_oud2i")
@@ -118,6 +119,11 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
 shape = SubResource("CircleShape2D_x5i5k")
+
+[node name="spawning_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fvh33")
+volume_db = -10.0
+bus = &"sfx"
 
 [connection signal="area_entered" from="attack_detect" to="." method="_on_attack_detect_area_entered"]
 [connection signal="area_exited" from="attack_detect" to="." method="_on_attack_detect_area_exited"]

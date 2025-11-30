@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0u5vj4dku2kp"]
+[gd_scene load_steps=30 format=3 uid="uid://b0u5vj4dku2kp"]
 
 [ext_resource type="Script" uid="uid://y2a2yqrvpk20" path="res://scripts/bee_enemy.gd" id="1_ifhc6"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="2_a1gf7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dmdocucv6s3yh" path="res://Art/Enemies/bee_enemy/Bee_Sprite_base.png" id="3_ln1g7"]
 [ext_resource type="Texture2D" uid="uid://bwnt526l6p4su" path="res://Art/Enemies/bee_enemy/Bee_hurt.png" id="4_ed42y"]
 [ext_resource type="Texture2D" uid="uid://b36wegv8fgf2c" path="res://Art/Enemies/bee_enemy/Bee_death.png" id="4_ln1g7"]
+[ext_resource type="AudioStream" uid="uid://dnjlko3asxlc" path="res://audio/SFX/Spawn_sounds/Shock.wav" id="7_iteid"]
+[ext_resource type="AudioStream" uid="uid://bomwyml3yqgfq" path="res://audio/SFX/hurt_sounds/Slap.wav" id="8_8bhdk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1gf7"]
 radius = 8.0
@@ -193,6 +195,16 @@ rotation = 0.00062959595
 shape = SubResource("CircleShape2D_ln1g7")
 
 [node name="health_spawn_point" type="Marker2D" parent="."]
+
+[node name="agro_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_iteid")
+volume_db = -10.495
+bus = &"sfx"
+
+[node name="hurt_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8bhdk")
+volume_db = -10.0
+bus = &"sfx"
 
 [connection signal="timeout" from="changeDIR_timer" to="." method="_on_change_dir_timer_timeout"]
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]

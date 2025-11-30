@@ -6,7 +6,7 @@ var knockback_active = false
 var knockback_timer = 0.0
 var knockback_dir
 # bee health
-var bee_health = 5 
+var bee_health = 2 
 # directions / speeds
 const SPEED = 40
 var chase_speed = 60
@@ -135,6 +135,7 @@ func handle_hurt(_delta):
 		if player:
 			knockback(player.global_position)
 			#play hurt anim
+			
 			anim_sprite.play("Bee_hurt")
 			if knockback_dir.x >= 0:
 				anim_sprite.flip_h = true
@@ -190,7 +191,9 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		player = body
 		player_pos = player.global_position
+		
 		current_state = state.CHASE
+		
 		
 
 func _on_player_detector_body_exited(body: Node2D) -> void:
@@ -204,7 +207,7 @@ func _on_hurt_detect_body_entered(body: Node2D) -> void:
 		$player_detector.visible = false
 		$attack_zone.visible = false
 		player = body
-		
+		$hurt_sound.play()
 		bee_health -=1
 		
 		current_state = state.HURT
@@ -215,6 +218,7 @@ func _on_attack_zone_body_entered(body: Node2D) -> void:
 		$player_detector.visible = false
 		player = body
 		player_initPOS = player.global_position
+		$agro_sound.play()
 		current_state = state.ATTACK
 			
 

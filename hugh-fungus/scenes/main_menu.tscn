@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bpgm815a1u1ep"]
+[gd_scene load_steps=35 format=3 uid="uid://bpgm815a1u1ep"]
 
 [ext_resource type="Script" uid="uid://blab7yc00brmg" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="2_bqqt6"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://kjopexqtggh3" path="res://Art/UI_Stuff/buttons/base_button.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://m0hu21fm60i1" path="res://Art/UI_Stuff/buttons/settings_button.png" id="5_oa1go"]
 [ext_resource type="Texture2D" uid="uid://crj53biycw3jm" path="res://Art/UI_Stuff/buttons/credits_button.png" id="6_tbmy8"]
+[ext_resource type="PackedScene" uid="uid://c4ekvjk6uc85a" path="res://scenes/settings_menu.tscn" id="8_5dd4i"]
+[ext_resource type="PackedScene" uid="uid://reb5m0p8us56" path="res://scenes/credits_scene.tscn" id="9_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://bsxklovnrok4i" path="res://scenes/controls_scene.tscn" id="10_flqon"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
 texture = ExtResource("2_oa1go")
@@ -66,6 +69,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
+
+[node name="menu_music" type="AudioStreamPlayer" parent="."]
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -159,6 +164,18 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_3wgol")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_gw5y6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_svtp6")
 icon = ExtResource("6_tbmy8")
+
+[node name="settings_menu" parent="." instance=ExtResource("8_5dd4i")]
+visible = false
+layout_mode = 1
+
+[node name="credits_scene" parent="." instance=ExtResource("9_lgwnu")]
+visible = false
+layout_mode = 1
+
+[node name="Controls_scene" parent="." instance=ExtResource("10_flqon")]
+visible = false
+layout_mode = 1
 
 [connection signal="button_up" from="PanelContainer/VBoxContainer/play_Button" to="." method="_on_play_button_button_up"]
 [connection signal="button_up" from="PanelContainer/VBoxContainer/controls_Button" to="." method="_on_controls_button_button_up"]

@@ -66,6 +66,9 @@ shape = SubResource("RectangleShape2D_kttc3")
 
 [node name="health_spawn_point" type="Marker2D" parent="."]
 
+[node name="moving_sound" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
 [connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="player_detection" to="." method="_on_player_detection_body_exited"]
 [connection signal="timeout" from="rand_Move_Timer" to="." method="_on_rand_move_timer_timeout"]
