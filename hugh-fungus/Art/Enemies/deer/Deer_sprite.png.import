@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dty0jeo0p4v8"
-path="res://.godot/imported/Deer_sprite.png-c88d6e2dd3bcd0e6e40cecfcdeb678ff.ctex"
+path="res://.godot/imported/Deer_sprite.png-142f040d2b46606a142fec219d210729.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Enemies/Deer_sprite.png"
-dest_files=["res://.godot/imported/Deer_sprite.png-c88d6e2dd3bcd0e6e40cecfcdeb678ff.ctex"]
+source_file="res://Art/Enemies/deer/Deer_sprite.png"
+dest_files=["res://.godot/imported/Deer_sprite.png-142f040d2b46606a142fec219d210729.ctex"]
 
 [params]
 
