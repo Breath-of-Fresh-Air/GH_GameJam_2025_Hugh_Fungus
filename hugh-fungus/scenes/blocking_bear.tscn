@@ -75,13 +75,15 @@ position = Vector2(3, 3.5)
 shape = SubResource("RectangleShape2D_nw4dt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, 5.5)
+scale = Vector2(1.078125, 1.0859375)
 sprite_frames = SubResource("SpriteFrames_scwbs")
 animation = &"walk"
 
 [node name="player_detect" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_detect"]
-position = Vector2(-68, -12.5)
+position = Vector2(-66, -10)
 shape = SubResource("RectangleShape2D_acdlu")
 
 [node name="Control" type="Control" parent="."]
