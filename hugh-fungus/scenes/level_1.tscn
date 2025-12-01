@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://2dudladenk70"]
+[gd_scene load_steps=15 format=4 uid="uid://2dudladenk70"]
 
 [ext_resource type="Shader" uid="uid://bxtqqpdybadib" path="res://scenes/forest_balcground.gdshader" id="1_4nkto"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_bswci"]
+[ext_resource type="Script" uid="uid://bd0wcvgxhuxvy" path="res://scripts/level_1.gd" id="1_go7sj"]
 [ext_resource type="Texture2D" uid="uid://80dj83lgprt5" path="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.png" id="2_5xbjy"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://jrtgpqctgmg" path="res://scenes/bunny_enemy.tscn" id="6_fcfvj"]
@@ -9,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bv3g6jpliq756" path="res://scenes/blocking_bear.tscn" id="8_15mv3"]
 [ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://backgroundMusic.tscn" id="9_e3sih"]
 [ext_resource type="PackedScene" uid="uid://c1loiermu34po" path="res://scenes/honey_jar_alter.tscn" id="11_2os1m"]
-[ext_resource type="PackedScene" uid="uid://cmqbingcu3t60" path="res://scenes/honey_comb.tscn" id="11_go7sj"]
+[ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="13_2aecg"]
 [ext_resource type="PackedScene" uid="uid://48hmmdx5ulc1" path="res://scenes/mushroom_alter.tscn" id="13_7gny6"]
+[ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="14_2aecg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcfvj"]
 shader = ExtResource("1_4nkto")
@@ -20,6 +22,7 @@ shader_parameter/spore_brightness = 0.4
 shader_parameter/pulse_speed = 0.5
 
 [node name="level1Ground" type="Node2D"]
+script = ExtResource("1_go7sj")
 
 [node name="Parallax2DBackGround" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.15, 1.15)
@@ -77,9 +80,6 @@ scale = Vector2(5.5, 5.5)
 top_level = true
 position = Vector2(3022, -131)
 
-[node name="honey_comb" parent="." instance=ExtResource("11_go7sj")]
-position = Vector2(2868, -179)
-
 [node name="empty_jar" parent="." instance=ExtResource("7_pa8r4")]
 position = Vector2(2849, -151)
 
@@ -92,3 +92,17 @@ offset_top = -168.0
 offset_right = 3350.0
 offset_bottom = -145.0
 text = "theres something over there"
+
+[node name="mycelium" type="Node" parent="."]
+
+[node name="mycelium_pickup" parent="mycelium" instance=ExtResource("13_2aecg")]
+position = Vector2(2419, -150)
+
+[node name="mycelium_pickup2" parent="mycelium" instance=ExtResource("13_2aecg")]
+position = Vector2(2535, -156)
+
+[node name="mycelium_pickup3" parent="mycelium" instance=ExtResource("13_2aecg")]
+position = Vector2(2636, -151)
+
+[node name="player" parent="." instance=ExtResource("14_2aecg")]
+position = Vector2(2734, -137)

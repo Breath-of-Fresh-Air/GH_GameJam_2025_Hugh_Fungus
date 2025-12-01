@@ -9,7 +9,9 @@ var collectedHoney = false
 var mycelium1 = false
 var mycelium2 = false
 var mycelium3 = false
-
+#level check
+var is_level_1 = true
+var is_level_2 = false
 #helper functions
 func reset():
 	firstBearEncounter = false
