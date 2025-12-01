@@ -1,24 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://dexcagfwh8rq1"]
+[gd_scene load_steps=9 format=3 uid="uid://dexcagfwh8rq1"]
 
 [ext_resource type="Script" uid="uid://bd8mecj4u7263" path="res://scripts/em_waves_minigame.gd" id="1_i6016"]
 [ext_resource type="PackedScene" uid="uid://co2d2dhc3eutp" path="res://scenes/wave_display_player.tscn" id="1_sup1u"]
+[ext_resource type="Texture2D" uid="uid://clkj8j1hi3cak" path="res://Art/Hugh Art/skullBackground.png" id="2_6lgtv"]
 [ext_resource type="PackedScene" uid="uid://dp4yumeq211bk" path="res://scenes/wave_display_target.tscn" id="2_i6016"]
-[ext_resource type="Texture2D" uid="uid://cc3orw6w7lcix" path="res://Art/Hugh Art/HughFungusSkull_waves_filledSocket.png" id="3_kkwbp"]
-[ext_resource type="Texture2D" uid="uid://dclyifo7bcwws" path="res://Art/Hugh Art/HughFungusSkull_waves_background.png" id="4_p1utx"]
-[ext_resource type="Texture2D" uid="uid://doq1myevii04k" path="res://Art/Hugh Art/HughFungusSkull_waves_emptySocket.png" id="6_ao5np"]
+[ext_resource type="Texture2D" uid="uid://cs0k74jspa4yk" path="res://Art/Hugh Art/skullSocketFill.png" id="2_mfqoh"]
+[ext_resource type="Texture2D" uid="uid://bnw3dwmhq0of3" path="res://Art/Hugh Art/skullEmptySocket.png" id="5_5djqj"]
 [ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/Hugh Art/HughFungus_sprite.png" id="7_5djqj"]
+[ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://backgroundMusic.tscn" id="8_mfqoh"]
 
 [node name="EMWavesMinigame" type="Node2D"]
 script = ExtResource("1_i6016")
 
 [node name="backgroundSkull" type="Sprite2D" parent="."]
-position = Vector2(600, 350)
-texture = ExtResource("4_p1utx")
+position = Vector2(603, 351)
+texture = ExtResource("2_6lgtv")
 
 [node name="filledSocketSkull" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.72156864)
-position = Vector2(600, 350)
-texture = ExtResource("3_kkwbp")
+position = Vector2(549.91504, 455.53003)
+scale = Vector2(0.91, 0.91)
+texture = ExtResource("2_mfqoh")
 
 [node name="PlayerWaveDisplay" parent="." instance=ExtResource("1_sup1u")]
 
@@ -26,8 +28,9 @@ texture = ExtResource("3_kkwbp")
 
 [node name="EmptySocketSkull" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.63529414)
-position = Vector2(600, 350)
-texture = ExtResource("6_ao5np")
+position = Vector2(549.91504, 455.53003)
+scale = Vector2(0.91, 0.91)
+texture = ExtResource("5_5djqj")
 
 [node name="hugh" type="Sprite2D" parent="."]
 position = Vector2(628.99994, 171)
@@ -37,6 +40,10 @@ texture = ExtResource("7_5djqj")
 
 [node name="startMiniTimer" type="Timer" parent="."]
 wait_time = 1.15
+one_shot = true
+
+[node name="winTimer" type="Timer" parent="."]
+wait_time = 3.3089999999999997
 one_shot = true
 
 [node name="amplitudeVSlider" type="VSlider" parent="."]
@@ -82,7 +89,10 @@ offset_top = -573.0
 offset_right = 1606.0
 offset_bottom = 1037.0
 
+[node name="bgMusic" parent="." instance=ExtResource("8_mfqoh")]
+
 [connection signal="timeout" from="startMiniTimer" to="." method="timeOut_sinWaveTimer"]
+[connection signal="timeout" from="winTimer" to="." method="_on_win_timer_timeout" flags=6]
 [connection signal="value_changed" from="amplitudeVSlider" to="." method="_on_amplitude_v_slider_value_changed"]
 [connection signal="value_changed" from="frequencyHSlider" to="." method="_on_frequency_h_slider_value_changed"]
 [connection signal="value_changed" from="speedVSlider" to="." method="_on_speed_v_slider_value_changed"]

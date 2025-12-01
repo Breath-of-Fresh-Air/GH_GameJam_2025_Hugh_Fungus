@@ -5,6 +5,7 @@ var freq_found = false
 var speed_found = false
 var puzzle_solved = false
 var display_count = 0 #used to display text on a particular frame, must be reset @60
+var timer_started = false
 
 
 #modular format would be to split up attribute checks and just call those 3 methods for target wave. 
@@ -27,12 +28,7 @@ func same_freq():
 		freq_found = false
 	
 #Speed
-func same_speed():
-	if abs($TargetWaveDisplay.target_speed - $PlayerWaveDisplay.player_speed)<= 0.02:
-		speed_found = true  
-		print("speed")
-	else:
-		speed_found = false
+
 	
 	
 #do the waves attributes closely match?
@@ -45,20 +41,22 @@ func check_if_found_target_wave():
 	if !puzzle_solved:
 		same_amp()
 		same_freq()
-		same_speed()
-		if amp_found and freq_found and speed_found:
+		
+		if amp_found and freq_found:
 			puzzle_solved = true
 		else:
 			puzzle_solved = false
 		
 		
-		
+	return puzzle_solved#return the value
 	# basically, check the abs value of the difference is less or equal to some amount to consider
 	# "found"
 
 
 func _ready():
 	#start EM-minigame
+	#setup music
+	$bgMusic.play_area_track($bgMusic.waves_playlist)
 	$startMiniTimer.start()
 	#hide waves briefely
 	$PlayerWaveDisplay.visible = false
@@ -86,34 +84,22 @@ func _physics_process(delta: float) -> void:
 		print("Amp\tPlayer:", $PlayerWaveDisplay.player_amplitude,"\tFrequency:",$PlayerWaveDisplay.player_frequency,"\tSpeed:", $PlayerWaveDisplay.player_speed)
 		print("Amp\tTarget:", $TargetWaveDisplay.target_amplitude,"\tFrequency:",$TargetWaveDisplay.target_frequency,"\tSpeed:", $TargetWaveDisplay.target_speed)
 
-#check if the waves match!d d 
+#check if the waves match!
 	check_if_found_target_wave() #controls the state of puzzle_solved, and individual attributes (T/F)
-	
-#if its solved...
-	if puzzle_solved:
-		# reset mycelium and change the scene
-		if GameState.is_level_1 == true:
-			$TargetWaveDisplay.set_random_target_wave()
-			puzzle_solved = false #reset to false, trips check_if_found_target_wave
-			MyceliumTracker.items_collected = 0 
-			get_tree().change_scene_to_file("res://scenes/level_2_tree_tops.tscn")
-		if GameState.is_level_2 == true:
-			$TargetWaveDisplay.set_random_target_wave()
-			puzzle_solved = false #reset to false, trips check_if_found_target_wave
-			MyceliumTracker.items_collected = 0 
-			get_tree().change_scene_to_file("res://scenes/level_1.tscn")
-#manual switch for changing the target wave
-	#if Input.is_action_just_pressed("ui_accept"):
-		#$TargetWaveDisplay.set_random_target_wave()
-	
-		
-		
+	if puzzle_solved and !timer_started:
+		$PlayerWaveDisplay.modulate = Color(0.998, 0.696, 0.756, 0.50)
+		$TargetWaveDisplay.modulate = Color(0.998, 0.696, 0.756, 0.50)
+		timer_started = true
+		$winTimer.start()
 #starttimer functions...........................................................
 func timeOut_sinWaveTimer():
 	turn_on_flash() #flash on
 	$hugh.visible = false #makes hugh invisible after the timer ends
 	$PlayerWaveDisplay.visible = true#waves come on screen overlayed on the skull backgrounds
 	$TargetWaveDisplay.visible = true
+	
+	
+
 
 func EM_Player_Controls():
 	$PlayerWaveDisplay.set_player_wave(
@@ -144,5 +130,17 @@ func turn_on_flash():
 	$WhiteFlashRect.visible = true #turns on rectangle
 	$whiteFlashTimer.start()
 	
-	
-	pass # Replace with function body.
+
+func _on_win_timer_timeout() -> void:
+	# reset mycelium and change the scene
+	if GameState.is_level_1 == true:
+		$TargetWaveDisplay.set_random_target_wave()
+		puzzle_solved = false #reset to false, trips check_if_found_target_wave
+		MyceliumTracker.items_collected = 0 
+		get_tree().change_scene_to_file("res://scenes/level_2_tree_tops.tscn")
+	if GameState.is_level_2 == true:
+		$TargetWaveDisplay.set_random_target_wave()
+		puzzle_solved = false #reset to false, trips check_if_found_target_wave
+		MyceliumTracker.items_collected = 0 
+		get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+#manual switch for changing the target wave

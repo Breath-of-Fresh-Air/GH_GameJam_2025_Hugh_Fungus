@@ -10,8 +10,9 @@ var scummBar = preload("res://audio/OST/The Scumm Bar.mp3")
 var rats = preload("res://audio/OST/rats.mp3")
 
 #split into distinct areas
-var ground_playlist = [Objection, rats]
-var treetio_playlist = [theyreComing, MetroCityZone, ElderForest]
+var ground_playlist = [Objection, MetroCityZone]
+var treetop_playlist = [theyreComing, ElderForest]
+var waves_playlist = [rats]
 var firstGroundPlayed #check if the first song has been played yet before random
 
 #we never want to play the same track twice in a row. 

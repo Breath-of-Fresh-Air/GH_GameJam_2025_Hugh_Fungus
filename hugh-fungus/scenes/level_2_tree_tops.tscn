@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ca7vqwvaix2is"]
+[gd_scene load_steps=16 format=4 uid="uid://ca7vqwvaix2is"]
 
 [ext_resource type="Script" uid="uid://b3rx70hx08cws" path="res://scripts/level_2_tree_tops.gd" id="1_hk2bg"]
 [ext_resource type="Shader" uid="uid://bxtqqpdybadib" path="res://scenes/forest_balcground.gdshader" id="1_xio8v"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c6qx5nmsj6unj" path="res://scenes/honey_spawner.tscn" id="11_5j2rn"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="12_hk2bg"]
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="13_hk2bg"]
+[ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://backgroundMusic.tscn" id="14_lgefj"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="14_upqan"]
 [ext_resource type="PackedScene" uid="uid://48hmmdx5ulc1" path="res://scenes/mushroom_alter.tscn" id="15_xl0y8"]
 
@@ -233,3 +234,5 @@ position = Vector2(3651, -475)
 
 [node name="mushroom_alter" parent="mushroom_alter" instance=ExtResource("15_xl0y8")]
 position = Vector2(734, -176)
+
+[node name="bgMusic" parent="." instance=ExtResource("14_lgefj")]

@@ -5,6 +5,7 @@ extends Node2D
 func _ready() -> void:
 	GameState.is_level_1 = false
 	GameState.is_level_2 = true
+	$bgMusic.play_area_track($bgMusic.treetop_playlist)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
