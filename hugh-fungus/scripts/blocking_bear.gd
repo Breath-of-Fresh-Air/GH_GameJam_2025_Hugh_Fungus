@@ -53,6 +53,7 @@ func handle_walk(delta):
 func handle_end(delta):
 	velocity = Vector2.ZERO
 	anim_sprite.play("end")
+	$CollisionShape2D.disabled = true
 	MyceliumTracker.bear_finished = true
 
 

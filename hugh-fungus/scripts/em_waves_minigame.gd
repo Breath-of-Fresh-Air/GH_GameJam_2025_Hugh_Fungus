@@ -91,14 +91,20 @@ func _physics_process(delta: float) -> void:
 	
 #if its solved...
 	if puzzle_solved:
-		print("you win!")
-		$TargetWaveDisplay.set_random_target_wave()
-		puzzle_solved = false #reset to false, trips check_if_found_target_wave 
-		
-
+		# reset mycelium and change the scene
+		if GameState.is_level_1 == true:
+			$TargetWaveDisplay.set_random_target_wave()
+			puzzle_solved = false #reset to false, trips check_if_found_target_wave
+			MyceliumTracker.items_collected = 0 
+			get_tree().change_scene_to_file("res://scenes/level_2_tree_tops.tscn")
+		if GameState.is_level_2 == true:
+			$TargetWaveDisplay.set_random_target_wave()
+			puzzle_solved = false #reset to false, trips check_if_found_target_wave
+			MyceliumTracker.items_collected = 0 
+			get_tree().change_scene_to_file("res://scenes/level_1.tscn")
 #manual switch for changing the target wave
-	if Input.is_action_just_pressed("ui_accept"):
-		$TargetWaveDisplay.set_random_target_wave()
+	#if Input.is_action_just_pressed("ui_accept"):
+		#$TargetWaveDisplay.set_random_target_wave()
 	
 		
 		

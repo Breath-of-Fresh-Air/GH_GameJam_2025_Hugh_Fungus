@@ -1,13 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://ca7vqwvaix2is"]
+[gd_scene load_steps=15 format=4 uid="uid://ca7vqwvaix2is"]
 
+[ext_resource type="Script" uid="uid://b3rx70hx08cws" path="res://scripts/level_2_tree_tops.gd" id="1_hk2bg"]
 [ext_resource type="Shader" uid="uid://bxtqqpdybadib" path="res://scenes/forest_balcground.gdshader" id="1_xio8v"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="2_s1dge"]
 [ext_resource type="Texture2D" uid="uid://80dj83lgprt5" path="res://Art/tilemaps_and_Tilesets/forest_dark_parallax.png" id="3_huqik"]
 [ext_resource type="TileSet" uid="uid://72okvb6xrvss" path="res://Art/tilemaps_and_Tilesets/moe_tiles_plus.tres" id="4_s4jdw"]
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="5_64hi6"]
-[ext_resource type="PackedScene" uid="uid://takb3uah3mu5" path="res://scenes/player_hud.tscn" id="6_s4jdw"]
-[ext_resource type="PackedScene" uid="uid://s33axebclpf" path="res://scenes/pause_menu.tscn" id="7_64hi6"]
-[ext_resource type="PackedScene" uid="uid://ne1dqv412g73" path="res://scenes/death_menu.tscn" id="8_6rv0p"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="9_64hi6"]
 [ext_resource type="PackedScene" uid="uid://t5oaxffkix5y" path="res://scenes/bee_spawner.tscn" id="10_6rv0p"]
 [ext_resource type="PackedScene" uid="uid://c6qx5nmsj6unj" path="res://scenes/honey_spawner.tscn" id="11_5j2rn"]
@@ -24,6 +22,7 @@ shader_parameter/spore_brightness = 0.4
 shader_parameter/pulse_speed = 0.5
 
 [node name="level2TreeTops" type="Node2D"]
+script = ExtResource("1_hk2bg")
 
 [node name="Parallax2DBackGround" type="Parallax2D" parent="."]
 scroll_scale = Vector2(1.15, 1.15)
@@ -52,16 +51,6 @@ tile_set = ExtResource("4_s4jdw")
 
 [node name="player" parent="." instance=ExtResource("5_64hi6")]
 position = Vector2(732, -129)
-
-[node name="Camera2D2" type="Camera2D" parent="player"]
-offset = Vector2(0, -30)
-zoom = Vector2(2.8, 2.8)
-
-[node name="player_hud" parent="player/Camera2D2" instance=ExtResource("6_s4jdw")]
-
-[node name="pause_menu" parent="player/Camera2D2" instance=ExtResource("7_64hi6")]
-
-[node name="death_menu" parent="player/Camera2D2" instance=ExtResource("8_6rv0p")]
 
 [node name="snails" type="Node" parent="."]
 

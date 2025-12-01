@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 func spawn_honey():
 	#var spawn_key = 5
 	#if random_hNumber == spawn_key:
+
 		if honey_comb == null:
 			return
 		var new_honey = honey_comb.instantiate()
@@ -34,7 +35,9 @@ func spawn_honey():
 
 func handle_break():
 	#playe anim 
-	#spawn a honeycomb maybe make it a 1 in 10 chance?
+	#spawn a honeycomb only if player hasnt collected yet
+	if MyceliumTracker.honey_comb >=1:
+		return
 	spawn_honey()
 	self.queue_free()
 
