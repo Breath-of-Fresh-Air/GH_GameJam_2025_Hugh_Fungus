@@ -178,6 +178,9 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
 [connection signal="button_up" from="PanelContainer/VBoxContainer/play_Button" to="." method="_on_play_button_button_up"]
 [connection signal="button_up" from="PanelContainer/VBoxContainer/controls_Button" to="." method="_on_controls_button_button_up"]
 [connection signal="button_up" from="PanelContainer/VBoxContainer/quit_Button" to="." method="_on_quit_button_button_up"]
