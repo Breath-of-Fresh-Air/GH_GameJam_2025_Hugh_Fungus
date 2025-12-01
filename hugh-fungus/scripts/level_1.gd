@@ -3,15 +3,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if MyceliumTracker.honey_comb >=1:
-		self.queue_free()
+	GameState.is_level_1 = true
+	GameState.is_level_2 = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		self.queue_free()
