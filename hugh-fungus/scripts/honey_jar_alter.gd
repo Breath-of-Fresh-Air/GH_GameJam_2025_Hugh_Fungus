@@ -11,9 +11,9 @@ func _ready() -> void:
 	MyceliumTracker.honey_taget_pos = self.global_position
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	display_msg()
+	
 	if MyceliumTracker.honey_jar_collected == true:
-
+		display_msg()
 		handle_player_interact()
 	
 	if jar_placed:
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		MyceliumTracker.bear_arrived = true
 
 	if MyceliumTracker.bear_finished == true:
-		self.queue_free()
+		honey_jar.visible = false
 func handle_player_interact():
 	if Input.is_action_just_pressed("interact"):
 		honey_jar.visible = true
@@ -31,7 +31,7 @@ func handle_player_interact():
 
 
 func display_msg():
-	if player != null:
+	if player != null and !jar_placed:
 		if MyceliumTracker.honey_jar_collected == true:
 			$Control/place_label/Label.visible = true
 		else:

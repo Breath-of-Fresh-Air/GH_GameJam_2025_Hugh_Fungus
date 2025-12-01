@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1loiermu34po"]
+[gd_scene load_steps=8 format=3 uid="uid://c1loiermu34po"]
 
 [ext_resource type="Script" uid="uid://ddrk6ruxbcxar" path="res://scripts/honey_jar_alter.gd" id="1_36tyv"]
 [ext_resource type="Texture2D" uid="uid://c4dc3xtj2tiv0" path="res://Art/empty_jar/honey_filled jar.png" id="1_dqp2p"]
 [ext_resource type="FontFile" uid="uid://b0ci5uddsgq0i" path="res://Art/UI_Stuff/Fonts/IndieFlower-Regular.ttf" id="2_36tyv"]
+[ext_resource type="Texture2D" uid="uid://dt2h0l1tj1mgk" path="res://Art/empty_jar/honey_jar_holder.png" id="3_gb21v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gb21v"]
 size = Vector2(143, 98)
@@ -17,9 +18,6 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="honey_jar_alter" type="Node2D"]
 script = ExtResource("1_36tyv")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dqp2p")
 
 [node name="player_detect" type="Area2D" parent="."]
 
@@ -46,6 +44,14 @@ layout_mode = 2
 text = "Place"
 label_settings = SubResource("LabelSettings_1k686")
 horizontal_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+texture = ExtResource("3_gb21v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -39)
+texture = ExtResource("1_dqp2p")
 
 [connection signal="body_entered" from="player_detect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="player_detect" to="." method="_on_player_detect_body_exited"]
