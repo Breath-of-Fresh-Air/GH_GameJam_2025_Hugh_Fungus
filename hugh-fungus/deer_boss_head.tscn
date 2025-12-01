@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://drt3ujluox2p4"]
+[gd_scene load_steps=18 format=3 uid="uid://drt3ujluox2p4"]
 
 [ext_resource type="Texture2D" uid="uid://b7wqelvj2uaei" path="res://Art/Enemies/deer/deerSwingAnimation.png" id="1_msmxq"]
+[ext_resource type="Script" uid="uid://ytxj5oomc7ul" path="res://deer_boss_head.gd" id="1_w1fmh"]
 [ext_resource type="Texture2D" uid="uid://b7n84irmuuqj" path="res://Art/Enemies/deer/deerHeadRight.png" id="2_5hnub"]
 [ext_resource type="AudioStream" uid="uid://bomwyml3yqgfq" path="res://audio/SFX/hurt_sounds/Slap.wav" id="3_qmnag"]
 [ext_resource type="AudioStream" uid="uid://cbjmr3k6ak6qi" path="res://audio/SFX/bunny_sounds/Retro Jump Simple C2 02.wav" id="4_w1fmh"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plfil"]
-radius = 204.0
-height = 408.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_plfil"]
+radius = 65.43699
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jxy3g"]
 atlas = ExtResource("1_msmxq")
@@ -68,7 +68,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iodap")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 30.0
 }, {
@@ -76,47 +76,40 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_5hnub")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oeshu"]
-radius = 245.09998
+[sub_resource type="CircleShape2D" id="CircleShape2D_jxy3g"]
+radius = 30.805843
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxb8v"]
-radius = 240.0
-height = 480.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyvu5"]
+size = Vector2(241.5, 36)
 
-[node name="DeerBoss" type="CharacterBody2D"]
+[node name="DeerBoss" type="CharacterBody2D" groups=["boss_deer"]]
+script = ExtResource("1_w1fmh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-51, -30)
-shape = SubResource("CapsuleShape2D_plfil")
+position = Vector2(-69, -128)
+shape = SubResource("CircleShape2D_plfil")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_yqomi")
 animation = &"attack"
+frame = 7
+frame_progress = 1.0
 
-[node name="player_detector" type="Area2D" parent="."]
-position = Vector2(0, 24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector"]
-position = Vector2(-60, -94)
-shape = SubResource("CircleShape2D_oeshu")
-
-[node name="change_dir_timer" type="Timer" parent="."]
+[node name="attack_timer_cooldown" type="Timer" parent="."]
 wait_time = 5.0
-one_shot = true
-
-[node name="health_spawn_point" type="Marker2D" parent="."]
+autostart = true
 
 [node name="hurt_detect" type="Area2D" parent="."]
 position = Vector2(2, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_detect"]
-position = Vector2(-59, -57)
-shape = SubResource("CapsuleShape2D_pxb8v")
+position = Vector2(-5, 1)
+shape = SubResource("CircleShape2D_jxy3g")
 
 [node name="hurt_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qmnag")
@@ -129,3 +122,24 @@ stream = ExtResource("4_w1fmh")
 volume_db = -10.0
 max_distance = 305.0
 bus = &"sfx"
+
+[node name="flip_time" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="hitbox_1" type="Area2D" parent="." groups=["boss_deer"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_1"]
+position = Vector2(-208.25, 238)
+shape = SubResource("RectangleShape2D_kyvu5")
+
+[node name="hitbox_2" type="Area2D" parent="." groups=["boss_deer"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox_2"]
+position = Vector2(182, 236)
+shape = SubResource("RectangleShape2D_kyvu5")
+
+[connection signal="timeout" from="attack_timer_cooldown" to="." method="_on_attack_timer_cooldown_timeout"]
+[connection signal="area_entered" from="hurt_detect" to="." method="_on_hurt_detect_area_entered"]
+[connection signal="area_exited" from="hurt_detect" to="." method="_on_hurt_detect_area_exited"]
+[connection signal="timeout" from="flip_time" to="." method="_on_flip_time_timeout"]

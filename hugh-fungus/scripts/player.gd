@@ -316,12 +316,16 @@ func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
 		enemy = area
 		current_state = state.HURT
-	
+	if area.is_in_group("boss_deer"):
+		enemy = area
+		current_state = state.HURT
 func _on_damage_area_area_exited(area: Area2D) -> void:
 	if area.is_in_group("enemy_hitbox1"):
 		if knockback_active == false:
 			enemy = null
-
+	if area.is_in_group("boss enemy"):
+		if knockback_active == false:
+			enemy = null
 
 
 ##check for bee
