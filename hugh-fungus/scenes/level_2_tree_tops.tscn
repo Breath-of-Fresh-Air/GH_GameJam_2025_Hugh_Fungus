@@ -53,15 +53,15 @@ tile_set = ExtResource("4_s4jdw")
 [node name="player" parent="." instance=ExtResource("5_64hi6")]
 position = Vector2(732, -129)
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="Camera2D2" type="Camera2D" parent="player"]
 offset = Vector2(0, -30)
-zoom = Vector2(3.2, 3.2)
+zoom = Vector2(2.8, 2.8)
 
-[node name="player_hud" parent="player/Camera2D" instance=ExtResource("6_s4jdw")]
+[node name="player_hud" parent="player/Camera2D2" instance=ExtResource("6_s4jdw")]
 
-[node name="pause_menu" parent="player/Camera2D" instance=ExtResource("7_64hi6")]
+[node name="pause_menu" parent="player/Camera2D2" instance=ExtResource("7_64hi6")]
 
-[node name="death_menu" parent="player/Camera2D" instance=ExtResource("8_6rv0p")]
+[node name="death_menu" parent="player/Camera2D2" instance=ExtResource("8_6rv0p")]
 
 [node name="snails" type="Node" parent="."]
 

@@ -69,8 +69,10 @@ func handle_snooze():
 
 func _on_player_detect_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		emit_signal("player_detected", body)
 		player = body
 		handle_snooze()
+		#the player encounters the bear 
 
 
 func _on_player_detect_body_exited(body: Node2D) -> void:

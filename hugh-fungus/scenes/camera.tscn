@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhi12oph3gp4c"]
+
+[ext_resource type="PackedScene" uid="uid://takb3uah3mu5" path="res://scenes/player_hud.tscn" id="1_tmlye"]
+[ext_resource type="PackedScene" uid="uid://s33axebclpf" path="res://scenes/pause_menu.tscn" id="2_gtx3x"]
+[ext_resource type="PackedScene" uid="uid://ne1dqv412g73" path="res://scenes/death_menu.tscn" id="3_b05li"]
+
+[node name="Camera2D" type="Camera2D"]
+offset = Vector2(0, -30)
+zoom = Vector2(3.2, 3.2)
+
+[node name="player_hud" parent="." instance=ExtResource("1_tmlye")]
+
+[node name="pause_menu" parent="." instance=ExtResource("2_gtx3x")]
+
+[node name="death_menu" parent="." instance=ExtResource("3_b05li")]

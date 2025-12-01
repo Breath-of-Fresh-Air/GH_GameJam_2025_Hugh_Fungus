@@ -19,6 +19,7 @@ config/icon="res://Art/icon.svg"
 
 PlayerHealthGlobal="*res://scripts/player_health_global.gd"
 MyceliumTracker="*res://scripts/mycelium_tracker.gd"
+GameState="*res://scripts/gameState.gd"
 
 [display]
 

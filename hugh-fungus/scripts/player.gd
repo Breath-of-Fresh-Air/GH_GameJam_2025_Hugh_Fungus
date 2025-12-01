@@ -48,7 +48,7 @@ func _ready():
 	$spawn_set_timer.start()
 	
 func _physics_process(delta: float) -> void:
-	
+	print(self.global_position)
 	if not is_on_floor():
 		velocity += get_gravity() * delta	
 		# if active time count down
