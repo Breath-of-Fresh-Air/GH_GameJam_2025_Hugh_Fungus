@@ -236,3 +236,4 @@ position = Vector2(3651, -475)
 position = Vector2(734, -176)
 
 [node name="bgMusic" parent="." instance=ExtResource("14_lgefj")]
+volume_db = -22.0

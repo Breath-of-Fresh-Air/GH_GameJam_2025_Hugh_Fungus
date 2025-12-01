@@ -90,6 +90,7 @@ offset_right = 1606.0
 offset_bottom = 1037.0
 
 [node name="bgMusic" parent="." instance=ExtResource("8_mfqoh")]
+volume_db = -18.0
 
 [connection signal="timeout" from="startMiniTimer" to="." method="timeOut_sinWaveTimer"]
 [connection signal="timeout" from="winTimer" to="." method="_on_win_timer_timeout" flags=6]
