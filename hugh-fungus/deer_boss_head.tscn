@@ -1,0 +1,131 @@
+[gd_scene load_steps=17 format=3 uid="uid://drt3ujluox2p4"]
+
+[ext_resource type="Texture2D" uid="uid://b7wqelvj2uaei" path="res://Art/Enemies/deer/deerSwingAnimation.png" id="1_msmxq"]
+[ext_resource type="Texture2D" uid="uid://b7n84irmuuqj" path="res://Art/Enemies/deer/deerHeadRight.png" id="2_5hnub"]
+[ext_resource type="AudioStream" uid="uid://bomwyml3yqgfq" path="res://audio/SFX/hurt_sounds/Slap.wav" id="3_qmnag"]
+[ext_resource type="AudioStream" uid="uid://cbjmr3k6ak6qi" path="res://audio/SFX/bunny_sounds/Retro Jump Simple C2 02.wav" id="4_w1fmh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plfil"]
+radius = 204.0
+height = 408.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxy3g"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(0, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyvu5"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(1200, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt8fq"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(2400, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryryc"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(3600, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gap2t"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(4800, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp4ki"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(6000, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2lnf"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(7200, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iodap"]
+atlas = ExtResource("1_msmxq")
+region = Rect2(8400, 0, 1200, 700)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqomi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxy3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyvu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt8fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryryc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gap2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp4ki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2lnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iodap")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5hnub")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oeshu"]
+radius = 245.09998
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pxb8v"]
+radius = 240.0
+height = 480.0
+
+[node name="DeerBoss" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-51, -30)
+shape = SubResource("CapsuleShape2D_plfil")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yqomi")
+animation = &"attack"
+
+[node name="player_detector" type="Area2D" parent="."]
+position = Vector2(0, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detector"]
+position = Vector2(-60, -94)
+shape = SubResource("CircleShape2D_oeshu")
+
+[node name="change_dir_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="health_spawn_point" type="Marker2D" parent="."]
+
+[node name="hurt_detect" type="Area2D" parent="."]
+position = Vector2(2, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_detect"]
+position = Vector2(-59, -57)
+shape = SubResource("CapsuleShape2D_pxb8v")
+
+[node name="hurt_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qmnag")
+volume_db = -10.0
+max_distance = 300.0
+bus = &"sfx"
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_w1fmh")
+volume_db = -10.0
+max_distance = 305.0
+bus = &"sfx"

@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://b2w0rfkron7ls"]
+
+[ext_resource type="Texture2D" uid="uid://b7wqelvj2uaei" path="res://Art/Enemies/deer/deerSwingAnimation.png" id="1_61d4b"]
+[ext_resource type="Texture2D" uid="uid://b7n84irmuuqj" path="res://Art/Enemies/deer/deerHeadRight.png" id="2_i5hxq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7imqq"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(0, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hhev"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(1200, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7oq6"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(2400, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ix7a"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(3600, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql2p3"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(4800, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hllwh"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(6000, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mjmg"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(7200, 0, 1200, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ywu"]
+atlas = ExtResource("1_61d4b")
+region = Rect2(8400, 0, 1200, 700)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmnag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7imqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hhev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7oq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ix7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ql2p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hllwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mjmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ywu")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_i5hxq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="deerBossHead" type="AnimatedSprite2D"]
+visible = false
+position = Vector2(603, 353)
+sprite_frames = SubResource("SpriteFrames_qmnag")
+animation = &"attack"
+frame = 1
+frame_progress = 0.84853995
