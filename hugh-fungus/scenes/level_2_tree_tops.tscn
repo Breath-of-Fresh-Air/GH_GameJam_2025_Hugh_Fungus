@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ne1dqv412g73" path="res://scenes/death_menu.tscn" id="8_6rv0p"]
 [ext_resource type="PackedScene" uid="uid://dlkqli26yx0tq" path="res://scenes/Snail.tscn" id="9_64hi6"]
 [ext_resource type="PackedScene" uid="uid://t5oaxffkix5y" path="res://scenes/bee_spawner.tscn" id="10_6rv0p"]
-[ext_resource type="PackedScene" uid="uid://btp43o06ynld3" path="res://scenes/honey_spawner.tscn" id="11_5j2rn"]
+[ext_resource type="PackedScene" uid="uid://c6qx5nmsj6unj" path="res://scenes/honey_spawner.tscn" id="11_5j2rn"]
 [ext_resource type="PackedScene" uid="uid://b0u5vj4dku2kp" path="res://scenes/bee_enemy.tscn" id="12_hk2bg"]
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="13_hk2bg"]
 [ext_resource type="PackedScene" uid="uid://cto0pfv44ygox" path="res://scenes/health_pickup.tscn" id="14_upqan"]
@@ -203,13 +203,13 @@ position = Vector2(3934, -479)
 [node name="mycelium_pickups" type="Node" parent="."]
 
 [node name="mycelium_pickup" parent="mycelium_pickups" instance=ExtResource("13_hk2bg")]
-position = Vector2(111, -565)
+position = Vector2(592, -151)
 
 [node name="mycelium_pickup2" parent="mycelium_pickups" instance=ExtResource("13_hk2bg")]
-position = Vector2(-1859, -576)
+position = Vector2(575, -151)
 
 [node name="mycelium_pickup3" parent="mycelium_pickups" instance=ExtResource("13_hk2bg")]
-position = Vector2(4058, -723)
+position = Vector2(554, -151)
 
 [node name="hearts" type="Node" parent="."]
 

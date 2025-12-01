@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://lo5ecnumrr5h" path="res://Art/bear_sprites/bear_walk_base.png" id="4_scwbs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nw4dt"]
-size = Vector2(81, 77)
+size = Vector2(82, 87)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_daix3"]
 atlas = ExtResource("2_6aqsi")
@@ -71,12 +71,12 @@ outline_color = Color(0, 0, 0, 1)
 script = ExtResource("1_nw4dt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, -1.5)
+position = Vector2(3, 3.5)
 shape = SubResource("RectangleShape2D_nw4dt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_scwbs")
-animation = &"walk"
+animation = &"idle"
 
 [node name="player_detect" type="Area2D" parent="."]
 
