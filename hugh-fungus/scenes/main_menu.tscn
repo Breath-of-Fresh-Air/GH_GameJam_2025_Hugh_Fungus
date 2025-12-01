@@ -71,6 +71,7 @@ grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
 [node name="menu_music" type="AudioStreamPlayer" parent="."]
+volume_db = -18.0
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 0
