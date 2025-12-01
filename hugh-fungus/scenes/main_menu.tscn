@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bpgm815a1u1ep"]
+[gd_scene load_steps=36 format=3 uid="uid://bpgm815a1u1ep"]
 
 [ext_resource type="Script" uid="uid://blab7yc00brmg" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://byhtgoc0hb27d" path="res://Art/UI_Stuff/Fonts/TitanOne-Regular.ttf" id="2_bqqt6"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c4ekvjk6uc85a" path="res://scenes/settings_menu.tscn" id="8_5dd4i"]
 [ext_resource type="PackedScene" uid="uid://reb5m0p8us56" path="res://scenes/credits_scene.tscn" id="9_lgwnu"]
 [ext_resource type="PackedScene" uid="uid://bsxklovnrok4i" path="res://scenes/controls_scene.tscn" id="10_flqon"]
+[ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://Art/backgroundMusic.tscn" id="11_lgwnu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tbmy8"]
 texture = ExtResource("2_oa1go")
@@ -69,9 +70,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
-
-[node name="menu_music" type="AudioStreamPlayer" parent="."]
-volume_db = -18.0
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -177,6 +175,8 @@ layout_mode = 1
 [node name="Controls_scene" parent="." instance=ExtResource("10_flqon")]
 visible = false
 layout_mode = 1
+
+[node name="bgMusic" parent="." instance=ExtResource("11_lgwnu")]
 
 [connection signal="button_up" from="PanelContainer/VBoxContainer/play_Button" to="." method="_on_play_button_button_up"]
 [connection signal="button_up" from="PanelContainer/VBoxContainer/controls_Button" to="." method="_on_controls_button_button_up"]

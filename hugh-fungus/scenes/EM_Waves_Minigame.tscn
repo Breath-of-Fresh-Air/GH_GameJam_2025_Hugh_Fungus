@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cs0k74jspa4yk" path="res://Art/Hugh Art/skullSocketFill.png" id="2_mfqoh"]
 [ext_resource type="Texture2D" uid="uid://bnw3dwmhq0of3" path="res://Art/Hugh Art/skullEmptySocket.png" id="5_5djqj"]
 [ext_resource type="Texture2D" uid="uid://bd32vh1mb823g" path="res://Art/Hugh Art/HughFungus_sprite.png" id="7_5djqj"]
-[ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://backgroundMusic.tscn" id="8_mfqoh"]
+[ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://Art/backgroundMusic.tscn" id="8_mfqoh"]
 
 [node name="EMWavesMinigame" type="Node2D"]
 script = ExtResource("1_i6016")

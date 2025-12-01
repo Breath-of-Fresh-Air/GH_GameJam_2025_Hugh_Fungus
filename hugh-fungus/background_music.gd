@@ -13,6 +13,8 @@ var rats = preload("res://audio/OST/rats.mp3")
 var ground_playlist = [Objection, MetroCityZone]
 var treetop_playlist = [theyreComing, ElderForest]
 var waves_playlist = [rats]
+var mainMenu_playlist = [VincetheUnwise,scummBar]
+var bossFight_playlist = [CastleOfIllusion]
 var firstGroundPlayed #check if the first song has been played yet before random
 
 #we never want to play the same track twice in a row. 

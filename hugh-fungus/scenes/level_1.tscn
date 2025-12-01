@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jrtgpqctgmg" path="res://scenes/bunny_enemy.tscn" id="6_fcfvj"]
 [ext_resource type="PackedScene" uid="uid://w3shyvk7g7qf" path="res://scenes/empty_jar.tscn" id="7_pa8r4"]
 [ext_resource type="PackedScene" uid="uid://bv3g6jpliq756" path="res://scenes/blocking_bear.tscn" id="8_15mv3"]
-[ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://backgroundMusic.tscn" id="9_e3sih"]
+[ext_resource type="PackedScene" uid="uid://b4kdpaax7va32" path="res://Art/backgroundMusic.tscn" id="9_e3sih"]
 [ext_resource type="PackedScene" uid="uid://c1loiermu34po" path="res://scenes/honey_jar_alter.tscn" id="11_2os1m"]
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="13_2aecg"]
 [ext_resource type="PackedScene" uid="uid://48hmmdx5ulc1" path="res://scenes/mushroom_alter.tscn" id="13_7gny6"]

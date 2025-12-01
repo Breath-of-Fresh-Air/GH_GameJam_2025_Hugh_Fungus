@@ -4,6 +4,7 @@ extends Control
 @onready var controls_menu = $Controls_scene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$bgMusic.play_area_track($bgMusic.mainMenu_playlist)
 	settings_menu.visible = false
 	credits_menu.visible = false
 	controls_menu.visible = false
