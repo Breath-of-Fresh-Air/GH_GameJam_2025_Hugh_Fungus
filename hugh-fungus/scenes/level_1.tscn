@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://2dudladenk70"]
+[gd_scene load_steps=16 format=4 uid="uid://2dudladenk70"]
 
 [ext_resource type="Shader" uid="uid://bxtqqpdybadib" path="res://scenes/forest_balcground.gdshader" id="1_4nkto"]
 [ext_resource type="Texture2D" uid="uid://bbyh3l271485e" path="res://Art/tilemaps_and_Tilesets/forest_background.PNG" id="1_bswci"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c6ak71l0qd10l" path="res://scenes/mycelium_pickup.tscn" id="13_2aecg"]
 [ext_resource type="PackedScene" uid="uid://48hmmdx5ulc1" path="res://scenes/mushroom_alter.tscn" id="13_7gny6"]
 [ext_resource type="PackedScene" uid="uid://dp660ag48wxkg" path="res://scenes/player.tscn" id="14_2aecg"]
+[ext_resource type="PackedScene" uid="uid://cl41y0i074h3n" path="res://scenes/endgame_portal.tscn" id="14_6dial"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcfvj"]
 shader = ExtResource("1_4nkto")
@@ -106,3 +107,6 @@ position = Vector2(2636, -151)
 
 [node name="player" parent="." instance=ExtResource("14_2aecg")]
 position = Vector2(2734, -137)
+
+[node name="endgame_portal" parent="." instance=ExtResource("14_6dial")]
+position = Vector2(4058, -161)

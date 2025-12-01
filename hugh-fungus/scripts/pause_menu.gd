@@ -19,5 +19,10 @@ func _on_resume_button_button_up() -> void:
 
 
 func _on_quit_button_button_up() -> void:
+	MyceliumTracker.items_collected = 0
+	MyceliumTracker.honey_comb = 0
+	MyceliumTracker.empty_jar = 0
+	MyceliumTracker.honey_jar_collected = false 
+	PlayerHealthGlobal.player_health = 5
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

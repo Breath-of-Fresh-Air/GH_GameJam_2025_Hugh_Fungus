@@ -398,8 +398,9 @@ height = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 46.685707
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
-radius = 50.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jej6c"]
+radius = 43.333332
+height = 113.33333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
 radius = 70.0
@@ -430,7 +431,8 @@ shape = SubResource("CircleShape2D_onrkg")
 [node name="pickup_detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_detector"]
-shape = SubResource("CircleShape2D_qhqgy")
+position = Vector2(0, 6.6666665)
+shape = SubResource("CapsuleShape2D_jej6c")
 
 [node name="spawn_set_timer" type="Timer" parent="."]
 wait_time = 3.0

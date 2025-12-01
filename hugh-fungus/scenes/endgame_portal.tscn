@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cl41y0i074h3n"]
+
+[ext_resource type="Script" uid="uid://cksj5jsxgsyyd" path="res://scripts/endgame_portal.gd" id="1_xp6d3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6gfc"]
+size = Vector2(20, 120)
+
+[node name="endgame_portal" type="Node2D"]
+script = ExtResource("1_xp6d3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_p6gfc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
